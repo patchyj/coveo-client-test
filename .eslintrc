@@ -1,0 +1,78 @@
+{
+  "extends": "airbnb",
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 6
+  },
+  "plugins": [
+    "babel",
+    "react",
+    "prettier"
+  ],
+  "env": {
+    "browser": false,
+    "node": true,
+    "jest": true
+  },
+  "globals": {
+    "window": true,
+    "document": true,
+    "browser": false,
+    "sessionStorage": true
+  },
+  "rules": {
+    "indent": [
+      1,
+      2,
+      {
+        "SwitchCase": 1
+      }
+    ],
+    "strict": "off",
+    "no-console": "error",
+    "comma-dangle": "off",
+    "no-underscore-dangle": "off",
+    "global-require": "off",
+    "react/destructuring-assignment": "off",
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error",
+    "react/jsx-one-expression-per-line": "off",
+    "linebreak-style": [
+      0,
+      "windows"
+    ],
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".js",
+          ".jsx"
+        ]
+      }
+    ],
+    "max-len": [
+      "error",
+      {
+        "code": 180
+      }
+    ],
+    "jsx-a11y/label-has-for": "off",
+    "jsx-a11y/label-has-associated-control": "off",
+    "import/no-extraneous-dependencies": [
+      "off",
+      {
+        "devDependencies": [
+          "**/*.spec.js"
+        ],
+        "packageDir": [
+          "./tools"
+        ]
+      }
+    ],
+    "no-trailing-spaces": "off"
+  }
+}
