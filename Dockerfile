@@ -1,15 +1,10 @@
 # build environment
-FROM node:10 as build
+FROM node:10
 WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
 COPY package.json /app/package.json
 RUN npm install --silent
+RUN npm install -g serve
 COPY . /app
 RUN npm run heroku-postbuild
-
-# production environment
-FROM nginx:1.16.0-alpine
-COPY --from=build /app/dist /usr/share/nginx/html
-USER root
-EXPOSE 80
-CMD sed -i -e 's/$PORT/'"$PORT"'/g' /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'
+CMD serve -p $PORT -s dis
