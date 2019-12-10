@@ -7,4 +7,4 @@ RUN npm install --silent
 RUN npm install -g serve
 COPY . /app
 RUN npm run heroku-postbuild
-CMD serve -p $PORT -s dis
+CMD serve -p $PORT -s dist
