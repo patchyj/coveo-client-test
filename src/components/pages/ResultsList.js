@@ -6,7 +6,7 @@ import Spinner from '../shared/Spinner';
 const stringToKey = string => string.trim().replace(/\s/g, '-');
 
 const ResultsList = ({ searchResults, loading }) => {
-  const results = searchResults.map(result => (
+  const results = searchResults && searchResults.map(result => (
     <dt key={stringToKey(result.title)}>
       <Link to={`/results/${result.id}`}>
         {result.title}
@@ -16,13 +16,7 @@ const ResultsList = ({ searchResults, loading }) => {
 
   return (
     <S.ResultsList>
-      {loading ? (
-        <Spinner />
-      ) : (
-        <dl>
-          {results}
-        </dl>
-      )}
+      {loading ? (<Spinner />) : (<dl>{results}</dl>)}
     </S.ResultsList>
   );
 };

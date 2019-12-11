@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import S from '../static/styles';
 import { postRequest } from '../utils/query';
@@ -13,13 +13,15 @@ const HomePage = ({ fetchResults, results }) => {
   const handleChange = (e) => {
     setQuery(e.target.value);
     fetchResults({ query: 'Bi%C3%A8re%20rousse' });
+  };
 
+  useEffect(() => {
     if (query.length) {
       setShowResults(true);
     } else {
       setShowResults(false);
     }
-  };
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
