@@ -8,7 +8,7 @@ export const HeroContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: calc(100vh - 20px);
+  margin-top: 18rem;
 
   .input-group {
     input {
@@ -34,4 +34,14 @@ export const HeroContainer = styled.div`
       }
     }
   }
+`;
+
+export const ResultsList = styled.div`
+  width: 500px;
+  margin: auto;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
 `;

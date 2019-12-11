@@ -1,44 +1,51 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import S from '../static/styles';
-import { getRequest } from '../utils/query';
-import Spinner from './shared/Spinner';
+import { postRequest } from '../utils/query';
+import ResultsList from './pages/ResultsList';
 
 const HomePage = ({ fetchResults, results }) => {
   const [query, setQuery] = useState('');
-  const inputRef = useRef();
+  const [showResults, setShowResults] = useState(false);
+
   const { loading, results: searchResults } = results;
 
-  const handleChange = async (e) => {
+  const handleChange = (e) => {
     setQuery(e.target.value);
     fetchResults({ query: 'Bi%C3%A8re%20rousse' });
+
+    if (query.length) {
+      setShowResults(true);
+    } else {
+      setShowResults(false);
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    getRequest({ query: 'Bi%C3%A8re%20rousse' });
+    postRequest({ query: 'Bi%C3%A8re%20rousse' });
   };
 
   return (
-    <S.HeroContainer className="container">
-      <form className="hero-body" onSubmit={handleSubmit}>
-        <div className="input-group input-inline">
-          <input
-            className="form-input"
-            type="text"
-            placeholder="search"
-            value={query}
-            onChange={handleChange}
-            ref={inputRef}
-          />
-          <button className="btn btn-primary input-group-btn" type="submit">Search</button>
-        </div>
-        <div className="divider" />
-        <small className="">Welcome to the SAQ search engine</small>
-      </form>
-      {loading && (<Spinner />)}
-
-    </S.HeroContainer>
+    <Fragment>
+      <S.HeroContainer className="container">
+        <form className="hero-body" onSubmit={handleSubmit}>
+          <div className="input-group input-inline">
+            <input
+              className="form-input"
+              type="text"
+              placeholder="search"
+              value={query}
+              onChange={handleChange}
+            />
+            <button className="btn btn-primary input-group-btn" type="submit">Search</button>
+          </div>
+          <div className="divider" />
+          <small className="">Welcome to the SAQ search engine</small>
+        </form>
+      </S.HeroContainer>
+      {showResults && (<ResultsList searchResults={searchResults} loading={loading} />)}
+    </Fragment>
   );
 };
 
