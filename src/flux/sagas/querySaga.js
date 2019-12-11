@@ -5,7 +5,6 @@ import { getRequest } from '../../utils/query';
 import actionTypes from '../constants';
 
 export function* fetchQuery(action) {
-  console.log(action);
   try {
     yield put({ type: actionTypes.FETCH_QUERY_STARTED });
     const res = yield call(getRequest, action.payload);
