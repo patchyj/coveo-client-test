@@ -12,7 +12,7 @@ export default async (saga, initialAction, state = {}) => {
 
   await runSaga(
     {
-      dispatch: action => dispatched.push(action),
+      dispatch: (action) => dispatched.push(action),
       getState: () => state
     },
     saga,
