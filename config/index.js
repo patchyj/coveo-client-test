@@ -1,5 +1,5 @@
-require('dotenv').config({ path: `${__dirname}/.env` });
-
 export default {
-  PORT: process.env.REACT_APP_PORT
+  PORT: process.env.PORT,
+  URL: 'https://cloudplatform.coveo.com/rest/search',
+  TOKEN: process.env.TOKEN
 };
