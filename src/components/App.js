@@ -1,13 +1,13 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { hot } from 'react-hot-loader';
-import HomePage from './HomePage';
+import Main from './pages/main/MainConnect';
 
 function App() {
   return (
     <div>
       <Switch>
-        <Route exact path="/" component={HomePage} />
+        <Route exact path="/" component={Main} />
       </Switch>
     </div>
   );
