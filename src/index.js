@@ -27,7 +27,7 @@ if (module.hot) {
     );
   });
 
-  window.addEventListener('message', (e) => {
+  window.addEventListener('message', () => {
     if (process.env.NODE_ENV !== 'production') {
       // console.clear();
     }

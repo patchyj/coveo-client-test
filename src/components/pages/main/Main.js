@@ -1,9 +1,9 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import S from '../static/styles';
-import { postRequest } from '../utils/query';
-import ResultsList from './pages/ResultsList';
-import logo from '../static/images/saq-logo.png';
+import S from '../../../static/styles';
+import { postRequest } from '../../../utils/query';
+import ResultsList from './ResultsList';
+import logo from '../../../static/images/saq-logo.png';
 
 const HomePage = ({ fetchResults, results }) => {
   const [query, setQuery] = useState('');
@@ -42,13 +42,20 @@ const HomePage = ({ fetchResults, results }) => {
               value={query}
               onChange={handleChange}
             />
-            <button className="btn btn-primary input-group-btn" type="submit">Search</button>
+            <button className="btn btn-primary input-group-btn" type="submit">
+              Search
+            </button>
+          </div>
+          <div className="lucky text-right">
+            <small>I'm feeling lucky</small>
           </div>
           <div className="divider" />
-          <small className="">Welcome to the SAQ search engine</small>
+          {/* <small className="">Welcome to the SAQ search engine</small> */}
         </form>
       </S.HeroContainer>
-      {showResults && (<ResultsList searchResults={searchResults} loading={loading} />)}
+      {showResults && (
+        <ResultsList searchResults={searchResults} loading={loading} />
+      )}
     </Fragment>
   );
 };

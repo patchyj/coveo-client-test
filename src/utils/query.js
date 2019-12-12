@@ -1,4 +1,5 @@
 import axios from 'axios';
+import qs from 'qs';
 import config from '../../config';
 
 const { URL, TOKEN } = config;
@@ -12,11 +13,11 @@ export const postRequest = ({ query }) => {
     'Content-Type': 'application/json',
     Authorization: TOKEN,
   };
-  console.log(headers);
+
   return axios({
     method: 'POST',
     headers,
     url: URL,
-    data: query
+    data: qs.stringify(query)
   });
 };
