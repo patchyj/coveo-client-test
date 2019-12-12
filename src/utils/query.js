@@ -4,7 +4,7 @@ import config from '../../config';
 
 const { URL, TOKEN } = config;
 
-export const getRequest = ({ query }) => axios.get(`${URL}?access_token=${TOKEN}&q=${query}`);
+export const getRequest = ({ url, endpoint }) => axios.get(`${url}/${endpoint}`);
 
 export const postRequest = ({ query }) => {
   const headers = {

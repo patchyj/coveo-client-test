@@ -16,7 +16,7 @@ export const HeroContainer = styled.div`
   margin-top: 10rem;
 
   img {
-    width: 200px;
+    width: 100px;
     margin-bottom: 2rem;
   }
 

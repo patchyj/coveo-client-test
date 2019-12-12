@@ -6,6 +6,8 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
+console.log(process.env.TOKEN);
+
 export default {
   resolve: {
     extensions: ['*', '.js', '.jsx', '.json'],
@@ -59,7 +61,7 @@ export default {
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
       'process.env.DEBUG': JSON.stringify(process.env.DEBUG),
       'process.env.PORT': JSON.stringify(process.env.PORT),
-      'process.env.TOKEN': JSON.stringify(process.env.TOKEN),
+      'process.env.TOKEN': JSON.stringify(process.env.TOKEN)
     })
   ],
   module: {
