@@ -1,6 +1,5 @@
-import {
-  all, call, put, takeLatest
-} from 'redux-saga/effects';
+// eslint-disable-next-line object-curly-newline
+import { all, call, put, takeLatest } from 'redux-saga/effects';
 import { getRequest } from '../../utils/query';
 import actionTypes from '../constants';
 
@@ -27,9 +26,27 @@ export function* fetchQuery(action) {
   }
 }
 
+export function* selectProduct(action) {
+  try {
+    yield put({ type: actionTypes.SELECT_PRODUCT_STARTED });
+
+    yield put({
+      type: actionTypes.SELECT_PRODUCT_SUCCESS,
+      payload: action.payload
+    });
+  } catch (errors) {
+    yield put({
+      type: actionTypes.SELECT_PRODUCT_FAILURE,
+      response: {
+        errors
+      }
+    });
+  }
+}
 
 export default function* querySaga() {
   yield all([
-    takeLatest(actionTypes.FETCH_QUERY, fetchQuery)
+    takeLatest(actionTypes.FETCH_QUERY, fetchQuery),
+    takeLatest(actionTypes.SELECT_PRODUCT, selectProduct)
   ]);
 }

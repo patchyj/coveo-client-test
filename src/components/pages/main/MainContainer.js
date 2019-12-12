@@ -5,7 +5,7 @@ import { postRequest } from '../../../utils/query';
 import ResultsList from './ResultsList';
 import logo from '../../../static/images/saq-logo.png';
 
-const HomePage = ({ fetchResults, results }) => {
+const MainContainer = ({ fetchResults, results, selectProduct }) => {
   const [query, setQuery] = useState('');
   const [showResults, setShowResults] = useState(false);
 
@@ -16,8 +16,8 @@ const HomePage = ({ fetchResults, results }) => {
   };
 
   useEffect(() => {
-    fetchResults({ query });
     if (query.length) {
+      fetchResults({ query });
       setShowResults(true);
     } else {
       setShowResults(false);
@@ -54,19 +54,25 @@ const HomePage = ({ fetchResults, results }) => {
         </form>
       </S.HeroContainer>
       {showResults && (
-        <ResultsList searchResults={searchResults} loading={loading} />
+        <ResultsList
+          searchResults={searchResults}
+          loading={loading}
+          selectProduct={selectProduct}
+        />
       )}
     </Fragment>
   );
 };
 
-HomePage.propTypes = {
+MainContainer.propTypes = {
   results: PropTypes.shape({}),
-  fetchResults: PropTypes.func.isRequired
+  fetchResults: PropTypes.func.isRequired,
+  selectProduct: PropTypes.func
 };
 
-HomePage.defaultProps = {
-  results: {}
+MainContainer.defaultProps = {
+  results: {},
+  selectProduct: () => {}
 };
 
-export default HomePage;
+export default MainContainer;

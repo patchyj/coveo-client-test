@@ -7,14 +7,15 @@ import Spinner from '../../shared/Spinner';
 import StarRating from '../../shared/StarRating';
 import stringToKey from '../../../utils/createKey';
 
-const ResultsList = ({ searchResults, loading }) => {
+const ResultsList = ({ searchResults, loading, selectProduct }) => {
   const results =
     searchResults &&
     searchResults.map((result, i) => (
       <Link
         className="list-item columns"
-        to={`/results/${result.id}`}
+        to={`/products/${stringToKey(result.title, i)}`}
         key={stringToKey(result.title, i)}
+        onClick={() => selectProduct(result)}
       >
         <div className="column col-xs-12">{result.title}</div>
         <div className="column col-xs-12 text-right">
@@ -32,12 +33,14 @@ const ResultsList = ({ searchResults, loading }) => {
 
 ResultsList.propTypes = {
   searchResults: PropTypes.arrayOf(PropTypes.shape({})),
-  loading: PropTypes.bool
+  loading: PropTypes.bool,
+  selectProduct: PropTypes.func
 };
 
 ResultsList.defaultProps = {
   searchResults: [],
-  loading: false
+  loading: false,
+  selectProduct: () => {}
 };
 
 export default ResultsList;
