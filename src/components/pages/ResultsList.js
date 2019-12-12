@@ -1,13 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import S from '../../static/styles';
 import Spinner from '../shared/Spinner';
-
-const stringToKey = string => string.trim().replace(/\s/g, '-');
+import stringToKey from '../../utils/createKey';
 
 const ResultsList = ({ searchResults, loading }) => {
-  const results = searchResults && searchResults.map(result => (
-    <dt key={stringToKey(result.title)}>
+  const results = searchResults && searchResults.map((result, i) => (
+    <dt key={stringToKey(result.title, i)}>
       <Link to={`/results/${result.id}`}>
         {result.title}
       </Link>
@@ -19,6 +19,16 @@ const ResultsList = ({ searchResults, loading }) => {
       {loading ? (<Spinner />) : (<dl>{results}</dl>)}
     </S.ResultsList>
   );
+};
+
+ResultsList.propTypes = {
+  searchResults: PropTypes.arrayOf(PropTypes.shape({})),
+  loading: PropTypes.bool
+};
+
+ResultsList.defaultProps = {
+  searchResults: [],
+  loading: false
 };
 
 export default ResultsList;

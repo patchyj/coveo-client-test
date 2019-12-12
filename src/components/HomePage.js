@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import S from '../static/styles';
 import { postRequest } from '../utils/query';
 import ResultsList from './pages/ResultsList';
+import logo from '../static/images/saq-logo.png';
 
 const HomePage = ({ fetchResults, results }) => {
   const [query, setQuery] = useState('');
@@ -12,25 +13,26 @@ const HomePage = ({ fetchResults, results }) => {
 
   const handleChange = (e) => {
     setQuery(e.target.value);
-    fetchResults({ query: 'Bi%C3%A8re%20rousse' });
   };
 
   useEffect(() => {
+    fetchResults({ query });
     if (query.length) {
       setShowResults(true);
     } else {
       setShowResults(false);
     }
-  });
+  }, [query]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    postRequest({ query: 'Bi%C3%A8re%20rousse' });
+    postRequest({ query });
   };
 
   return (
     <Fragment>
       <S.HeroContainer className="container">
+        <img src={logo} alt="" />
         <form className="hero-body" onSubmit={handleSubmit}>
           <div className="input-group input-inline">
             <input

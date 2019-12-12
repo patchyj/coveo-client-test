@@ -12,6 +12,7 @@ export const postRequest = ({ query }) => {
     'Content-Type': 'application/json',
     Authorization: TOKEN,
   };
+  console.log(headers);
   return axios({
     method: 'POST',
     headers,

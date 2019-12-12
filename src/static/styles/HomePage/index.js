@@ -6,9 +6,15 @@ export const HeroContainer = styled.div`
   margin: auto;
   text-align: center;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 18rem;
+  margin-top: 10rem;
+
+  img {
+    width: 200px;
+    margin-bottom: 2rem;
+  }
 
   .input-group {
     input {
