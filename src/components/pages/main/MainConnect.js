@@ -7,7 +7,8 @@ import {
 import Main from './MainContainer';
 
 const mapStateToProps = state => ({
-  results: state.results
+  results: state.results,
+  errors: state.errors
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -19,9 +19,7 @@ export function* fetchQuery(action) {
   } catch (errors) {
     yield put({
       type: actionTypes.FETCH_QUERY_FAILURE,
-      response: {
-        errors
-      }
+      errors
     });
   }
 }
@@ -37,9 +35,7 @@ export function* selectProduct(action) {
   } catch (errors) {
     yield put({
       type: actionTypes.SELECT_PRODUCT_FAILURE,
-      response: {
-        errors
-      }
+      errors
     });
   }
 }

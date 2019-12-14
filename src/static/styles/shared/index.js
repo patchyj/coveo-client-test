@@ -34,3 +34,11 @@ export const Spinner = styled.svg`
     }
   }
 `;
+
+export const Navbar = styled.header`
+  padding: 20px;
+
+  .btn {
+    border: none;
+  }
+`;

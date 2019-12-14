@@ -9,7 +9,7 @@ const MainContainer = ({ fetchResults, results, selectProduct }) => {
   const [query, setQuery] = useState('');
   const [showResults, setShowResults] = useState(false);
 
-  const { loading, results: searchResults } = results;
+  const { loading, errors, results: searchResults } = results;
 
   const handleChange = (e) => {
     setQuery(e.target.value);
@@ -50,7 +50,11 @@ const MainContainer = ({ fetchResults, results, selectProduct }) => {
             <small>I'm feeling lucky</small>
           </div>
           <div className="divider" />
-          {/* <small className="">Welcome to the SAQ search engine</small> */}
+          {errors && Object.keys(errors).length ? (
+            <small className="">Oops! Something's gone wrong!!</small>
+          ) : (
+            ''
+          )}
         </form>
       </S.HeroContainer>
       {showResults && (
@@ -66,12 +70,14 @@ const MainContainer = ({ fetchResults, results, selectProduct }) => {
 
 MainContainer.propTypes = {
   results: PropTypes.shape({}),
+  errors: PropTypes.shape({}),
   fetchResults: PropTypes.func.isRequired,
   selectProduct: PropTypes.func
 };
 
 MainContainer.defaultProps = {
   results: {},
+  errors: {},
   selectProduct: () => {}
 };
 

@@ -1,6 +1,7 @@
 const initialState = {
   results: [],
-  product: {}
+  product: {},
+  errors: {}
 };
 
 export default (state = initialState, action) => {
@@ -14,12 +15,14 @@ export default (state = initialState, action) => {
       return {
         ...state,
         results: action.payload,
-        loading: false
+        loading: false,
+        errors: {}
       };
     case 'FETCH_QUERY_FAILURE':
       return {
         ...state,
-        loading: false
+        loading: false,
+        errors: action.errors
       };
     case 'SELECT_PRODUCT_STARTED':
       return {
@@ -30,12 +33,14 @@ export default (state = initialState, action) => {
       return {
         ...state,
         product: action.payload,
-        loading: false
+        loading: false,
+        errors: {}
       };
     case 'SELECT_PRODUCT_FAILURE':
       return {
         ...state,
-        loading: false
+        loading: false,
+        errors: action.errors
       };
     default:
       return state;
