@@ -4,6 +4,7 @@ import S from '../../../static/styles';
 import { postRequest } from '../../../utils/query';
 import ResultsList from './ResultsList';
 import logo from '../../../static/images/saq-logo.png';
+import Spinner from '../../shared/Spinner';
 
 const MainContainer = ({ fetchResults, results, selectProduct }) => {
   const [query, setQuery] = useState('');
@@ -50,6 +51,7 @@ const MainContainer = ({ fetchResults, results, selectProduct }) => {
             <small>I'm feeling lucky</small>
           </div>
           <div className="divider" />
+          {loading && <Spinner />}
           {errors && Object.keys(errors).length ? (
             <small className="">Oops! Something's gone wrong!!</small>
           ) : (
