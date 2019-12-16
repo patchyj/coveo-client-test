@@ -2,9 +2,9 @@ import React from 'react';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import configureStore from './store/configureStore';
-// import './styles/bootswatch.min.css';
+import 'spectre.css';
 import Root from './components/Root';
-// Yep, that's right. You can import SASS/CSS files too! Webpack will run the associated loader and plug this into the page.
+
 require('./favicon.ico');
 // Tell webpack to load favicon.ico
 const { persistor, store, history } = configureStore();
@@ -25,5 +25,11 @@ if (module.hot) {
       </AppContainer>,
       document.getElementById('app')
     );
+  });
+
+  window.addEventListener('message', () => {
+    if (process.env.NODE_ENV !== 'production') {
+      // console.clear();
+    }
   });
 }

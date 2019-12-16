@@ -8,11 +8,7 @@
     },
     "ecmaVersion": 6
   },
-  "plugins": [
-    "babel",
-    "react",
-    "prettier"
-  ],
+  "plugins": ["babel", "react", "prettier"],
   "env": {
     "browser": false,
     "node": true,
@@ -41,17 +37,12 @@
     "react/jsx-uses-react": "error",
     "react/jsx-uses-vars": "error",
     "react/jsx-one-expression-per-line": "off",
-    "linebreak-style": [
-      0,
-      "windows"
-    ],
+    "react/no-unescaped-entities": "off",
+    "linebreak-style": [0, "windows"],
     "react/jsx-filename-extension": [
       1,
       {
-        "extensions": [
-          ".js",
-          ".jsx"
-        ]
+        "extensions": [".js", ".jsx"]
       }
     ],
     "max-len": [
@@ -62,17 +53,19 @@
     ],
     "jsx-a11y/label-has-for": "off",
     "jsx-a11y/label-has-associated-control": "off",
+    "react/jsx-curly-newline": "off",
     "import/no-extraneous-dependencies": [
       "off",
       {
-        "devDependencies": [
-          "**/*.spec.js"
-        ],
-        "packageDir": [
-          "./tools"
-        ]
+        "devDependencies": ["**/*.spec.js"],
+        "packageDir": ["./tools"]
       }
     ],
-    "no-trailing-spaces": "off"
+    "no-trailing-spaces": "off",
+    "arrow-parens": "off",
+    "implicit-arrow-linebreak": "off",
+    "operator-linebreak": "off",
+    "array-callback-return": "off",
+    "consistent-return": "off"
   }
 }

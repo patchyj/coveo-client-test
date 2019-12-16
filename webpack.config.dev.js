@@ -2,6 +2,9 @@ import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
 import HardSourceWebpackPlugin from 'hard-source-webpack-plugin';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 export default {
   resolve: {
@@ -51,6 +54,12 @@ export default {
         collapseWhitespace: true
       },
       inject: true
+    }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+      'process.env.DEBUG': JSON.stringify(process.env.DEBUG),
+      'process.env.PORT': JSON.stringify(process.env.PORT),
+      'process.env.TOKEN': JSON.stringify(process.env.TOKEN)
     })
   ],
   module: {
@@ -131,8 +140,10 @@ export default {
           {
             loader: 'sass-loader',
             options: {
-              includePaths: [path.resolve(__dirname, 'src')],
-              sourceMap: true
+              sassOptions: {
+                includePaths: [path.resolve(__dirname, 'src', 'scss')],
+                sourceMap: true
+              }
             }
           }
         ]

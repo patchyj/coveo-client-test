@@ -26,7 +26,12 @@ Setting up this project was done in 3 stages:
   - CircleCI (tests / lint / code quality) is configured to pass before merging
 - Initial deployment
   - For speed, ease and cost, this app uses Heroku and builds the master branch using the Docker image.
-  - Heroku has also been configured with a pipeline with two apps: Staging and Production. Annoyingly, you can't promote code from one to the other if the apps are configured to deploy using Docker. I've kept the steps in, however, deploying each manually with unique branches: `staging` and `master`
+  - Heroku has also been configured with a pipeline with two apps: Staging and Production. Annoyingly, you can't promote code from one to the other if the apps are configured to deploy using Docker. I've kept the steps in, however, deploying each manually with unique branches: `staging` and `master` (for production)
+
+Im summary:
+- I've got two apps in the Heroku pipeline: staging and production
+- Each app is linked to the same Github repo but with hooks on different branches: staging (for staging) and master (for production)
+- The Github repo has rules in place that enforce pull requests that can only be approved after they've passed CircleCI and Sonarqube quality checks
 
 ### CircleCI and SonarCloud Dashboards
 
