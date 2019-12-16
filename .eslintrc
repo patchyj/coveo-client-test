@@ -62,6 +62,7 @@
       }
     ],
     "no-trailing-spaces": "off",
-    "arrow-body-style": "off"
+    "arrow-body-style": "off",
+    "arrow-parens": "off"
   }
 }

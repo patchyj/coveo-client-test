@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Route, Switch, useRouteMatch } from 'react-router-dom';
-import CatalogIndex from './CatalogIndex';
+import CatalogIndex from './indexPage/CatalogIndex';
 
 function CatalogContainer({ getCatalogItems, products, loading }) {
   const { path } = useRouteMatch();
