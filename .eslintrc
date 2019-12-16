@@ -62,7 +62,10 @@
       }
     ],
     "no-trailing-spaces": "off",
-    "arrow-body-style": "off",
-    "arrow-parens": "off"
+    "arrow-parens": "off",
+    "implicit-arrow-linebreak": "off",
+    "operator-linebreak": "off",
+    "array-callback-return": "off",
+    "consistent-return": "off"
   }
 }

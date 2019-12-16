@@ -35,6 +35,11 @@ export const Spinner = styled.svg`
   }
 `;
 
+export const SpinnerContainer = styled.div`
+  height: 500px;
+  text-align: center;
+`;
+
 export const Navbar = styled.header`
   padding: 20px;
 

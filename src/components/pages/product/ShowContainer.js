@@ -1,14 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const mapUsersAndComments = (users = [], comments = []) =>
-  // eslint-disable-next-line implicit-arrow-linebreak
-  users
-  && users.map((user) => {
-    // eslint-disable-next-line consistent-return
-    // eslint-disable-next-line array-callback-return
-    const userComments = comments.filter((comment) => {
+  users &&
+  users.map(user => {
+    const userComments = comments.filter(comment => {
       if (comment.postId === user.id) {
         return {
           id: comment.id,
@@ -35,6 +32,7 @@ const ShowContainer = ({
 
   if (users.users.length) {
     const res = mapUsersAndComments(users.users, comments.comments);
+    /* eslint-disable-next-line no-console */
     console.log(res);
   }
 
@@ -73,14 +71,18 @@ ShowContainer.propTypes = {
     })
   }),
   users: PropTypes.shape({}),
-  comments: PropTypes.shape({})
+  comments: PropTypes.shape({}),
+  fetchUsers: PropTypes.func,
+  fetchComments: PropTypes.func
 };
 
 ShowContainer.defaultProps = {
   product: {},
   match: {},
   users: {},
-  comments: {}
+  comments: {},
+  fetchUsers: () => {},
+  fetchComments: () => {}
 };
 
 export default ShowContainer;

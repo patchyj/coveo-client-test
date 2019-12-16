@@ -3,6 +3,7 @@ import breakpoints from '../utils/breakpoints';
 
 export const CatalogIndex = styled.div`
   margin: auto;
+  margin-bottom: 10rem;
 
   .tile-size {
     i {
@@ -48,5 +49,25 @@ export const OptionsPanel = styled.div`
     input {
       font-size: 14px;
     }
+  }
+`;
+
+export const Hero = styled.div`
+  height: 400px;
+  background: url(${({ bgImage }) => bgImage});
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+
+  h3 {
+    color: white;
+    text-transform: capitalize;
+  }
+
+  @media (max-width: ${breakpoints.md}) {
+    height: 300px;
+  }
+  @media (max-width: ${breakpoints.sm}) {
+    height: 200px;
   }
 `;

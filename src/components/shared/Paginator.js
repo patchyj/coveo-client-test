@@ -9,22 +9,20 @@ const PaginatorWrapper = ({
   setOffset,
   currentPage,
   setCurrentPage
-}) => {
-  return (
-    <S.Paginator>
-      <Paginator
-        totalRecords={total}
-        pageLimit={pageLimit}
-        pageNeighbours={2}
-        setOffset={setOffset}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-        pagePrevText="« Prev"
-        pageNextText="Next »"
-      />
-    </S.Paginator>
-  );
-};
+}) => (
+  <S.Paginator>
+    <Paginator
+      totalRecords={total}
+      pageLimit={pageLimit}
+      pageNeighbours={2}
+      setOffset={setOffset}
+      currentPage={currentPage}
+      setCurrentPage={setCurrentPage}
+      pagePrevText="« Prev"
+      pageNextText="Next »"
+    />
+  </S.Paginator>
+);
 
 PaginatorWrapper.propTypes = {
   total: PropTypes.number,

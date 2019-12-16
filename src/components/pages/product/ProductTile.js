@@ -33,8 +33,10 @@ const ProductTile = ({ product, type, cols }) => {
         break;
     }
   }
+  const responsiveCols = cols === 2 ? 'col-2 col-md-4' : 'col-6 col-md-12';
+
   return (
-    <S.Card className={`column col-${cols}`}>
+    <S.Card className={`column ${responsiveCols}`}>
       <Link to={`${url}/${item.id}`}>
         <div className="card" style={{ height: '13rem', margin: '1rem 0' }}>
           <div className="card-header">

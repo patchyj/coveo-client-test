@@ -2,12 +2,12 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
-import _ from 'lodash';
 import Paginator from '../../../shared/Paginator';
 import ProductTile from '../ProductTile';
 import stringToKey from '../../../../utils/createKey';
 import Spinner from '../../../shared/Spinner';
 import S from '../../../../static/styles';
+import BgImage from '../../../../static/images/vineyard.jpg';
 
 const CatalogIndex = ({ fetch, products, loading }) => {
   const { type } = useParams();
@@ -131,7 +131,7 @@ const CatalogIndex = ({ fetch, products, loading }) => {
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
       />
-      {loading ? <Spinner /> : <div className="columns">{tiles}</div>}
+      <div className="columns">{tiles}</div>
       <Paginator
         total={products.length}
         setOffset={setOffset}
@@ -142,19 +142,19 @@ const CatalogIndex = ({ fetch, products, loading }) => {
   );
 
   return (
-    <div className="container">
-      <div className="hero bg-gray">
+    <div className="container p-0">
+      <S.Hero className="hero" bgImage={BgImage}>
         <div className="hero-body container grid-lg">
           <h3>{type}</h3>
         </div>
-      </div>
+      </S.Hero>
       <div className="container grid-lg">
         <S.CatalogIndex>
           {loading ? (
-            <div className="text-center">
+            <S.SpinnerContainer>
               {' '}
               <Spinner />
-            </div>
+            </S.SpinnerContainer>
           ) : (
             renderContent()
           )}
@@ -166,11 +166,13 @@ const CatalogIndex = ({ fetch, products, loading }) => {
 
 CatalogIndex.propTypes = {
   fetch: PropTypes.func.isRequired,
-  products: PropTypes.arrayOf(PropTypes.shape({}))
+  products: PropTypes.arrayOf(PropTypes.shape({})),
+  loading: PropTypes.bool
 };
 
 CatalogIndex.defaultProps = {
-  products: []
+  products: [],
+  loading: false
 };
 
 export default CatalogIndex;
