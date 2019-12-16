@@ -13,10 +13,10 @@ export const HeroContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 10rem;
+  margin-top: 5rem;
 
   img {
-    width: 200px;
+    width: 100px;
     margin-bottom: 2rem;
   }
 

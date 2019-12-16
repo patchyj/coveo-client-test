@@ -34,3 +34,45 @@ export const Spinner = styled.svg`
     }
   }
 `;
+
+export const SpinnerContainer = styled.div`
+  height: 500px;
+  text-align: center;
+`;
+
+export const Navbar = styled.header`
+  padding: 20px;
+
+  .btn {
+    border: none;
+  }
+`;
+
+export const Paginator = styled.div`
+  .react-hooks-paginator {
+    margin: 0;
+    margin-bottom: 1rem;
+
+    li {
+      margin-top: 0;
+    }
+
+    .page-item {
+      &.active {
+        .page-link {
+          background: #782c42;
+          border-color: #782c42;
+        }
+      }
+
+      .page-link {
+        cursor: pointer;
+        padding: 0.2rem 0.5rem;
+        &:hover {
+          background: #66b761;
+          border-color: #66b761;
+        }
+      }
+    }
+  }
+`;

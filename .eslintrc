@@ -61,6 +61,11 @@
         "packageDir": ["./tools"]
       }
     ],
-    "no-trailing-spaces": "off"
+    "no-trailing-spaces": "off",
+    "arrow-parens": "off",
+    "implicit-arrow-linebreak": "off",
+    "operator-linebreak": "off",
+    "array-callback-return": "off",
+    "consistent-return": "off"
   }
 }
