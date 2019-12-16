@@ -6,8 +6,6 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-console.log(process.env.TOKEN);
-
 export default {
   resolve: {
     extensions: ['*', '.js', '.jsx', '.json'],

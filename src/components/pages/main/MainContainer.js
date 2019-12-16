@@ -1,7 +1,6 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import S from '../../../static/styles';
-import { postRequest } from '../../../utils/query';
 import ResultsList from './ResultsList';
 import logo from '../../../static/images/saq-logo.png';
 import Spinner from '../../shared/Spinner';
@@ -27,7 +26,7 @@ const MainContainer = ({ fetchResults, results, selectProduct }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    postRequest({ query });
+    fetchResults({ query });
   };
 
   return (
