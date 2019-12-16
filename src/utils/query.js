@@ -6,20 +6,35 @@ const { URL, TOKEN, rapidApi } = config;
 
 export const getRequest = ({ url, endpoint }) => axios.get(`${url}/${endpoint}`);
 
-export const rapidAPIRequest = ({ query }) => {
+export const rapidAPIRequest = ({ query, api, options = {} }) => {
+  let url;
+  let queryString;
+
   const headers = {
     Accept: 'application/json',
     'Content-Type': 'application/json',
-    'x-rapidapi-host': rapidApi.HOST,
+    'x-rapidapi-host': rapidApi[api].HOST,
     'x-rapidapi-key': rapidApi.KEY
   };
 
-  const queryString = `?query=${query}`;
+  switch (api) {
+    case 'openBrewery':
+      queryString = `?query=${query}`;
+      url = `${rapidApi[api].URL}${query ? queryString : ''}`;
+      break;
+    case 'gws':
+      url = rapidApi[api].URL;
+      headers.authorization = `Token ${rapidApi[api].TOKEN}`;
+      break;
+    default:
+      break;
+  }
 
   return axios({
     method: 'GET',
     headers,
-    url: `${rapidApi.URL}${query ? queryString : ''}`
+    url,
+    ...options
   });
 };
 
