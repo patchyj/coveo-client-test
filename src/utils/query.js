@@ -4,7 +4,8 @@ import config from '../../config';
 
 const { URL, TOKEN, rapidApi } = config;
 
-export const getRequest = ({ url, endpoint }) => axios.get(`${url}/${endpoint}`);
+export const getRequest = ({ url, endpoint }) =>
+  axios.get(`${url}/${endpoint}`);
 
 export const rapidAPIRequest = ({ query, api, options = {} }) => {
   let url;

@@ -1,7 +1,8 @@
 const initialState = {
   results: [],
   product: {},
-  errors: {}
+  errors: {},
+  loading: false
 };
 
 export default (state = initialState, action) => {

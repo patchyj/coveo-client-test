@@ -23,9 +23,7 @@ export function* fetchUsers() {
   } catch (errors) {
     yield put({
       type: actionTypes.FETCH_USERS_FAILURE,
-      response: {
-        errors
-      }
+      errors
     });
   }
 }
