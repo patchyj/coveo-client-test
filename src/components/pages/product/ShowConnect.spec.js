@@ -1,17 +1,21 @@
 import React from 'react';
-import MainConnect from './MainConnect';
+import ShowConnect from './ShowConnect';
 import connectWrapper from '../../../utils/testUtils/connectWrapper';
 
-describe('MainConnect', () => {
+describe('ShowConnect', () => {
   it('should render with the store', () => {
     const initialState = {
       results: {
-        loading: false,
-        errors: {},
-        results: []
+        product: {}
+      },
+      users: {
+        users: []
+      },
+      comments: {
+        comments: []
       }
     };
-    const wrapper = connectWrapper(initialState, <MainConnect />);
+    const wrapper = connectWrapper(initialState, <ShowConnect />);
 
     expect(wrapper).toMatchSnapshot();
   });

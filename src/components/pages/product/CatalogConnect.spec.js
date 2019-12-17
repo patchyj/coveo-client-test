@@ -1,17 +1,16 @@
 import React from 'react';
-import MainConnect from './MainConnect';
+import CatalogConnect from './CatalogConnect';
 import connectWrapper from '../../../utils/testUtils/connectWrapper';
 
-describe('MainConnect', () => {
+describe('CatalogConnect', () => {
   it('should render with the store', () => {
     const initialState = {
-      results: {
-        loading: false,
-        errors: {},
-        results: []
+      catalog: {
+        products: [],
+        loading: false
       }
     };
-    const wrapper = connectWrapper(initialState, <MainConnect />);
+    const wrapper = connectWrapper(initialState, <CatalogConnect />);
 
     expect(wrapper).toMatchSnapshot();
   });

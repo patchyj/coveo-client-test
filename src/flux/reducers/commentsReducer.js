@@ -1,6 +1,7 @@
 const initialState = {
   comments: [],
-  loading: false
+  loading: false,
+  errors: {}
 };
 
 export default (state = initialState, action) => {
@@ -19,7 +20,8 @@ export default (state = initialState, action) => {
     case 'FETCH_COMMENTS_FAILURE':
       return {
         ...state,
-        loading: false
+        loading: false,
+        errors: action.errors
       };
     default:
       return state;

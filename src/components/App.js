@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { hot } from 'react-hot-loader';
-import Navbar from './shared/Navbar';
-import Footer from './shared/Footer';
+import Navbar from './layout/Navbar';
+import Footer from './layout/Footer';
 import Main from './pages/main/MainConnect';
 import Show from './pages/product/ShowConnect';
 import Catalog from './pages/product/CatalogConnect';

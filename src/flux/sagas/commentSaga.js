@@ -23,9 +23,7 @@ export function* fetchComments() {
   } catch (errors) {
     yield put({
       type: actionTypes.FETCH_COMMENTS_FAILURE,
-      response: {
-        errors
-      }
+      errors
     });
   }
 }
