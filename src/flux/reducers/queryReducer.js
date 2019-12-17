@@ -1,6 +1,6 @@
 const initialState = {
   results: [],
-  product: {},
+  selected: {},
   errors: {},
   loading: false
 };
@@ -33,7 +33,7 @@ export default (state = initialState, action) => {
     case 'SELECT_PRODUCT_SUCCESS':
       return {
         ...state,
-        product: action.payload,
+        selected: action.payload,
         loading: false,
         errors: {}
       };

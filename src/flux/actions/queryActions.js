@@ -6,7 +6,7 @@ export const fetchResults = query => ({
   payload: query
 });
 
-export const selectProduct = product => ({
+export const selectProduct = selected => ({
   type: actionTypes.SELECT_PRODUCT,
-  payload: product
+  payload: selected
 });

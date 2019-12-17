@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import ProductBanner from './sections/ProductBanner';
+import SuggestedList from './sections/SuggestedList';
 
 const mapUsersAndComments = (users = [], comments = []) =>
   users &&
@@ -22,14 +24,14 @@ const mapUsersAndComments = (users = [], comments = []) =>
   });
 
 const ShowContainer = ({
-  product,
+  results,
+  selected,
   users,
   comments,
   fetchUsers,
-  fetchComments
+  fetchComments,
+  selectProduct
 }) => {
-  const { title, excerpt } = product;
-
   if (users.users.length) {
     const res = mapUsersAndComments(users.users, comments.comments);
     /* eslint-disable-next-line no-console */
@@ -42,29 +44,25 @@ const ShowContainer = ({
   }, []);
 
   return (
-    <div className="container grid-md">
-      <div className="columns">
-        <div className="column">
-          <Link to="/">Back</Link>
+    <div>
+      <div className="container grid-md">
+        <div className="columns">
+          <div className="column">
+            <Link to="/">Back</Link>
+          </div>
         </div>
       </div>
-      <div className="columns">
-        <div className="column">
-          <h1>{title}</h1>
-        </div>
-      </div>
-      <div className="columns">
-        <div className="column col-4 col-md-6 col-sm-12">
-          <small>{excerpt}</small>
-        </div>
-        <div className="divider-vert" data-content="" />
-      </div>
+      {/* SHOW PRODUCT BANNER */}
+      <ProductBanner selected={selected} />
+      {/* SHOW SIMILAR RESULTS */}
+      <SuggestedList results={results} selectProduct={selectProduct} />
     </div>
   );
 };
 
 ShowContainer.propTypes = {
-  product: PropTypes.shape({}),
+  results: PropTypes.arrayOf(PropTypes.shape({})),
+  selected: PropTypes.shape({}),
   match: PropTypes.shape({
     params: PropTypes.shape({
       title: PropTypes.string
@@ -77,7 +75,8 @@ ShowContainer.propTypes = {
 };
 
 ShowContainer.defaultProps = {
-  product: {},
+  results: {},
+  selected: {},
   match: {},
   users: {},
   comments: {},

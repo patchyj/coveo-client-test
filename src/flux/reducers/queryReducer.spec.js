@@ -6,7 +6,7 @@ describe('Query Reducer', () => {
   beforeEach(() => {
     initialState = {
       results: [],
-      product: {},
+      selected: {},
       loading: false,
       errors: {}
     };
@@ -17,7 +17,7 @@ describe('Query Reducer', () => {
 
     const expectedState = {
       results: [],
-      product: {},
+      selected: {},
       errors: {},
       loading: true
     };
@@ -35,7 +35,7 @@ describe('Query Reducer', () => {
 
     const expectedState = {
       results: [{ id: '1', item: 'some result' }],
-      product: {},
+      selected: {},
       errors: {},
       loading: false
     };
@@ -53,7 +53,7 @@ describe('Query Reducer', () => {
 
     const expectedState = {
       results: [],
-      product: {},
+      selected: {},
       errors: 'Error',
       loading: false
     };
@@ -68,7 +68,7 @@ describe('Query Reducer', () => {
 
     const expectedState = {
       results: [],
-      product: {},
+      selected: {},
       errors: {},
       loading: true
     };
@@ -86,7 +86,7 @@ describe('Query Reducer', () => {
 
     const expectedState = {
       results: [],
-      product: { id: '1', item: 'some result' },
+      selected: { id: '1', item: 'some result' },
       errors: {},
       loading: false
     };
@@ -104,7 +104,7 @@ describe('Query Reducer', () => {
 
     const expectedState = {
       results: [],
-      product: {},
+      selected: {},
       errors: 'Error',
       loading: false
     };

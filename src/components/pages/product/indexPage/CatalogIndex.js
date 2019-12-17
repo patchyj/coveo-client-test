@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import Paginator from '../../../shared/Paginator';
-import ProductTile from '../ProductTile';
+import ProductTile from '../../../shared/ProductTile';
 import stringToKey from '../../../../utils/createKey';
 import Spinner from '../../../shared/Spinner';
 import S from '../../../../static/styles';

@@ -4,7 +4,7 @@ import { hot } from 'react-hot-loader';
 import Navbar from './layout/Navbar';
 import Footer from './layout/Footer';
 import Main from './pages/main/MainConnect';
-import Show from './pages/product/ShowConnect';
+import Show from './pages/product/searchResults/ShowConnect';
 import Catalog from './pages/product/CatalogConnect';
 
 function App() {

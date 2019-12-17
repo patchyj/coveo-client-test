@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import S from '../../../static/styles';
 import ResultsList from './ResultsList';
 import logo from '../../../static/images/saq-logo.png';
-import Spinner from '../../shared/Spinner';
 
 const MainContainer = ({ fetchResults, results, selectProduct }) => {
   const [query, setQuery] = useState('');
@@ -11,7 +10,7 @@ const MainContainer = ({ fetchResults, results, selectProduct }) => {
 
   const { loading, errors, results: searchResults } = results;
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     setQuery(e.target.value);
   };
 
@@ -24,7 +23,7 @@ const MainContainer = ({ fetchResults, results, selectProduct }) => {
     }
   }, [query]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     fetchResults({ query });
   };
@@ -50,7 +49,6 @@ const MainContainer = ({ fetchResults, results, selectProduct }) => {
             <small>I'm feeling lucky</small>
           </div>
           <div className="divider" />
-          {loading && <Spinner />}
           {errors && Object.keys(errors).length ? (
             <small className="">Oops! Something's gone wrong!!</small>
           ) : (

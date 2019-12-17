@@ -25,6 +25,7 @@ export const CatalogIndex = styled.div`
 
 export const Card = styled.div`
   transition: 0.05s;
+  cursor: pointer;
 
   &:hover {
     a {
