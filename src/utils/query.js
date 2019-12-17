@@ -43,13 +43,15 @@ export const postRequest = ({ query }) => {
   const headers = {
     Accept: 'application/json',
     'Content-Type': 'application/json',
-    Authorization: TOKEN
+    Authorization: `Bearer ${TOKEN}`
   };
 
   return axios({
     method: 'POST',
     headers,
     url: URL,
-    data: qs.stringify(query)
+    data: {
+      q: query
+    }
   });
 };
