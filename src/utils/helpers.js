@@ -20,15 +20,13 @@ export const makeWineTile = product => ({
     product.regions &&
     product.regions.length &&
     `${product.regions[0]}, ${product.country}`,
-  year: product.vintage,
-  url: ''
+  year: product.vintage
 });
 
 export const makeBreweryTile = brewery => ({
   id: brewery.id,
   name: brewery.name,
   location: `${brewery.city}, ${brewery.state}`,
-  year: '',
   url: brewery.website_url
 });
 
@@ -40,7 +38,7 @@ export const makeGenericTile = product => ({
   url: product.uri
 });
 
-export const createItem = (type, product) => {
+export const createItem = (type, product = {}) => {
   switch (type) {
     case 'beers':
       return makeBreweryTile(product);

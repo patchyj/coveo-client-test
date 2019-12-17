@@ -75,7 +75,7 @@ ShowContainer.propTypes = {
 };
 
 ShowContainer.defaultProps = {
-  results: {},
+  results: [],
   selected: {},
   match: {},
   users: {},

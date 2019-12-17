@@ -42,15 +42,16 @@ const ProductTile = ({ product, type, cols, selectProduct }) => {
 };
 
 ProductTile.propTypes = {
-  product: PropTypes.shape({}),
+  product: PropTypes.shape({}).isRequired,
   type: PropTypes.string,
-  cols: PropTypes.number
+  cols: PropTypes.number,
+  selectProduct: PropTypes.func
 };
 
 ProductTile.defaultProps = {
-  product: {},
   type: '',
-  cols: 2
+  cols: 2,
+  selectProduct: () => {}
 };
 
 export default ProductTile;
