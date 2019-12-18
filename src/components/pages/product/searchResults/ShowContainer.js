@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import ProductBanner from './sections/ProductBanner';
+import SuggestedList from './sections/SuggestedList';
 
-const mapUsersAndComments = (users = [], comments = []) =>
-  users &&
+export const mapUsersAndComments = (users = [], comments = []) =>
   users.map(user => {
     const userComments = comments.filter(comment => {
       if (comment.postId === user.id) {
@@ -22,49 +22,28 @@ const mapUsersAndComments = (users = [], comments = []) =>
   });
 
 const ShowContainer = ({
-  product,
-  users,
-  comments,
+  results,
+  selected,
   fetchUsers,
-  fetchComments
+  fetchComments,
+  selectProduct
 }) => {
-  const { title, excerpt } = product;
-
-  if (users.users.length) {
-    const res = mapUsersAndComments(users.users, comments.comments);
-    /* eslint-disable-next-line no-console */
-    console.log(res);
-  }
-
   useEffect(() => {
     fetchComments();
     fetchUsers();
   }, []);
 
   return (
-    <div className="container grid-md">
-      <div className="columns">
-        <div className="column">
-          <Link to="/">Back</Link>
-        </div>
-      </div>
-      <div className="columns">
-        <div className="column">
-          <h1>{title}</h1>
-        </div>
-      </div>
-      <div className="columns">
-        <div className="column col-4 col-md-6 col-sm-12">
-          <small>{excerpt}</small>
-        </div>
-        <div className="divider-vert" data-content="" />
-      </div>
+    <div>
+      <ProductBanner selected={selected} />
+      <SuggestedList results={results} selectProduct={selectProduct} />
     </div>
   );
 };
 
 ShowContainer.propTypes = {
-  product: PropTypes.shape({}),
+  results: PropTypes.arrayOf(PropTypes.shape({})),
+  selected: PropTypes.shape({}),
   match: PropTypes.shape({
     params: PropTypes.shape({
       title: PropTypes.string
@@ -73,11 +52,13 @@ ShowContainer.propTypes = {
   users: PropTypes.shape({}),
   comments: PropTypes.shape({}),
   fetchUsers: PropTypes.func,
-  fetchComments: PropTypes.func
+  fetchComments: PropTypes.func,
+  selectProduct: PropTypes.func.isRequired
 };
 
 ShowContainer.defaultProps = {
-  product: {},
+  results: [],
+  selected: {},
   match: {},
   users: {},
   comments: {},

@@ -16,7 +16,7 @@ export function* getCatalogItems(action) {
     if (res.status >= 200 && res.status < 300) {
       yield put({
         type: actionTypes.GET_CATALOG_ITEMS_SUCCESS,
-        // res.data.results === gws || beers
+        // res.data.results === gws || breweries
         payload: res.data.results || res.data
       });
     } else {

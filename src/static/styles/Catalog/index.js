@@ -25,14 +25,26 @@ export const CatalogIndex = styled.div`
 
 export const Card = styled.div`
   transition: 0.05s;
+  cursor: pointer;
 
+  margin: 1rem 0;
+
+  .card-body {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    text-align: center;
+    img {
+      height: 100px;
+    }
+  }
   &:hover {
     a {
       text-decoration: none;
     }
 
     .card {
-      background: #eaeaea;
+      box-shadow: 0 0 4px -1px black;
     }
   }
 `;
@@ -53,14 +65,12 @@ export const OptionsPanel = styled.div`
 `;
 
 export const Hero = styled.div`
-  height: 400px;
   background: url(${({ bgImage }) => bgImage});
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
 
   h3 {
-    color: white;
     text-transform: capitalize;
   }
 

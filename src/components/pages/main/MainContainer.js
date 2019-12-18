@@ -1,9 +1,9 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import S from '../../../static/styles';
-import ResultsList from './ResultsList';
+import ResultsList from './sections/ResultsList';
 import logo from '../../../static/images/saq-logo.png';
-import Spinner from '../../shared/Spinner';
+import SearchBar from '../../shared/searchBar/SearchBar';
 
 const MainContainer = ({ fetchResults, results, selectProduct }) => {
   const [query, setQuery] = useState('');
@@ -11,7 +11,7 @@ const MainContainer = ({ fetchResults, results, selectProduct }) => {
 
   const { loading, errors, results: searchResults } = results;
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     setQuery(e.target.value);
   };
 
@@ -24,7 +24,7 @@ const MainContainer = ({ fetchResults, results, selectProduct }) => {
     }
   }, [query]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     fetchResults({ query });
   };
@@ -34,23 +34,11 @@ const MainContainer = ({ fetchResults, results, selectProduct }) => {
       <S.HeroContainer className="container">
         <img src={logo} alt="" />
         <form className="hero-body" onSubmit={handleSubmit}>
-          <div className="input-group input-inline">
-            <input
-              className="form-input"
-              type="text"
-              placeholder="search"
-              value={query}
-              onChange={handleChange}
-            />
-            <button className="btn btn-primary input-group-btn" type="submit">
-              Search
-            </button>
-          </div>
+          <SearchBar value={query} setValue={handleChange} />
           <div className="lucky text-right">
             <small>I'm feeling lucky</small>
           </div>
           <div className="divider" />
-          {loading && <Spinner />}
           {errors && Object.keys(errors).length ? (
             <small className="">Oops! Something's gone wrong!!</small>
           ) : (

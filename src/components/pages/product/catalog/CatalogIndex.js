@@ -3,11 +3,10 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import Paginator from '../../../shared/Paginator';
-import ProductTile from '../ProductTile';
+import ProductTile from '../../../shared/ProductTile';
 import stringToKey from '../../../../utils/createKey';
 import Spinner from '../../../shared/Spinner';
 import S from '../../../../static/styles';
-import BgImage from '../../../../static/images/vineyard.jpg';
 
 const CatalogIndex = ({ fetch, products, loading }) => {
   const { type } = useParams();
@@ -22,7 +21,7 @@ const CatalogIndex = ({ fetch, products, loading }) => {
   /* <<<<<<< FETCH INITIAL DATA DEPENDING ON URL >>>>>>> */
   useEffect(() => {
     switch (type) {
-      case 'beers':
+      case 'breweries':
         fetch(type, 'openBrewery');
         break;
       case 'wines':
@@ -143,23 +142,23 @@ const CatalogIndex = ({ fetch, products, loading }) => {
 
   return (
     <div className="container p-0">
-      <S.Hero className="hero" bgImage={BgImage}>
-        <div className="hero-body container grid-lg">
-          <h3>{type}</h3>
+      {loading ? (
+        <S.SpinnerContainer>
+          {' '}
+          <Spinner />
+        </S.SpinnerContainer>
+      ) : (
+        <div className="hero">
+          <S.Hero className="container grid-lg">
+            <div className="hero">
+              <h3>{type}</h3>
+            </div>
+          </S.Hero>
+          <div className="container grid-lg">
+            <S.CatalogIndex>{renderContent()}</S.CatalogIndex>
+          </div>
         </div>
-      </S.Hero>
-      <div className="container grid-lg">
-        <S.CatalogIndex>
-          {loading ? (
-            <S.SpinnerContainer>
-              {' '}
-              <Spinner />
-            </S.SpinnerContainer>
-          ) : (
-            renderContent()
-          )}
-        </S.CatalogIndex>
-      </div>
+      )}
     </div>
   );
 };

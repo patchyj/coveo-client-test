@@ -60,7 +60,7 @@ describe('Catalog Items', () => {
   it('should test the Rapid API saga for Open Brewery', async () => {
     const action = {
       payload: {
-        query: 'beers',
+        query: 'breweries',
         api: 'openBrewery'
       },
       options: {}
@@ -77,7 +77,7 @@ describe('Catalog Items', () => {
 
     expect(rapidAPIRequest).toHaveBeenCalledWith(
       {
-        query: 'beers',
+        query: 'breweries',
         api: 'openBrewery'
       },
       {}

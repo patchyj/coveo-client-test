@@ -48,6 +48,21 @@ export const Navbar = styled.header`
   }
 `;
 
+export const SearchResults = styled.div`
+  position: absolute;
+  top: 76px;
+  width: 300px;
+  height: 300px;
+  background: white;
+  overflow-y: scroll;
+  border: 1px solid #782c42;
+  font-size: 14px;
+
+  a {
+    padding: 10px 0;
+  }
+`;
+
 export const Paginator = styled.div`
   .react-hooks-paginator {
     margin: 0;

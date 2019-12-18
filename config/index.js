@@ -1,6 +1,6 @@
 export default {
   PORT: process.env.PORT,
-  URL: 'https://cloudplatform.coveo.com/rest/search',
+  URL: 'https://platform.cloud.coveo.com/rest/search/v2',
   TOKEN: process.env.TOKEN,
   JSON_PLACEHOLDER: 'https://jsonplaceholder.typicode.com',
   rapidApi: {
