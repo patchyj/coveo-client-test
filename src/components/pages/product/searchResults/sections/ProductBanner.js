@@ -18,7 +18,7 @@ const ProductBanner = ({ selected }) => {
     <S.ProductBanner className="columns">
       <div className="column hero">
         <div className="hero-body">
-          <div className="container grid-md">
+          <div className="container grid-lg">
             <div className="columns">
               <div className="column col-8">
                 <div className="columns">

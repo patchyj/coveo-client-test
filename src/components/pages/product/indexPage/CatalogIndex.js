@@ -22,7 +22,7 @@ const CatalogIndex = ({ fetch, products, loading }) => {
   /* <<<<<<< FETCH INITIAL DATA DEPENDING ON URL >>>>>>> */
   useEffect(() => {
     switch (type) {
-      case 'beers':
+      case 'breweries':
         fetch(type, 'openBrewery');
         break;
       case 'wines':
@@ -143,8 +143,8 @@ const CatalogIndex = ({ fetch, products, loading }) => {
 
   return (
     <div className="container p-0">
-      <S.Hero className="hero" bgImage={BgImage}>
-        <div className="hero-body container grid-lg">
+      <S.Hero className="container grid-lg">
+        <div className="hero">
           <h3>{type}</h3>
         </div>
       </S.Hero>

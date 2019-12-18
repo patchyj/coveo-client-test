@@ -65,14 +65,12 @@ export const OptionsPanel = styled.div`
 `;
 
 export const Hero = styled.div`
-  height: 400px;
   background: url(${({ bgImage }) => bgImage});
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
 
   h3 {
-    color: white;
     text-transform: capitalize;
   }
 

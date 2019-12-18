@@ -32,7 +32,7 @@ describe('Helpers', () => {
 
   describe('createItem', () => {
     it('createItem: Brewery', () => {
-      const type = 'beers';
+      const type = 'breweries';
       const product = {
         id: '1',
         name: 'Some Brewery',

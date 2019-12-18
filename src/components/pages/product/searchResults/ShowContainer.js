@@ -36,21 +36,8 @@ const ShowContainer = ({
 
   return (
     <div>
-      <div className="container grid-md">
-        <div className="columns">
-          <div className="column">
-            <Link to="/">Back</Link>
-          </div>
-        </div>
-      </div>
-      <div className="container">
-        {/* SHOW PRODUCT BANNER */}
-        <ProductBanner selected={selected} />
-      </div>
-      <div className="container grid-lg">
-        {/* SHOW SIMILAR RESULTS */}
-        <SuggestedList results={results} selectProduct={selectProduct} />
-      </div>
+      <ProductBanner selected={selected} />
+      <SuggestedList results={results} selectProduct={selectProduct} />
     </div>
   );
 };

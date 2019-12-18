@@ -15,22 +15,25 @@ const SuggestedList = ({ results, selectProduct }) => {
   ));
 
   return (
-    <div className="columns">
-      <div className="column col-12">
-        <div className="h4">Similar Results</div>
+    <div className="container grid-lg">
+      <div className="columns">
+        <div className="column col-12">
+          <div className="h4">Similar Results</div>
+        </div>
+        {tiles}
       </div>
-      {tiles}
     </div>
   );
 };
 
 SuggestedList.propTypes = {
   results: PropTypes.arrayOf(PropTypes.shape({})),
-  selectProduct: PropTypes.shape({}).isRequired
+  selectProduct: PropTypes.func
 };
 
 SuggestedList.defaultProps = {
-  results: []
+  results: [],
+  selectProduct: () => {}
 };
 
 export default SuggestedList;

@@ -43,7 +43,7 @@ export const makeGenericTile = product => ({
 
 export const createItem = (type, product = {}) => {
   switch (type) {
-    case 'beers':
+    case 'breweries':
       return makeBreweryTile(product);
     case 'wines':
       return makeWineTile(product);
