@@ -4,39 +4,10 @@ import config from '../../config';
 const { URL, TOKEN, rapidApi } = config;
 
 export const getRequest = ({ url, endpoint }) =>
-  axios.get(`${url}/${endpoint}`);
-
-export const rapidAPIRequest = ({ query, api, options = {} }) => {
-  let url;
-  let queryString;
-
-  const headers = {
-    Accept: 'application/json',
-    'Content-Type': 'application/json',
-    'x-rapidapi-host': rapidApi[api].HOST,
-    'x-rapidapi-key': rapidApi.KEY
-  };
-
-  switch (api) {
-    case 'openBrewery':
-      queryString = `?query=${query}`;
-      url = `${rapidApi[api].URL}${query ? queryString : ''}`;
-      break;
-    case 'gws':
-      url = rapidApi[api].URL;
-      headers.authorization = `Token ${rapidApi[api].TOKEN}`;
-      break;
-    default:
-      break;
-  }
-
-  return axios({
+  axios({
     method: 'GET',
-    headers,
-    url,
-    ...options
+    url: `${url}/${endpoint}`
   });
-};
 
 export const postRequest = ({ query }) => {
   const headers = {
@@ -49,8 +20,35 @@ export const postRequest = ({ query }) => {
     method: 'POST',
     headers,
     url: URL,
-    data: {
-      q: query
-    }
+    data: JSON.stringify({
+      q: query,
+      count: 20,
+      locale: 'en-US'
+    })
+  });
+};
+
+export const rapidAPIRequest = ({ query, api, options = {} }) => {
+  let url = rapidApi[api].URL;
+
+  const headers = {
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+    'x-rapidapi-host': rapidApi[api].HOST,
+    'x-rapidapi-key': rapidApi.KEY
+  };
+
+  if (api === 'openBrewery') {
+    url += query ? `?query=${query}` : '';
+  }
+  if (api === 'gws') {
+    headers.authorization = `Token ${rapidApi[api].TOKEN}`;
+  }
+
+  return axios({
+    method: 'GET',
+    headers,
+    url,
+    ...options
   });
 };
