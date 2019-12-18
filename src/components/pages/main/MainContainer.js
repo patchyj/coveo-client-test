@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import S from '../../../static/styles';
-import ResultsList from './ResultsList';
+import ResultsList from './sections/ResultsList';
 import logo from '../../../static/images/saq-logo.png';
 
 const MainContainer = ({ fetchResults, results, selectProduct }) => {

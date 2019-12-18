@@ -1,4 +1,5 @@
 import numbro from 'numbro';
+import { get } from 'lodash';
 
 export const makeResponsiveColumns = cols => {
   switch (cols) {
@@ -35,7 +36,9 @@ export const makeGenericTile = product => ({
   name: product.title,
   percentScore: `${Math.ceil(product.percentScore)}%`,
   score: `Score: ${numbro(product.score).format({ thousandSeparated: true })}`,
-  url: product.uri
+  url: product.uri,
+  thumbnail: get(product, 'raw.tpthumbnailuri'),
+  price: get(product, 'raw.tpprixnormal')
 });
 
 export const createItem = (type, product = {}) => {

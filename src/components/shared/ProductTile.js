@@ -14,17 +14,23 @@ const ProductTile = ({ product, type, cols, selectProduct }) => {
   const responsiveCols = makeResponsiveColumns(cols);
 
   const content = (
-    <div className="card" style={{ height: '13rem', margin: '1rem 0' }}>
+    <div className="card" style={{ height: '12rem' }}>
       <div className="card-header">
         <div className="card-title h6">{item.name}</div>
-        <small className="card-subtitle">{item.location || item.score}</small>
+        <small className="card-subtitle">{item.location || item.price}</small>
       </div>
-      <div className="card-body" />
-      <div className="card-footer columns">
-        <div className="column col">
-          <small className="card-subtitle text-gray">{item.year}</small>
+      {item.thumbnail && (
+        <div className="card-body">
+          <img src={item.thumbnail} alt="" />
         </div>
-      </div>
+      )}
+      {!item.thumbnail && (
+        <div className="card-footer columns">
+          <div className="column col">
+            <small className="card-subtitle text-gray">{item.year}</small>
+          </div>
+        </div>
+      )}
     </div>
   );
 

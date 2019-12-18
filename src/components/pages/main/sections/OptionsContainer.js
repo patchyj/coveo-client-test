@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import S from '../../../static/styles';
+import S from '../../../../static/styles';
 
 const OptionsContainer = () => {
   const [hovered, setHovered] = useState(false);

@@ -4,8 +4,7 @@ import PropTypes from 'prop-types';
 import ProductBanner from './sections/ProductBanner';
 import SuggestedList from './sections/SuggestedList';
 
-const mapUsersAndComments = (users = [], comments = []) =>
-  users &&
+export const mapUsersAndComments = (users = [], comments = []) =>
   users.map(user => {
     const userComments = comments.filter(comment => {
       if (comment.postId === user.id) {
@@ -26,18 +25,10 @@ const mapUsersAndComments = (users = [], comments = []) =>
 const ShowContainer = ({
   results,
   selected,
-  users,
-  comments,
   fetchUsers,
   fetchComments,
   selectProduct
 }) => {
-  if (users.users.length) {
-    const res = mapUsersAndComments(users.users, comments.comments);
-    /* eslint-disable-next-line no-console */
-    console.log(res);
-  }
-
   useEffect(() => {
     fetchComments();
     fetchUsers();
@@ -52,10 +43,14 @@ const ShowContainer = ({
           </div>
         </div>
       </div>
-      {/* SHOW PRODUCT BANNER */}
-      <ProductBanner selected={selected} />
-      {/* SHOW SIMILAR RESULTS */}
-      <SuggestedList results={results} selectProduct={selectProduct} />
+      <div className="container">
+        {/* SHOW PRODUCT BANNER */}
+        <ProductBanner selected={selected} />
+      </div>
+      <div className="container grid-lg">
+        {/* SHOW SIMILAR RESULTS */}
+        <SuggestedList results={results} selectProduct={selectProduct} />
+      </div>
     </div>
   );
 };
@@ -71,7 +66,8 @@ ShowContainer.propTypes = {
   users: PropTypes.shape({}),
   comments: PropTypes.shape({}),
   fetchUsers: PropTypes.func,
-  fetchComments: PropTypes.func
+  fetchComments: PropTypes.func,
+  selectProduct: PropTypes.func.isRequired
 };
 
 ShowContainer.defaultProps = {
