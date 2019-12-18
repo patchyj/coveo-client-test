@@ -24,6 +24,27 @@ export function* fetchQuery(action) {
   }
 }
 
+export function* fetchQueryFromNav(action) {
+  try {
+    yield put({ type: actionTypes.FETCH_QUERY_FROM_NAV_STARTED });
+    const res = yield call(postRequest, action.payload);
+
+    if (res.status >= 200 && res.status < 300) {
+      yield put({
+        type: actionTypes.FETCH_QUERY_FROM_NAV_SUCCESS,
+        payload: res.data.results
+      });
+    } else {
+      throw res;
+    }
+  } catch (errors) {
+    yield put({
+      type: actionTypes.FETCH_QUERY_FROM_NAV_FAILURE,
+      errors
+    });
+  }
+}
+
 export function* selectProduct(action) {
   try {
     yield put({ type: actionTypes.SELECT_PRODUCT_STARTED });
@@ -43,6 +64,7 @@ export function* selectProduct(action) {
 export default function* querySaga() {
   yield all([
     takeLatest(actionTypes.FETCH_QUERY, fetchQuery),
+    takeLatest(actionTypes.FETCH_QUERY_FROM_NAV, fetchQueryFromNav),
     takeLatest(actionTypes.SELECT_PRODUCT, selectProduct)
   ]);
 }

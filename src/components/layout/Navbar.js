@@ -1,11 +1,32 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { Link, useLocation } from 'react-router-dom';
 import S from '../../static/styles';
 import Logo from '../../static/images/arrow.png';
+import SearchBar from '../shared/searchBar/SearchBar';
+import SearchResults from '../shared/searchBar/SearchResults';
 
-const Navbar = () => {
+const Navbar = ({ fetchResultsFromNav, results, selectProduct }) => {
+  const [query, setQuery] = useState('');
+  const [showResults, setShowResults] = useState(false);
   const { pathname } = useLocation();
+
+  const { loading, navResults: searchResults } = results;
   const isRoot = pathname === '/';
+
+  const handleChange = e => {
+    setQuery(e.target.value);
+  };
+
+  useEffect(() => {
+    if (query.length) {
+      fetchResultsFromNav({ query });
+      setShowResults(true);
+    } else {
+      setShowResults(false);
+    }
+  }, [query]);
+
   return (
     <S.Navbar className="navbar container grid-lg">
       <section className="navbar-section">
@@ -22,16 +43,31 @@ const Navbar = () => {
       </section>
       {!isRoot && (
         <section className="navbar-section">
-          <div className="input-group input-inline">
-            <input className="form-input" type="text" placeholder="search" />
-            <button className="btn btn-primary input-group-btn" type="button">
-              Search
-            </button>
-          </div>
+          <SearchBar value={query} setValue={handleChange} />
+          {showResults && (
+            <SearchResults
+              searchResults={searchResults}
+              loading={loading}
+              selectProduct={selectProduct}
+            />
+          )}
         </section>
       )}
     </S.Navbar>
   );
+};
+
+Navbar.propTypes = {
+  results: PropTypes.shape({}),
+  errors: PropTypes.shape({}),
+  fetchResultsFromNav: PropTypes.func.isRequired,
+  selectProduct: PropTypes.func
+};
+
+Navbar.defaultProps = {
+  results: {},
+  errors: {},
+  selectProduct: () => {}
 };
 
 export default Navbar;

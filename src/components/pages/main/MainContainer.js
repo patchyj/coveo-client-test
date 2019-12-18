@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import S from '../../../static/styles';
 import ResultsList from './sections/ResultsList';
 import logo from '../../../static/images/saq-logo.png';
+import SearchBar from '../../shared/searchBar/SearchBar';
 
 const MainContainer = ({ fetchResults, results, selectProduct }) => {
   const [query, setQuery] = useState('');
@@ -33,18 +34,7 @@ const MainContainer = ({ fetchResults, results, selectProduct }) => {
       <S.HeroContainer className="container">
         <img src={logo} alt="" />
         <form className="hero-body" onSubmit={handleSubmit}>
-          <div className="input-group input-inline">
-            <input
-              className="form-input"
-              type="text"
-              placeholder="search"
-              value={query}
-              onChange={handleChange}
-            />
-            <button className="btn btn-primary input-group-btn" type="submit">
-              Search
-            </button>
-          </div>
+          <SearchBar value={query} setValue={handleChange} />
           <div className="lucky text-right">
             <small>I'm feeling lucky</small>
           </div>

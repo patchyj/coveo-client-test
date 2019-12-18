@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import ProductBanner from './sections/ProductBanner';
 import SuggestedList from './sections/SuggestedList';

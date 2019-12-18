@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { hot } from 'react-hot-loader';
-import Navbar from './layout/Navbar';
+import Navbar from './layout/NavbarConnect';
 import Footer from './layout/Footer';
 import Main from './pages/main/MainConnect';
 import Show from './pages/product/searchResults/ShowConnect';
