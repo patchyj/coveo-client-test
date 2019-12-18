@@ -5,7 +5,7 @@ import Navbar from './layout/Navbar';
 import Footer from './layout/Footer';
 import Main from './pages/main/MainConnect';
 import Show from './pages/product/searchResults/ShowConnect';
-import Catalog from './pages/product/CatalogConnect';
+import Catalog from './pages/product/catalog/CatalogConnect';
 
 function App() {
   return (

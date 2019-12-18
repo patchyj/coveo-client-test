@@ -7,7 +7,6 @@ import ProductTile from '../../../shared/ProductTile';
 import stringToKey from '../../../../utils/createKey';
 import Spinner from '../../../shared/Spinner';
 import S from '../../../../static/styles';
-import BgImage from '../../../../static/images/vineyard.jpg';
 
 const CatalogIndex = ({ fetch, products, loading }) => {
   const { type } = useParams();
@@ -143,23 +142,23 @@ const CatalogIndex = ({ fetch, products, loading }) => {
 
   return (
     <div className="container p-0">
-      <S.Hero className="container grid-lg">
+      {loading ? (
+        <S.SpinnerContainer>
+          {' '}
+          <Spinner />
+        </S.SpinnerContainer>
+      ) : (
         <div className="hero">
-          <h3>{type}</h3>
+          <S.Hero className="container grid-lg">
+            <div className="hero">
+              <h3>{type}</h3>
+            </div>
+          </S.Hero>
+          <div className="container grid-lg">
+            <S.CatalogIndex>{renderContent()}</S.CatalogIndex>
+          </div>
         </div>
-      </S.Hero>
-      <div className="container grid-lg">
-        <S.CatalogIndex>
-          {loading ? (
-            <S.SpinnerContainer>
-              {' '}
-              <Spinner />
-            </S.SpinnerContainer>
-          ) : (
-            renderContent()
-          )}
-        </S.CatalogIndex>
-      </div>
+      )}
     </div>
   );
 };
