@@ -5,7 +5,8 @@ import { routerWrapper } from '../../utils/testUtils/connectWrapper';
 
 describe('Navbar', () => {
   it('should render the Navbar', () => {
-    const wrapper = shallow(routerWrapper(<Navbar />));
+    const props = { fetchResultsFromNav: jest.fn() };
+    const wrapper = shallow(routerWrapper(<Navbar {...props} />));
 
     expect(wrapper).toMatchSnapshot();
   });
