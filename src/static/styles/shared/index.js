@@ -51,15 +51,22 @@ export const Navbar = styled.header`
 export const SearchResults = styled.div`
   position: absolute;
   top: 76px;
-  width: 300px;
-  height: 300px;
-  background: white;
+  width: 400px;
+  height: 350px;
+  background: #efefef;
   overflow-y: scroll;
-  border: 1px solid #782c42;
   font-size: 14px;
+  box-shadow: 0 2px 3px -1px black;
 
-  a {
+  a.list-item {
     padding: 10px 0;
+    transition: 0.2s;
+    color: #782c42;
+
+    &:hover {
+      background: #dfdfdf;
+      text-decoration: none;
+    }
   }
 `;
 

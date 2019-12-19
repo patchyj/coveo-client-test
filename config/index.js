@@ -1,7 +1,7 @@
 export default {
   PORT: process.env.PORT,
   URL: 'https://platform.cloud.coveo.com/rest/search/v2',
-  TOKEN: process.env.TOKEN,
+  TOKEN: process.env.TOKEN || '058c85fd-3c79-42a3-9236-b83d35588103',
   JSON_PLACEHOLDER: 'https://jsonplaceholder.typicode.com',
   rapidApi: {
     openBrewery: {

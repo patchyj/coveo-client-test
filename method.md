@@ -4,6 +4,8 @@
 
 Like any project, no matter how small, getting organised is key. I like to use Trello writing up and breaking down tasks across a friendly Kanban UI and Sketch for wireframing. The more time spent planning code is less time wasted coding.
 
+NB: Sketch designs are only very basic outlines at this stage
+
 ### My initial Trello board:
 
 <img src="./readme_media/trello.png" width="400" alt="Trello">
@@ -29,6 +31,7 @@ Setting up this project was done in 3 stages:
   - Heroku has also been configured with a pipeline with two apps: Staging and Production. Annoyingly, you can't promote code from one to the other if the apps are configured to deploy using Docker. I've kept the steps in, however, deploying each manually with unique branches: `staging` and `master` (for production)
 
 Im summary:
+
 - I've got two apps in the Heroku pipeline: staging and production
 - Each app is linked to the same Github repo but with hooks on different branches: staging (for staging) and master (for production)
 - The Github repo has rules in place that enforce pull requests that can only be approved after they've passed CircleCI and Sonarqube quality checks
@@ -40,3 +43,19 @@ Im summary:
 ### Heroku Pipeline
 
 ![heroku pipeline](./readme_media/heroku-pipeline.png)
+
+---
+
+## 2. Coveo-SAQ API
+
+---
+
+## 3. JSON Placeholder API
+
+---
+
+## 4. RapidAPI: Wine and Breweries
+
+---
+
+## 5. Cleanup and final tests
