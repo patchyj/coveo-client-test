@@ -6,6 +6,9 @@
     "node": ">=10",
     "npm": ">=3"
   },
+  "pre-commit": [
+    "lint"
+  ],
   "scripts": {
     "analyze-bundle": "babel-node ./tools/analyzeBundle.js",
     "build": "babel-node tools/build.js && npm run open:dist",
@@ -40,6 +43,7 @@
     "dotenv": "8.0.0",
     "eslint-plugin-prettier": "3.1.1",
     "express": "4.17.1",
+    "jest-html-reporter": "2.8.0",
     "lodash": "4.17.15",
     "numbro": "2.1.2",
     "object-assign": "4.1.1",

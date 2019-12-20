@@ -1,9 +1,9 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import '@testing-library/jest-dom/extend-expect';
-import SearchResults from './SearchResults';
+import ResultsList from './ResultsList';
 
-describe('SearchResults', () => {
+describe('ResultsList', () => {
   let defaultProps;
 
   beforeEach(() => {
@@ -30,13 +30,13 @@ describe('SearchResults', () => {
         }
       ]
     };
-    const wrapper = shallow(<SearchResults {...props} />);
+    const wrapper = shallow(<ResultsList {...props} />);
 
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should render and empty container if searchResults is empty', () => {
-    const wrapper = shallow(<SearchResults {...defaultProps} />);
+    const wrapper = shallow(<ResultsList {...defaultProps} />);
 
     expect(wrapper).toMatchSnapshot();
   });
@@ -47,7 +47,7 @@ describe('SearchResults', () => {
       loading: true
     };
 
-    const wrapper = mount(<SearchResults {...props} />);
+    const wrapper = mount(<ResultsList {...props} />);
 
     expect(wrapper.find('svg')).toHaveLength(1);
     expect(wrapper).toMatchSnapshot();
@@ -69,7 +69,7 @@ describe('SearchResults', () => {
         }
       ]
     };
-    const wrapper = shallow(<SearchResults {...props} />);
+    const wrapper = shallow(<ResultsList {...props} />);
     wrapper.find('Link').simulate('click');
 
     expect(props.selectProduct).toHaveBeenCalled();
