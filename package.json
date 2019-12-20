@@ -6,6 +6,9 @@
     "node": ">=10",
     "npm": ">=3"
   },
+  "pre-commit": [
+    "lint"
+  ],
   "scripts": {
     "analyze-bundle": "babel-node ./tools/analyzeBundle.js",
     "build": "babel-node tools/build.js && npm run open:dist",
@@ -40,6 +43,7 @@
     "dotenv": "8.0.0",
     "eslint-plugin-prettier": "3.1.1",
     "express": "4.17.1",
+    "jest-html-reporter": "2.8.0",
     "lodash": "4.17.15",
     "numbro": "2.1.2",
     "object-assign": "4.1.1",
@@ -70,6 +74,8 @@
     "@babel/preset-env": "7.4.4",
     "@babel/preset-react": "7.0.0",
     "@babel/types": "7.4.4",
+    "@testing-library/jest-dom": "4.2.4",
+    "@testing-library/react": "9.4.0",
     "acorn": "6.1.1",
     "autoprefixer": "9.5.1",
     "babel-core": "7.0.0-bridge.0",
