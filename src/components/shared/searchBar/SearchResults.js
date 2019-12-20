@@ -53,7 +53,7 @@ const SearchResults = ({ searchResults, loading, selectProduct }) => {
           <Spinner />
         </S.SpinnerContainer>
       ) : (
-        <div className="container">{results}</div>
+        <div className="container results">{results}</div>
       )}
     </S.SearchResults>
   );

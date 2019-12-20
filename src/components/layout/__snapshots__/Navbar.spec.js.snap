@@ -1,3 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Navbar should render the Navbar 1`] = `ShallowWrapper {}`;
+exports[`Navbar should not show the search bar if the root is "/" 1`] = `ReactWrapper {}`;
+
+exports[`Navbar should render the Navbar 1`] = `ReactWrapper {}`;
