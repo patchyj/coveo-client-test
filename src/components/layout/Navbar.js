@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import S from '../../static/styles';
 import Logo from '../../static/images/arrow.png';
+import S from '../../static/styles';
 import SearchBar from '../shared/searchBar/SearchBar';
 import SearchResults from '../shared/searchBar/SearchResults';
 

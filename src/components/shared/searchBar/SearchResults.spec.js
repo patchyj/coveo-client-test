@@ -1,6 +1,6 @@
-import React from 'react';
-import { shallow, mount } from 'enzyme';
 import '@testing-library/jest-dom/extend-expect';
+import { mount, shallow } from 'enzyme';
+import React from 'react';
 import SearchResults from './SearchResults';
 
 describe('SearchResults', () => {

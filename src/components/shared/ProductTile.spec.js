@@ -1,5 +1,5 @@
-import React from 'react';
 import { shallow } from 'enzyme';
+import React from 'react';
 import ProductTile from './ProductTile';
 
 jest.mock('react-router-dom', () => ({

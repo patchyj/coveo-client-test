@@ -1,9 +1,9 @@
-import React, { useState, useEffect, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import S from '../../../static/styles';
-import ResultsList from './sections/ResultsList';
+import React, { Fragment, useEffect, useState } from 'react';
 import logo from '../../../static/images/saq-logo.png';
+import S from '../../../static/styles';
 import SearchBar from '../../shared/searchBar/SearchBar';
+import ResultsList from './sections/ResultsList';
 
 const MainContainer = ({ fetchResults, results, selectProduct }) => {
   const [query, setQuery] = useState('');

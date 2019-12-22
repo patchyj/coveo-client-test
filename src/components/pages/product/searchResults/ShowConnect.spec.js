@@ -1,6 +1,6 @@
 import React from 'react';
-import ShowConnect from './ShowConnect';
 import connectWrapper from '../../../../utils/testUtils/connectWrapper';
+import ShowConnect from './ShowConnect';
 
 describe('ShowConnect', () => {
   it('should render with the store', () => {

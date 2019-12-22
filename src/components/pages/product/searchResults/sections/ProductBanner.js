@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import { get } from 'lodash';
-import StarRating from '../../../../shared/StarRating';
+import PropTypes from 'prop-types';
+import React from 'react';
 import S from '../../../../../static/styles';
+import StarRating from '../../../../shared/StarRating';
 
 const ProductBanner = ({ selected }) => {
   const { title, excerpt, percentScore } = selected;

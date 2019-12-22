@@ -1,12 +1,12 @@
 /* eslint-disable operator-linebreak */
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import { get } from 'lodash';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import S from '../../../static/styles';
+import stringToKey from '../../../utils/createKey';
 import Spinner from '../Spinner';
 import StarRating from '../StarRating';
-import stringToKey from '../../../utils/createKey';
 
 const SearchResults = ({ searchResults, loading, selectProduct }) => {
   const results = searchResults.map((result, i) => {

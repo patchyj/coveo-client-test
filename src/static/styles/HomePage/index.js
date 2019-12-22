@@ -3,7 +3,7 @@ import breakpoints from '../utils/breakpoints';
 // eslint-disable-next-line import/prefer-default-export
 export const HeroContainer = styled.div`
   position: sticky;
-  background: white;
+      background: white;
   z-index: 10;
   top: 1rem;
   width: 500px;

@@ -1,6 +1,6 @@
 /* eslint-disable object-curly-newline */
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { Route, Switch, useRouteMatch } from 'react-router-dom';
 import CatalogIndex from './CatalogIndex';
 

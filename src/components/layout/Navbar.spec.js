@@ -1,8 +1,8 @@
-import React from 'react';
-import { mount } from 'enzyme';
-import { MemoryRouter } from 'react-router-dom';
 import '@testing-library/jest-dom/extend-expect';
-import { render, fireEvent } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
+import { mount } from 'enzyme';
+import React from 'react';
+import { MemoryRouter } from 'react-router-dom';
 import Navbar from './Navbar';
 
 describe('Navbar', () => {

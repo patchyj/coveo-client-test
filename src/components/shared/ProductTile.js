@@ -1,6 +1,6 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import { useRouteMatch, Link } from 'react-router-dom';
+import React from 'react';
+import { Link, useRouteMatch } from 'react-router-dom';
 import S from '../../static/styles';
 import { createItem, makeResponsiveColumns } from '../../utils/helpers';
 
