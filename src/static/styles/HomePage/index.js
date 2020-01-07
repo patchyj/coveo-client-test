@@ -3,7 +3,7 @@ import breakpoints from '../utils/breakpoints';
 // eslint-disable-next-line import/prefer-default-export
 export const HeroContainer = styled.div`
   position: sticky;
-      background: white;
+  background: white;
   z-index: 10;
   top: 1rem;
   width: 500px;
@@ -105,11 +105,12 @@ export const OptionsContainer = styled.div`
     margin: auto;
     align-items: center;
     justify-content: center;
-    padding: 1rem;
+    padding: 1rem 0;
+    box-sizing: border-box;
+  }
 
-    .form-group {
-      width: 200px;
-    }
+  .tab-block {
+    width: 320px;
   }
 
   @keyframes spin-c {

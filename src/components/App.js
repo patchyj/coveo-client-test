@@ -18,7 +18,6 @@ function App() {
         {/* 3rd PARTY API */}
         <Route path="/catalog">
           <Catalog />
-
           <Footer />
         </Route>
         {/* <Route path="/catalog/:query" component={CatalogShow} /> */}

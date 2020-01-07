@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import Paginator from 'react-hooks-paginator';
+import { withTheme } from 'styled-components';
 import S from '../../static/styles';
 
 const PaginatorWrapper = ({
@@ -40,4 +41,4 @@ PaginatorWrapper.defaultProps = {
   setCurrentPage: () => {}
 };
 
-export default PaginatorWrapper;
+export default withTheme(PaginatorWrapper);

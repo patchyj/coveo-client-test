@@ -7,12 +7,6 @@ describe('ShowConnect', () => {
     const initialState = {
       results: {
         product: {}
-      },
-      users: {
-        users: []
-      },
-      comments: {
-        comments: []
       }
     };
     const wrapper = connectWrapper(initialState, <ShowConnect />);

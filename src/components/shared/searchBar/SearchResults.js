@@ -3,6 +3,7 @@ import { get } from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { withTheme } from 'styled-components';
 import S from '../../../static/styles';
 import stringToKey from '../../../utils/createKey';
 import Spinner from '../Spinner';
@@ -71,4 +72,4 @@ SearchResults.defaultProps = {
   selectProduct: () => {}
 };
 
-export default SearchResults;
+export default withTheme(SearchResults);

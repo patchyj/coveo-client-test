@@ -61,7 +61,7 @@ export const SearchResults = styled.div`
   a.list-item {
     padding: 10px 0;
     transition: 0.2s;
-    color: #782c42;
+    color: ${({ theme: { light } }) => light.color1};
 
     &:hover {
       background: #dfdfdf;
@@ -82,8 +82,8 @@ export const Paginator = styled.div`
     .page-item {
       &.active {
         .page-link {
-          background: #782c42;
-          border-color: #782c42;
+          background: ${({ theme: { light } }) => light.color1};
+          border-color: ${({ theme: { light } }) => light.color1};
         }
       }
 
@@ -96,5 +96,49 @@ export const Paginator = styled.div`
         }
       }
     }
+  }
+`;
+
+export const Slider = styled.div`
+  width: 100%;
+
+  .slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: 0.2s;
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 1;
+    }
+    ::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: ${({ theme: { light } }) => light.color1};
+      cursor: pointer;
+    }
+
+    ::-moz-range-thumb {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: ${({ theme: { light } }) => light.color1};
+      cursor: pointer;
+    }
+  }
+`;
+
+export const Checkbox = styled.label`
+  input:checked + .form-icon {
+    background: ${({ theme: { light } }) => light.color1};
+    border-color: ${({ theme: { light } }) => light.color1};
   }
 `;

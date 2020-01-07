@@ -1,12 +1,12 @@
 // eslint-disable-next-line object-curly-newline
 import { all, call, put, takeLatest } from 'redux-saga/effects';
-import { postRequest } from '../../utils/query';
+import { postRequest, httpGetRequest } from '../../utils/query';
 import actionTypes from '../constants';
 
 export function* fetchQuery(action) {
   try {
     yield put({ type: actionTypes.FETCH_QUERY_STARTED });
-    const res = yield call(postRequest, action.payload);
+    const res = yield call(httpGetRequest, action.payload);
 
     if (res.status >= 200 && res.status < 300) {
       yield put({

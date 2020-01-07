@@ -9,20 +9,68 @@ export const getRequest = ({ url, endpoint }) =>
     url: `${url}/${endpoint}`
   });
 
-export const postRequest = ({ query }) => {
+export const httpGetRequest = ({ query, options }) => {
+  const {
+    minPrice,
+    maxPrice,
+    isBeerChecked,
+    isWineChecked,
+    isSpiritChecked
+  } = options;
+
+  // Construct query
+  let price = '';
+  if (minPrice && maxPrice) {
+    price += `@tpprixnum>${minPrice};@tpprixnum<${maxPrice}`;
+  } else if (minPrice) {
+    price += `@tpprixnum>${minPrice}`;
+  } else if (maxPrice) {
+    price += `@tpprixnum<${maxPrice}`;
+  }
+
+  return axios({
+    method: 'GET',
+    url: URL,
+    params: {
+      access_token: TOKEN,
+      q: `${query};${price}`
+    }
+  });
+};
+
+export const postRequest = ({ query, options }) => {
   const headers = {
     Accept: 'application/json',
     'Content-Type': 'application/json',
     Authorization: `Bearer ${TOKEN}`
   };
 
+  const {
+    minPrice,
+    maxPrice,
+    isBeerChecked,
+    isWineChecked,
+    isSpiritChecked
+  } = options;
+
+  // Construct query
+  let params = query;
+  if (minPrice && maxPrice) {
+    params += `&@tpprixnum>${minPrice};@tpprixnum<${maxPrice}`;
+  } else if (minPrice) {
+    params += `&@tpprixnum>${minPrice}`;
+  } else if (maxPrice) {
+    params += `&@tpprixnum<${maxPrice}`;
+  }
+
+  console.log(window.encodeURI(params));
+
   return axios({
     method: 'POST',
     headers,
     url: URL,
     data: JSON.stringify({
-      q: query,
-      count: 20,
+      q: window.encodeURI(params),
       locale: 'en-US'
     })
   });
