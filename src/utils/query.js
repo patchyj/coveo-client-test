@@ -12,6 +12,50 @@ export const getRequest = ({ url, endpoint }) =>
 export const httpGetRequest = ({ query, options }) => {
   const { minPrice, maxPrice, types } = options;
 
+  // QUERY STRING
+  // 1. query eg. 'rum'
+  // 2. category eg. ale, lager, vin, rum
+  // 3. color (in french)
+  // 4. price
+
+  // CATEGORY
+  // if beer (biere!)
+  // @tpcategorie=biere;@tpcouleur=rouge;@tpprixnum<50
+  let category = '';
+  const beerCategories = types.filter(t => t.name === 'beer').map(t => t.alt);
+
+  if (beerCategories.length) {
+    category = `beer,(${beerCategories.join(',')}`;
+  }
+
+  // if wine (vin!)
+  // @tpcategorie=vin;@tpcouleur=rouge;@tpprixnum<50
+  // also sparkling (mousseux) is its own category but can have colors
+  const wineCategories = types.filter(t => t.name === 'wine').map(t => t.alt);
+
+  if (wineCategories.length) {
+    if (wineCategories.indexOf('mousseux') !== -1) {
+      const sparklingColors = wineCategories.filter(w => w !== 'mousseux');
+      category = `@tpcategorie="vin mousseux"${
+        sparklingColors.length
+          ? `;@tpcouleur==(${sparklingColors.join(',')})`
+          : ''
+      }`;
+    } else {
+      category = `@tpcategorie=vin;@tpcouleur==(${wineCategories.join(',')})`;
+    }
+  }
+
+  // if spirit
+  // color semi-important eg rum (rhum) is brown or white
+  // const spiritCategories = types
+  //   .filter(t => t.name === 'spirit')
+  //   .map(t => t.alt);
+
+  // if (spiritCategories.length) {
+  //   console.log(`@tpcategorie=${spiritCategories.join(',')}`);
+  // }
+
   // Construct query
   // PRICE
   let price = '';
@@ -23,27 +67,12 @@ export const httpGetRequest = ({ query, options }) => {
     price += `@tpprixnum<${maxPrice}`;
   }
 
-  // BEER TYPE / COLOUR
-  // WINE TYPE / COLOUR (only french)
-  // SPIRIT TYPE
-
-  // Need a way to streamline all the various filter requirements into one query
-
-  // beer - tpcouleur
-  const beerTypes = types
-    .filter(t => t.name === 'beer')
-    .map(t => `@tpcouleur==${t.label}`)
-    .join(';');
-  if (beerTypes.length) {
-    console.log(beerTypes);
-  }
-
   return axios({
     method: 'GET',
     url: URL,
     params: {
       access_token: TOKEN,
-      q: `${query};${price}`
+      q: `${query};${category};${price}`
     }
   });
 };

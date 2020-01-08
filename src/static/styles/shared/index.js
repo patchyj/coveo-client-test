@@ -48,7 +48,7 @@ export const Navbar = styled.header`
 
   .navbar-brand {
     img {
-      width: 17px;
+      width: 13px;
     }
   }
 

@@ -15,18 +15,18 @@ const categoryOptions = [
 ];
 
 const allOptions = [
-  { name: 'beer', label: 'amber', isChecked: false },
-  { name: 'beer', label: 'lager', isChecked: false },
-  { name: 'beer', label: 'IPA', isChecked: false },
-  { name: 'beer', label: 'stout', isChecked: false },
-  { name: 'wine', label: 'white', isChecked: false },
-  { name: 'wine', label: 'red', isChecked: false },
-  { name: 'wine', label: 'sparkling', isChecked: false },
-  { name: 'wine', label: 'rose', isChecked: false },
-  { name: 'spirit', label: 'rum', isChecked: false },
-  { name: 'spirit', label: 'vodka', isChecked: false },
-  { name: 'spirit', label: 'whiskey', isChecked: false },
-  { name: 'spirit', label: 'gin', isChecked: false }
+  { name: 'beer', label: 'amber', alt: 'ambrée', isChecked: false },
+  { name: 'beer', label: 'lager', alt: 'lager', isChecked: false },
+  { name: 'beer', label: 'IPA', alt: 'IPA', isChecked: false },
+  { name: 'beer', label: 'stout', alt: 'stout', isChecked: false },
+  { name: 'wine', label: 'white', alt: 'blanc', isChecked: false },
+  { name: 'wine', label: 'red', alt: 'rouge', isChecked: false },
+  { name: 'wine', label: 'sparkling', alt: 'mousseux', isChecked: false },
+  { name: 'wine', label: 'rose', alt: 'rose', isChecked: false },
+  { name: 'spirit', label: 'rum', alt: 'rhum', isChecked: false },
+  { name: 'spirit', label: 'vodka', alt: 'vodka', isChecked: false },
+  { name: 'spirit', label: 'whiskey', alt: 'whisky', isChecked: false },
+  { name: 'spirit', label: 'gin', alt: 'gin', isChecked: false }
 ];
 
 const OptionsContainer = ({ minPrice, maxPrice, handleRange, handleTypes }) => {
