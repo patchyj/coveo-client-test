@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import App from './App';
 import './root.scss';
 
-const theme = {
+export const theme = {
   light: {
     color1: '#782c42'
   }

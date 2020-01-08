@@ -41,16 +41,37 @@ export const SpinnerContainer = styled.div`
 `;
 
 export const Navbar = styled.header`
-  padding: 20px;
+  padding: 0 40px;
+  background-color: #782c42;
+  color: white;
+  box-shadow: 0 -1px 9px 2px black;
+
+  .navbar-brand {
+    img {
+      width: 17px;
+    }
+  }
 
   .btn {
+    color: white;
     border: none;
+    font-weight: 200;
+  }
+`;
+
+export const SearchBar = styled.section`
+  .btn {
+    padding: 0 20px;
+  }
+  .form-input,
+  .input-group-btn {
+    height: 1.5rem;
   }
 `;
 
 export const SearchResults = styled.div`
   position: absolute;
-  top: 76px;
+  top: 36px;
   width: 400px;
   height: 350px;
   background: #efefef;
@@ -140,5 +161,9 @@ export const Checkbox = styled.label`
   input:checked + .form-icon {
     background: ${({ theme: { light } }) => light.color1};
     border-color: ${({ theme: { light } }) => light.color1};
+  }
+
+  small {
+    text-transform: capitalize;
   }
 `;

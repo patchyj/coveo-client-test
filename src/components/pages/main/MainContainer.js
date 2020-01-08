@@ -8,15 +8,17 @@ import ResultsList from './sections/ResultsList';
 
 const MainContainer = ({ fetchResults, results, selectProduct }) => {
   const [query, setQuery] = useState('');
+  const [types, setTypes] = useState({});
   const [showResults, setShowResults] = useState(false);
   const [minPrice, setMinPrice] = useState(0);
-  const [maxPrice, setMaxPrice] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(10);
 
   const { loading, errors, results: searchResults } = results;
 
   const options = {
     minPrice,
-    maxPrice
+    maxPrice,
+    types
   };
 
   useEffect(() => {
@@ -37,13 +39,14 @@ const MainContainer = ({ fetchResults, results, selectProduct }) => {
     fetchResults({ query });
   };
 
-  const handleSlider = e => {
-    if (e.target.name === 'minPrice') setMinPrice(parseInt(e.target.value, 10));
-    if (e.target.name === 'maxPrice') setMaxPrice(parseInt(e.target.value, 10));
+  const handleRange = val => {
+    const [mn, mx] = val;
+    setMinPrice(parseInt(mn, 10));
+    setMaxPrice(parseInt(mx, 10));
   };
 
-  const handleCheckbox = e => {
-    console.log(e);
+  const handleTypes = optionTypes => {
+    setTypes(optionTypes);
   };
 
   return (
@@ -55,8 +58,8 @@ const MainContainer = ({ fetchResults, results, selectProduct }) => {
           <OptionsContainer
             minPrice={minPrice}
             maxPrice={maxPrice}
-            handleSlider={handleSlider}
-            handleCheckbox={handleCheckbox}
+            handleRange={handleRange}
+            handleTypes={handleTypes}
           />
           <div className="divider" />
           {errors && Object.keys(errors).length ? (

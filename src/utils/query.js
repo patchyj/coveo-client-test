@@ -10,15 +10,10 @@ export const getRequest = ({ url, endpoint }) =>
   });
 
 export const httpGetRequest = ({ query, options }) => {
-  const {
-    minPrice,
-    maxPrice,
-    isBeerChecked,
-    isWineChecked,
-    isSpiritChecked
-  } = options;
+  const { minPrice, maxPrice, types } = options;
 
   // Construct query
+  // PRICE
   let price = '';
   if (minPrice && maxPrice) {
     price += `@tpprixnum>${minPrice};@tpprixnum<${maxPrice}`;
@@ -26,6 +21,21 @@ export const httpGetRequest = ({ query, options }) => {
     price += `@tpprixnum>${minPrice}`;
   } else if (maxPrice) {
     price += `@tpprixnum<${maxPrice}`;
+  }
+
+  // BEER TYPE / COLOUR
+  // WINE TYPE / COLOUR (only french)
+  // SPIRIT TYPE
+
+  // Need a way to streamline all the various filter requirements into one query
+
+  // beer - tpcouleur
+  const beerTypes = types
+    .filter(t => t.name === 'beer')
+    .map(t => `@tpcouleur==${t.label}`)
+    .join(';');
+  if (beerTypes.length) {
+    console.log(beerTypes);
   }
 
   return axios({
@@ -38,32 +48,22 @@ export const httpGetRequest = ({ query, options }) => {
   });
 };
 
-export const postRequest = ({ query, options }) => {
+export const postRequest = ({ query, options = {} }) => {
   const headers = {
     Accept: 'application/json',
     'Content-Type': 'application/json',
     Authorization: `Bearer ${TOKEN}`
   };
 
-  const {
-    minPrice,
-    maxPrice,
-    isBeerChecked,
-    isWineChecked,
-    isSpiritChecked
-  } = options;
-
   // Construct query
   let params = query;
-  if (minPrice && maxPrice) {
-    params += `&@tpprixnum>${minPrice};@tpprixnum<${maxPrice}`;
-  } else if (minPrice) {
-    params += `&@tpprixnum>${minPrice}`;
-  } else if (maxPrice) {
-    params += `&@tpprixnum<${maxPrice}`;
+  if (options.minPrice && options.maxPrice) {
+    params += `&@tpprixnum>${options.minPrice};@tpprixnum<${options.maxPrice}`;
+  } else if (options.minPrice) {
+    params += `&@tpprixnum>${options.minPrice}`;
+  } else if (options.maxPrice) {
+    params += `&@tpprixnum<${options.maxPrice}`;
   }
-
-  console.log(window.encodeURI(params));
 
   return axios({
     method: 'POST',

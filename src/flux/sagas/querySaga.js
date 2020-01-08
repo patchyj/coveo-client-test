@@ -6,6 +6,7 @@ import actionTypes from '../constants';
 export function* fetchQuery(action) {
   try {
     yield put({ type: actionTypes.FETCH_QUERY_STARTED });
+    // action.payload is an object
     const res = yield call(httpGetRequest, action.payload);
 
     if (res.status >= 200 && res.status < 300) {
@@ -28,7 +29,6 @@ export function* fetchQueryFromNav(action) {
   try {
     yield put({ type: actionTypes.FETCH_QUERY_FROM_NAV_STARTED });
     const res = yield call(postRequest, action.payload);
-
     if (res.status >= 200 && res.status < 300) {
       yield put({
         type: actionTypes.FETCH_QUERY_FROM_NAV_SUCCESS,
@@ -40,7 +40,7 @@ export function* fetchQueryFromNav(action) {
   } catch (errors) {
     yield put({
       type: actionTypes.FETCH_QUERY_FROM_NAV_FAILURE,
-      errors
+      errors: errors.message
     });
   }
 }

@@ -1,6 +1,6 @@
 import actionTypes from '../constants';
 
-export const fetchResults = (query, options) => ({
+export const fetchResults = query => ({
   type: actionTypes.FETCH_QUERY,
   payload: query
 });

@@ -16,8 +16,8 @@ export const HeroContainer = styled.div`
   margin-top: 5rem;
 
   img {
-    width: 100px;
-    margin-bottom: 2rem;
+    width: 50px;
+    margin-bottom: 1rem;
   }
 
   form {
@@ -105,12 +105,23 @@ export const OptionsContainer = styled.div`
     margin: auto;
     align-items: center;
     justify-content: center;
-    padding: 1rem 0;
     box-sizing: border-box;
   }
 
   .tab-block {
+    box-sizing: border-box;
     width: 320px;
+    margin-top: 15px;
+    text-transform: capitalize;
+  }
+
+  .tab .tab-item a {
+    padding: 0;
+  }
+
+  .rc-slider-rail,
+  .rc-slider-track {
+    height: 2px;
   }
 
   @keyframes spin-c {

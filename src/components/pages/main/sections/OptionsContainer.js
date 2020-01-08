@@ -4,21 +4,9 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import S from '../../../../static/styles';
-import Slider from '../../../shared/forms/Slider';
-import RadioSection from '../../../shared/forms/Radio';
+import RangeSlider from '../../../shared/forms/RangeSlider';
 import SubCategory from './SubCategory';
 import createKey from '../../../../utils/createKey';
-
-/**
- * @options => {
- * 1. Price
- *    ☐ Range Slider $0 ---o====o--- no limit
- * 2. Categories
- *    ☐ wine
- *    ☐ beer
- *    ☐ spirits
- * }
- */
 
 const categoryOptions = [
   { label: 'beer' },
@@ -41,12 +29,7 @@ const allOptions = [
   { name: 'spirit', label: 'gin', isChecked: false }
 ];
 
-const OptionsContainer = ({
-  minPrice,
-  maxPrice,
-  handleSlider
-  // handleCheckbox
-}) => {
+const OptionsContainer = ({ minPrice, maxPrice, handleRange, handleTypes }) => {
   const [hovered, setHovered] = useState(false);
   const [category, setCategory] = useState('beer');
   const [options, setOptions] = useState(allOptions);
@@ -72,7 +55,7 @@ const OptionsContainer = ({
 
   useEffect(() => {
     const selected = options.filter(o => o.isChecked);
-    console.log(selected);
+    handleTypes(selected);
   }, [options]);
 
   return (
@@ -88,33 +71,25 @@ const OptionsContainer = ({
         </summary>
         <div className="accordion-body">
           <div className="form-group text-left">
-            <Slider
-              value={minPrice}
-              setValue={handleSlider}
-              name="minPrice"
-              label="Min Price"
-              min={0}
-              max={1000}
+            <RangeSlider
+              min={minPrice}
+              max={maxPrice}
+              label="Price Range"
+              handleRange={handleRange}
             />
-            <Slider
-              value={maxPrice}
-              setValue={handleSlider}
-              name="maxPrice"
-              label="Max Price"
-              min={0}
-              max={1000}
-            />
-            <ul className="tab tab-block" style={{ boxSizing: 'border-box' }}>
+            <ul className="tab tab-block">
               {categoryOptions.map((c, i) => (
                 <li className="tab-item" key={createKey(c.label, i)}>
-                  <a
-                    className={`${category === c.label ? 'active' : ''}`}
-                    onClick={handleSetCategory}
-                    id={c.label}
-                    role="presentation"
-                  >
-                    {c.label}
-                  </a>
+                  <small>
+                    <a
+                      className={`${category === c.label ? 'active' : ''}`}
+                      onClick={handleSetCategory}
+                      id={c.label}
+                      role="presentation"
+                    >
+                      {c.label}
+                    </a>
+                  </small>
                 </li>
               ))}
             </ul>
@@ -152,14 +127,14 @@ const OptionsContainer = ({
 OptionsContainer.propTypes = {
   minPrice: PropTypes.number,
   maxPrice: PropTypes.number,
-  handleSlider: PropTypes.func,
+  handleRange: PropTypes.func,
   handleCheckbox: PropTypes.func
 };
 
 OptionsContainer.defaultProps = {
   minPrice: 0,
   maxPrice: 0,
-  handleSlider: () => {},
+  handleRange: () => {},
   handleCheckbox: () => {}
 };
 
