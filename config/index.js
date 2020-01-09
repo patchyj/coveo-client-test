@@ -16,5 +16,6 @@ export default {
       TOKEN: '3ae33ff8d2632c7788e3345a7c2a22c52283f4fa'
     },
     KEY: 'UBlWjlpIqqmsh3hcKQRIrFuDqpXKp1QsP5sjsnmc5SGSSkHOge'
-  }
+  },
+  GOOGLE_MAPS_API_KEY: process.env.GOOGLE_MAPS_API_KEY
 };

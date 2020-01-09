@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 import GoogleMapReact from 'google-map-react';
 import S from '../../../../static/styles';
 import marker from '../../../../static/images/marker.png';
+import config from '../../../../../config';
 
 const formatPhone = number => {
   const cleaned = `${number}`.replace(/\D/g, '');
@@ -90,7 +91,7 @@ const CatalogShow = ({ selected, closeBanner }) => {
                 <div style={{ height: '200px', width: '100%' }}>
                   <GoogleMapReact
                     bootstrapURLKeys={{
-                      key: 'AIzaSyACDRvo8i4j_oO_iV2z8RQUGE4f2N2Vabw'
+                      key: config.GOOGLE_MAPS_API_KEY
                     }}
                     defaultCenter={{
                       lat: parseFloat(latitude),
