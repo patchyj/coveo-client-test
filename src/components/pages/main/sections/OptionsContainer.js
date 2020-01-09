@@ -129,14 +129,14 @@ OptionsContainer.propTypes = {
   minPrice: PropTypes.number,
   maxPrice: PropTypes.number,
   handleRange: PropTypes.func,
-  handleCheckbox: PropTypes.func
+  handleTypes: PropTypes.func
 };
 
 OptionsContainer.defaultProps = {
   minPrice: 0,
   maxPrice: 0,
   handleRange: () => {},
-  handleCheckbox: () => {}
+  handleTypes: () => {}
 };
 
 export default OptionsContainer;

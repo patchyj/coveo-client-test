@@ -8,7 +8,7 @@ import S from '../../../static/styles';
 
 const { Range } = Slider;
 
-const RangeSlider = ({ label, min, max, handleRange }) => (
+const RangeSlider = ({ min, max, handleRange }) => (
   <S.RangeSlider className="container">
     <div className="columns">
       <small className="column col">Price Range</small>
@@ -36,15 +36,15 @@ const RangeSlider = ({ label, min, max, handleRange }) => (
 );
 
 RangeSlider.propTypes = {
-  label: PropTypes.string,
   min: PropTypes.number,
-  max: PropTypes.number
+  max: PropTypes.number,
+  handleRange: PropTypes.func
 };
 
 RangeSlider.defaultProps = {
-  label: '',
   min: 0,
-  max: 100
+  max: 100,
+  handleRange: () => {}
 };
 
 export default withTheme(RangeSlider);

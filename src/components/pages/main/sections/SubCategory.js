@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Checkbox from '../../../shared/forms/Checkbox';
 import createKey from '../../../../utils/createKey';
 
-const SubCategory = ({ header, options, setValue }) => {
+const SubCategory = ({ options, setValue }) => {
   const checkboxes = options.map((option, i) => (
     <div className="column col-6" key={createKey(option.label, i)}>
       <Checkbox
@@ -24,13 +24,11 @@ const SubCategory = ({ header, options, setValue }) => {
 
 SubCategory.propTypes = {
   setValue: PropTypes.func,
-  header: PropTypes.string,
   options: PropTypes.arrayOf(PropTypes.shape({}))
 };
 
 SubCategory.defaultProps = {
   setValue: () => {},
-  header: '',
   options: []
 };
 

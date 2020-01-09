@@ -1,7 +1,7 @@
 /* eslint-disable operator-linebreak */
 import PropTypes from 'prop-types';
 import React, { Fragment, useEffect, useState } from 'react';
-import { Switch, Route, useParams, useRouteMatch } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import S from '../../../../static/styles';
 import stringToKey from '../../../../utils/createKey';
 import Paginator from '../../../shared/Paginator';
