@@ -101,6 +101,10 @@ export const OptionsContainer = styled.div`
     animation: spin-cc 0.2s;
   }
 
+  .accordion {
+    width: 320px;
+  }
+
   .accordion-body {
     margin: auto;
     align-items: center;
@@ -110,13 +114,16 @@ export const OptionsContainer = styled.div`
 
   .tab-block {
     box-sizing: border-box;
-    width: 320px;
     margin-top: 15px;
     text-transform: capitalize;
   }
 
   .tab .tab-item a {
     padding: 0;
+  }
+
+  .rc-slider {
+    padding: 0.5rem;
   }
 
   .rc-slider-rail,

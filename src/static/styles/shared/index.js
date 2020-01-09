@@ -36,7 +36,7 @@ export const Spinner = styled.svg`
 `;
 
 export const SpinnerContainer = styled.div`
-  height: 500px;
+  height: calc(100vh - 36px);
   text-align: center;
 `;
 
@@ -56,6 +56,38 @@ export const Navbar = styled.header`
     color: white;
     border: none;
     font-weight: 200;
+
+    &:hover {
+      color: #bbb;
+    }
+  }
+`;
+
+export const Footer = styled.footer`
+  position: relative;
+  bottom: 0;
+
+  .image-container {
+    align-items: center;
+    img {
+      height: 100px;
+      filter: brightness(10);
+    }
+  }
+
+  dd {
+    font-weight: 100;
+    letter-spacing: 1px;
+
+    a,
+    a:hover,
+    a:visited {
+      color: white;
+    }
+
+    i {
+      margin-left: 1rem;
+    }
   }
 `;
 
@@ -120,41 +152,8 @@ export const Paginator = styled.div`
   }
 `;
 
-export const Slider = styled.div`
+export const RangeSlider = styled.div`
   width: 100%;
-
-  .slider {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 100%;
-    height: 5px;
-    background: #d3d3d3;
-    outline: none;
-    opacity: 0.7;
-    -webkit-transition: 0.2s;
-    transition: opacity 0.2s;
-
-    &:hover {
-      opacity: 1;
-    }
-    ::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 15px;
-      height: 15px;
-      border-radius: 50%;
-      background: ${({ theme: { light } }) => light.color1};
-      cursor: pointer;
-    }
-
-    ::-moz-range-thumb {
-      width: 15px;
-      height: 15px;
-      border-radius: 50%;
-      background: ${({ theme: { light } }) => light.color1};
-      cursor: pointer;
-    }
-  }
 `;
 
 export const Checkbox = styled.label`

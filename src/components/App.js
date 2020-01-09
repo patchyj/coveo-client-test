@@ -14,7 +14,10 @@ function App() {
       <Switch>
         {/* Coveo API */}
         <Route exact path="/" component={Main} />
-        <Route path="/products/:title" component={Show} />
+        <Route path="/products/:title">
+          <Show />
+          <Footer />
+        </Route>
         {/* 3rd PARTY API */}
         <Route path="/catalog">
           <Catalog />

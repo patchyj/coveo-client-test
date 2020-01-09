@@ -9,26 +9,30 @@ import S from '../../../static/styles';
 const { Range } = Slider;
 
 const RangeSlider = ({ label, min, max, handleRange }) => (
-  <S.Slider className="container">
+  <S.RangeSlider className="container">
     <div className="columns">
       <small className="column col">Price Range</small>
+    </div>
+    <div className="columns">
+      <div className="column col">
+        <Range
+          allowCross={false}
+          defaultValue={[min, max]}
+          onChange={handleRange}
+          trackStyle={[{ backgroundColor: '#4240d4' }]}
+          handleStyle={[
+            { backgroundColor: 'white', borderColor: '#782c42' },
+            { backgroundColor: 'white', borderColor: '#782c42' }
+          ]}
+          railStyle={{ backgroundColor: '#782c42' }}
+        />
+      </div>
     </div>
     <div className="columns">
       <small className="column col">${min}</small>
       <small className="column col text-right">${max}</small>
     </div>
-    <Range
-      allowCross={false}
-      defaultValue={[min, max]}
-      onChange={handleRange}
-      trackStyle={[{ backgroundColor: '#4240d4' }]}
-      handleStyle={[
-        { backgroundColor: 'white', borderColor: '#782c42' },
-        { backgroundColor: 'white', borderColor: '#782c42' }
-      ]}
-      railStyle={{ backgroundColor: '#782c42' }}
-    />
-  </S.Slider>
+  </S.RangeSlider>
 );
 
 RangeSlider.propTypes = {

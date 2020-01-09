@@ -3,7 +3,6 @@ import breakpoints from '../utils/breakpoints';
 
 export const CatalogIndex = styled.div`
   margin: auto;
-  margin-bottom: 10rem;
 
   .tile-size {
     i {

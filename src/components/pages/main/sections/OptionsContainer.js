@@ -23,7 +23,8 @@ const allOptions = [
   { name: 'wine', label: 'red', alt: 'rouge', isChecked: false },
   { name: 'wine', label: 'sparkling', alt: 'mousseux', isChecked: false },
   { name: 'wine', label: 'rose', alt: 'rose', isChecked: false },
-  { name: 'spirit', label: 'rum', alt: 'rhum', isChecked: false },
+  { name: 'spirit', label: 'white rum', alt: 'rhum blanc', isChecked: false },
+  { name: 'spirit', label: 'dark rum', alt: 'rhum brun', isChecked: false },
   { name: 'spirit', label: 'vodka', alt: 'vodka', isChecked: false },
   { name: 'spirit', label: 'whiskey', alt: 'whisky', isChecked: false },
   { name: 'spirit', label: 'gin', alt: 'gin', isChecked: false }
