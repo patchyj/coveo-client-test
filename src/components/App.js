@@ -23,7 +23,6 @@ function App() {
           <Catalog />
           <Footer />
         </Route>
-        {/* <Route path="/catalog/:query" component={CatalogShow} /> */}
       </Switch>
     </div>
   );

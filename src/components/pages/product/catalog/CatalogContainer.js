@@ -4,7 +4,14 @@ import React from 'react';
 import { Route, Switch, useRouteMatch } from 'react-router-dom';
 import CatalogIndex from './CatalogIndex';
 
-function CatalogContainer({ getCatalogItems, products, loading }) {
+function CatalogContainer({
+  getCatalogItems,
+  selectProduct,
+  products,
+  selected,
+  loading,
+  clearSelectedProduct
+}) {
   const { path } = useRouteMatch();
 
   return (
@@ -16,8 +23,11 @@ function CatalogContainer({ getCatalogItems, products, loading }) {
         <Route path={`${path}/:type`}>
           <CatalogIndex
             fetch={getCatalogItems}
+            selectProduct={selectProduct}
             products={products}
+            selected={selected}
             loading={loading}
+            clearSelectedProduct={clearSelectedProduct}
           />
         </Route>
       </Switch>
@@ -27,12 +37,16 @@ function CatalogContainer({ getCatalogItems, products, loading }) {
 
 CatalogContainer.propTypes = {
   getCatalogItems: PropTypes.func.isRequired,
+  selectProduct: PropTypes.func.isRequired,
+  clearSelectedProduct: PropTypes.func.isRequired,
   products: PropTypes.arrayOf(PropTypes.shape({})),
+  selected: PropTypes.shape({}),
   loading: PropTypes.bool
 };
 
 CatalogContainer.defaultProps = {
   products: [],
+  selected: {},
   loading: false
 };
 

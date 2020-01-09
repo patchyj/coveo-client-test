@@ -12,7 +12,7 @@ const ProductBanner = ({ selected }) => {
   const category = get(selected, 'raw.tpcategorie');
   const producer = get(selected, 'raw.tpproducteur');
   const thumbnail = get(selected, 'raw.tpthumbnailuri');
-  const saq = get(selected, 'raw.sysprintableuri');
+  const saq = get(selected, 'raw.clickableuri');
 
   return (
     <S.ProductBanner className="columns">

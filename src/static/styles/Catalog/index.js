@@ -48,6 +48,16 @@ export const Card = styled.div`
   }
 `;
 
+export const CatalogShow = styled.div`
+  .fa-times {
+    color: #555;
+    &:hover {
+      cursor: pointer;
+      color: #222;
+    }
+  }
+`;
+
 export const OptionsPanel = styled.div`
   padding: 0.5rem 0;
   margin: 1.5rem 0;
@@ -68,6 +78,10 @@ export const Hero = styled.div`
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
+
+  .hero {
+    padding: 3rem 0 0 0;
+  }
 
   h3 {
     text-transform: capitalize;
