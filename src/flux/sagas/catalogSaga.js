@@ -16,7 +16,7 @@ export function* getCatalogItems(action) {
     if (res.status >= 200 && res.status < 300) {
       yield put({
         type: actionTypes.GET_CATALOG_ITEMS_SUCCESS,
-        // res.data.results === gws || beers
+        // res.data.results === gws || breweries
         payload: res.data.results || res.data
       });
     } else {
@@ -30,6 +30,25 @@ export function* getCatalogItems(action) {
   }
 }
 
+export function* selectCatalogProduct(action) {
+  try {
+    yield put({ type: actionTypes.SELECT_CATALOG_PRODUCT_STARTED });
+
+    yield put({
+      type: actionTypes.SELECT_CATALOG_PRODUCT_SUCCESS,
+      payload: action.payload
+    });
+  } catch (errors) {
+    yield put({
+      type: actionTypes.SELECT_CATALOG_PRODUCT_FAILURE,
+      errors
+    });
+  }
+}
+
 export default function* querySaga() {
-  yield all([takeLatest(actionTypes.GET_CATALOG_ITEMS, getCatalogItems)]);
+  yield all([
+    takeLatest(actionTypes.GET_CATALOG_ITEMS, getCatalogItems),
+    takeLatest(actionTypes.SELECT_CATALOG_PRODUCT, selectCatalogProduct)
+  ]);
 }

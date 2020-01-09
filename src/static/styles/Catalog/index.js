@@ -3,7 +3,6 @@ import breakpoints from '../utils/breakpoints';
 
 export const CatalogIndex = styled.div`
   margin: auto;
-  margin-bottom: 10rem;
 
   .tile-size {
     i {
@@ -27,13 +26,34 @@ export const Card = styled.div`
   transition: 0.05s;
   cursor: pointer;
 
+  margin: 1rem 0;
+
+  .card-body {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    text-align: center;
+    img {
+      height: 100px;
+    }
+  }
   &:hover {
     a {
       text-decoration: none;
     }
 
     .card {
-      background: #eaeaea;
+      box-shadow: 0 0 4px -1px black;
+    }
+  }
+`;
+
+export const CatalogShow = styled.div`
+  .fa-times {
+    color: #555;
+    &:hover {
+      cursor: pointer;
+      color: #222;
     }
   }
 `;
@@ -54,14 +74,16 @@ export const OptionsPanel = styled.div`
 `;
 
 export const Hero = styled.div`
-  height: 400px;
   background: url(${({ bgImage }) => bgImage});
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
 
+  .hero {
+    padding: 3rem 0 0 0;
+  }
+
   h3 {
-    color: white;
     text-transform: capitalize;
   }
 

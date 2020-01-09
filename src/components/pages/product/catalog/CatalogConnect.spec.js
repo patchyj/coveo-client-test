@@ -1,6 +1,6 @@
 import React from 'react';
+import connectWrapper from '../../../../utils/testUtils/connectWrapper';
 import CatalogConnect from './CatalogConnect';
-import connectWrapper from '../../../utils/testUtils/connectWrapper';
 
 describe('CatalogConnect', () => {
   it('should render with the store', () => {

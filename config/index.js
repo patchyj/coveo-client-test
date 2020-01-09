@@ -1,7 +1,7 @@
 export default {
   PORT: process.env.PORT,
-  URL: 'https://platform.cloud.coveo.com/rest/search/v2',
-  TOKEN: process.env.TOKEN,
+  URL: 'https://cloudplatform.coveo.com/rest/search/v2',
+  TOKEN: process.env.TOKEN || '058c85fd-3c79-42a3-9236-b83d35588103',
   JSON_PLACEHOLDER: 'https://jsonplaceholder.typicode.com',
   rapidApi: {
     openBrewery: {
@@ -16,5 +16,6 @@ export default {
       TOKEN: '3ae33ff8d2632c7788e3345a7c2a22c52283f4fa'
     },
     KEY: 'UBlWjlpIqqmsh3hcKQRIrFuDqpXKp1QsP5sjsnmc5SGSSkHOge'
-  }
+  },
+  GOOGLE_MAPS_API_KEY: process.env.GOOGLE_MAPS_API_KEY
 };

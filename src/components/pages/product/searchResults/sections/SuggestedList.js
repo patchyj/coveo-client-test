@@ -1,7 +1,7 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import ProductTile from '../../../../shared/ProductTile';
+import React from 'react';
 import stringToKey from '../../../../../utils/createKey';
+import ProductTile from '../../../../shared/ProductTile';
 
 const SuggestedList = ({ results, selectProduct }) => {
   const tiles = results.map((result, i) => (
@@ -15,19 +15,25 @@ const SuggestedList = ({ results, selectProduct }) => {
   ));
 
   return (
-    <div className="container grid-md">
-      <div className="h4">Similar Results</div>
-      <div className="columns">{tiles}</div>
+    <div className="container grid-lg">
+      <div className="columns">
+        <div className="column col-12">
+          <div className="h4">Similar Results</div>
+        </div>
+        {tiles}
+      </div>
     </div>
   );
 };
 
 SuggestedList.propTypes = {
-  results: PropTypes.arrayOf(PropTypes.shape({}))
+  results: PropTypes.arrayOf(PropTypes.shape({})),
+  selectProduct: PropTypes.func
 };
 
 SuggestedList.defaultProps = {
-  results: []
+  results: [],
+  selectProduct: () => {}
 };
 
 export default SuggestedList;

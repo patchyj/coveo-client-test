@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavbarConnect should pass the products to the Navbar 1`] = `ReactWrapper {}`;
+
+exports[`NavbarConnect should render with the store 1`] = `ReactWrapper {}`;

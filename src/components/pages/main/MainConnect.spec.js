@@ -1,6 +1,6 @@
 import React from 'react';
-import MainConnect from './MainConnect';
 import connectWrapper from '../../../utils/testUtils/connectWrapper';
+import MainConnect from './MainConnect';
 
 describe('MainConnect', () => {
   it('should render with the store', () => {

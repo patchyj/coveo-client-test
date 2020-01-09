@@ -16,8 +16,8 @@ export const HeroContainer = styled.div`
   margin-top: 5rem;
 
   img {
-    width: 100px;
-    margin-bottom: 2rem;
+    width: 50px;
+    margin-bottom: 1rem;
   }
 
   form {
@@ -101,15 +101,34 @@ export const OptionsContainer = styled.div`
     animation: spin-cc 0.2s;
   }
 
+  .accordion {
+    width: 320px;
+  }
+
   .accordion-body {
     margin: auto;
     align-items: center;
     justify-content: center;
-    padding: 1rem;
+    box-sizing: border-box;
+  }
 
-    .form-group {
-      width: 200px;
-    }
+  .tab-block {
+    box-sizing: border-box;
+    margin-top: 15px;
+    text-transform: capitalize;
+  }
+
+  .tab .tab-item a {
+    padding: 0;
+  }
+
+  .rc-slider {
+    padding: 0.5rem;
+  }
+
+  .rc-slider-rail,
+  .rc-slider-track {
+    height: 2px;
   }
 
   @keyframes spin-c {
