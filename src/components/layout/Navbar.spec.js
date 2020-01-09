@@ -1,9 +1,19 @@
 import '@testing-library/jest-dom/extend-expect';
 import { fireEvent, render } from '@testing-library/react';
 import { mount } from 'enzyme';
+import { ThemeProvider } from 'styled-components';
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import Navbar from './Navbar';
+import { theme } from '../Root';
+
+const NavbarWrapper = (endpoint, defaultProps) => (
+  <ThemeProvider theme={theme}>
+    <MemoryRouter initialEntries={endpoint}>
+      <Navbar {...defaultProps} />
+    </MemoryRouter>
+  </ThemeProvider>
+);
 
 describe('Navbar', () => {
   let defaultProps;
@@ -12,37 +22,30 @@ describe('Navbar', () => {
     defaultProps = {
       fetchResultsFromNav: jest.fn(),
       results: {},
-      selectProduct: jest.fn()
+      selectProduct: jest.fn(),
+      theme: {
+        light: {
+          color1: 'white'
+        }
+      }
     };
   });
 
   it('should render the Navbar', () => {
-    const wrapper = mount(
-      <MemoryRouter initialEntries={['/']}>
-        <Navbar {...defaultProps} />
-      </MemoryRouter>
-    );
+    const wrapper = mount(NavbarWrapper(['/'], defaultProps));
 
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should not show the search bar if the root is "/"', () => {
-    const wrapper = mount(
-      <MemoryRouter initialEntries={['/blah']}>
-        <Navbar {...defaultProps} />
-      </MemoryRouter>
-    );
+    const wrapper = mount(NavbarWrapper(['/blah'], defaultProps));
 
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should show the results if query length !== 0', () => {
     // ASSEMBLE
-    const { container } = render(
-      <MemoryRouter initialEntries={['/blah']}>
-        <Navbar {...defaultProps} />
-      </MemoryRouter>
-    );
+    const { container } = render(NavbarWrapper(['/blah'], defaultProps));
 
     const input = container.querySelector('input');
 
@@ -62,22 +65,14 @@ describe('Navbar', () => {
 
   it('should not show the results if query length === 0', () => {
     // ASSEMBLE
-    const { container } = render(
-      <MemoryRouter initialEntries={['/blah']}>
-        <Navbar {...defaultProps} />
-      </MemoryRouter>
-    );
+    const { container } = render(NavbarWrapper(['/blah'], defaultProps));
 
     expect(container.getElementsByClassName('results').length).toBe(0);
   });
 
   it('should hide the results once query length is 0 again', () => {
     // ASSEMBLE
-    const { container } = render(
-      <MemoryRouter initialEntries={['/blah']}>
-        <Navbar {...defaultProps} />
-      </MemoryRouter>
-    );
+    const { container } = render(NavbarWrapper(['/blah'], defaultProps));
 
     const input = container.querySelector('input');
 

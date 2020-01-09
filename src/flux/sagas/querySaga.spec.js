@@ -1,5 +1,5 @@
 import recordSaga from '../../utils/testUtils/recordSaga';
-import { postRequest } from '../../utils/query';
+import { httpGetRequest } from '../../utils/query';
 import { fetchQuery, selectProduct } from './querySaga';
 import actionTypes from '../constants';
 
@@ -9,7 +9,7 @@ describe('Main Search Query', () => {
   let gen;
 
   beforeEach(() => {
-    postRequest.mockReset();
+    httpGetRequest.mockReset();
   });
 
   afterEach(() => {
@@ -17,7 +17,7 @@ describe('Main Search Query', () => {
   });
 
   describe('fetchQuery', () => {
-    it('should return SUCCESS if postRequest with query if successful', async () => {
+    it('should return SUCCESS if httpGetRequest with query if successful', async () => {
       const action = {
         payload: 'white wine'
       };
@@ -31,11 +31,11 @@ describe('Main Search Query', () => {
         }
       };
 
-      postRequest.mockReturnValueOnce(mockResponse);
+      httpGetRequest.mockReturnValueOnce(mockResponse);
 
       const dispatched = await recordSaga(fetchQuery, action, {});
 
-      expect(postRequest).toHaveBeenCalledWith('white wine');
+      expect(httpGetRequest).toHaveBeenCalledWith('white wine');
 
       expect(dispatched).toEqual([
         { type: actionTypes.FETCH_QUERY_STARTED },
@@ -49,7 +49,7 @@ describe('Main Search Query', () => {
       ]);
     });
 
-    it('should return FAILURE if postRequest with query fails', async () => {
+    it('should return FAILURE if httpGetRequest with query fails', async () => {
       const action = {
         payload: 'white wine'
       };
@@ -58,11 +58,11 @@ describe('Main Search Query', () => {
         errors: 'Error'
       };
 
-      postRequest.mockReturnValueOnce(mockResponse);
+      httpGetRequest.mockReturnValueOnce(mockResponse);
 
       const dispatched = await recordSaga(fetchQuery, action, {});
 
-      expect(postRequest).toHaveBeenCalledWith('white wine');
+      expect(httpGetRequest).toHaveBeenCalledWith('white wine');
 
       expect(dispatched).toEqual([
         { type: actionTypes.FETCH_QUERY_STARTED },
@@ -78,7 +78,7 @@ describe('Main Search Query', () => {
   });
 
   describe('selectProduct', () => {
-    it('should return SUCCESS if postRequest with query if successful', async () => {
+    it('should return SUCCESS if httpGetRequest with query if successful', async () => {
       const action = {
         payload: { id: '1', name: 'Some product' }
       };
