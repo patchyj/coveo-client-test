@@ -1,6 +1,6 @@
 import React from 'react';
-import NavbarConnect from './NavbarConnect';
 import connectWrapper from '../../utils/testUtils/connectWrapper';
+import NavbarConnect from './NavbarConnect';
 
 describe('NavbarConnect', () => {
   it('should render with the store', () => {

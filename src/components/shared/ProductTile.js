@@ -1,6 +1,6 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import { useRouteMatch, Link } from 'react-router-dom';
+import React from 'react';
+import { Link, useRouteMatch } from 'react-router-dom';
 import S from '../../static/styles';
 import { createItem, makeResponsiveColumns } from '../../utils/helpers';
 
@@ -12,6 +12,8 @@ const ProductTile = ({ product, type, cols, selectProduct }) => {
   }
 
   const responsiveCols = makeResponsiveColumns(cols);
+
+  const handleClick = () => selectProduct(product);
 
   const content = (
     <div className="card" style={{ height: '12rem' }}>
@@ -37,11 +39,13 @@ const ProductTile = ({ product, type, cols, selectProduct }) => {
   return (
     <S.Card className={`column ${responsiveCols}`}>
       {type === 'generic' ? (
-        <div onClick={() => selectProduct(product)} role="presentation">
+        <div onClick={handleClick} role="presentation">
           {content}
         </div>
       ) : (
-        <Link to={`${url}/${item.id}`}>{content}</Link>
+        <Link onClick={handleClick} to={`${url}/${item.id}`}>
+          {content}
+        </Link>
       )}
     </S.Card>
   );

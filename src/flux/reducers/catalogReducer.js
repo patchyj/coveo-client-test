@@ -1,6 +1,6 @@
 const initialState = {
   products: [],
-  product: {},
+  selected: {},
   errors: {},
   loading: false
 };
@@ -8,6 +8,7 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case 'GET_CATALOG_ITEMS_STARTED':
+    case 'SELECT_CATALOG_PRODUCT_STARTED':
       return {
         ...state,
         loading: true
@@ -19,7 +20,22 @@ export default (state = initialState, action) => {
         loading: false,
         errors: {}
       };
+    case 'SELECT_CATALOG_PRODUCT_SUCCESS':
+      return {
+        ...state,
+        selected: action.payload,
+        loading: false,
+        errors: {}
+      };
+    case 'CLEAR_SELECTED_PRODUCT':
+      return {
+        ...state,
+        selected: {},
+        loading: false,
+        errors: {}
+      };
     case 'GET_CATALOG_ITEMS_FAILURE':
+    case 'SELECT_CATALOG_PRODUCT_FAILURE':
       return {
         ...state,
         loading: false,

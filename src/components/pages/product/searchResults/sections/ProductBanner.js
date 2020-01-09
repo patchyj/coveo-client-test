@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import { get } from 'lodash';
-import StarRating from '../../../../shared/StarRating';
+import PropTypes from 'prop-types';
+import React from 'react';
 import S from '../../../../../static/styles';
+import StarRating from '../../../../shared/StarRating';
 
 const ProductBanner = ({ selected }) => {
   const { title, excerpt, percentScore } = selected;
@@ -12,7 +12,7 @@ const ProductBanner = ({ selected }) => {
   const category = get(selected, 'raw.tpcategorie');
   const producer = get(selected, 'raw.tpproducteur');
   const thumbnail = get(selected, 'raw.tpthumbnailuri');
-  const saq = get(selected, 'raw.sysprintableuri');
+  const saq = get(selected, 'raw.clickableuri');
 
   return (
     <S.ProductBanner className="columns">

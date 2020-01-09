@@ -1,8 +1,9 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
+import S from '../../../static/styles';
 
 const SearchBar = ({ value, setValue }) => (
-  <section>
+  <S.SearchBar>
     <div className="input-group input-inline">
       <input
         className="form-input"
@@ -15,7 +16,7 @@ const SearchBar = ({ value, setValue }) => (
         Search
       </button>
     </div>
-  </section>
+  </S.SearchBar>
 );
 
 SearchBar.propTypes = {

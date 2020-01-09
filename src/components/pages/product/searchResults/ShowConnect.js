@@ -1,20 +1,14 @@
-import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import ShowContainer from './ShowContainer';
+import { withRouter } from 'react-router-dom';
 import { selectProduct } from '../../../../flux/actions/queryActions';
-import { fetchUsers } from '../../../../flux/actions/userActions';
-import { fetchComments } from '../../../../flux/actions/commentActions';
+import ShowContainer from './ShowContainer';
 
 const mapStateToProps = state => ({
   results: state.results.results,
-  selected: state.results.selected,
-  users: state.users,
-  comments: state.comments
+  selected: state.results.selected
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchUsers: () => dispatch(fetchUsers()),
-  fetchComments: () => dispatch(fetchComments()),
   selectProduct: product => dispatch(selectProduct(product))
 });
 

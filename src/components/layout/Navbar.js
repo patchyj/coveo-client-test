@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import S from '../../static/styles';
+import { withTheme } from 'styled-components';
 import Logo from '../../static/images/arrow.png';
+import S from '../../static/styles';
 import SearchBar from '../shared/searchBar/SearchBar';
 import SearchResults from '../shared/searchBar/SearchResults';
 
@@ -18,6 +19,8 @@ const Navbar = ({ fetchResultsFromNav, results, selectProduct }) => {
     setQuery(e.target.value);
   };
 
+  const clearInput = () => setQuery('');
+
   useEffect(() => {
     if (query.length) {
       fetchResultsFromNav({ query });
@@ -28,31 +31,37 @@ const Navbar = ({ fetchResultsFromNav, results, selectProduct }) => {
   }, [query]);
 
   return (
-    <S.Navbar className="navbar container grid-lg">
-      <section className="navbar-section">
-        <Link to="/" className="navbar-brand mr-2">
-          {' '}
-          <img src={Logo} alt="logo" width="20" />{' '}
-        </Link>
-        <Link to="/catalog/breweries" className="btn btn-link">
-          Breweries
-        </Link>
-        <Link to="/catalog/wines" className="btn btn-link">
-          Wines
-        </Link>
-      </section>
-      {!isRoot && (
-        <section className="navbar-section">
-          <SearchBar value={query} setValue={handleChange} />
-          {showResults && (
-            <SearchResults
-              searchResults={searchResults}
-              loading={loading}
-              selectProduct={selectProduct}
-            />
+    <S.Navbar className="navbar container ">
+      <div className="container grid-lg">
+        <div className="columns">
+          <section className="navbar-section">
+            <Link to="/" className="navbar-brand mr-2">
+              {' '}
+              <img src={Logo} alt="logo" />{' '}
+            </Link>
+            <Link to="/catalog/breweries" className="btn btn-link">
+              Breweries
+            </Link>
+            <Link to="/catalog/wines" className="btn btn-link">
+              Wines
+            </Link>
+          </section>
+          {!isRoot && (
+            <section className="navbar-section">
+              <SearchBar value={query} setValue={handleChange} />
+              {showResults && (
+                <SearchResults
+                  searchResults={searchResults}
+                  loading={loading}
+                  selectProduct={selectProduct}
+                  setShowResults={setShowResults}
+                  clearInput={clearInput}
+                />
+              )}
+            </section>
           )}
-        </section>
-      )}
+        </div>
+      </div>
     </S.Navbar>
   );
 };
@@ -70,4 +79,4 @@ Navbar.defaultProps = {
   selectProduct: () => {}
 };
 
-export default Navbar;
+export default withTheme(Navbar);

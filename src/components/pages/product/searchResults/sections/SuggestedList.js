@@ -1,7 +1,7 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import ProductTile from '../../../../shared/ProductTile';
+import React from 'react';
 import stringToKey from '../../../../../utils/createKey';
+import ProductTile from '../../../../shared/ProductTile';
 
 const SuggestedList = ({ results, selectProduct }) => {
   const tiles = results.map((result, i) => (

@@ -1,14 +1,22 @@
 /* eslint-disable operator-linebreak */
-import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import React, { Fragment, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import S from '../../../../static/styles';
+import stringToKey from '../../../../utils/createKey';
 import Paginator from '../../../shared/Paginator';
 import ProductTile from '../../../shared/ProductTile';
-import stringToKey from '../../../../utils/createKey';
 import Spinner from '../../../shared/Spinner';
-import S from '../../../../static/styles';
+import CatalogShow from './CatalogShow';
 
-const CatalogIndex = ({ fetch, products, loading }) => {
+const CatalogIndex = ({
+  fetch,
+  selectProduct,
+  clearSelectedProduct,
+  selected,
+  products,
+  loading
+}) => {
   const { type } = useParams();
 
   const [offset, setOffset] = useState(0);
@@ -17,6 +25,7 @@ const CatalogIndex = ({ fetch, products, loading }) => {
   const [cols, setCols] = useState(2);
   const [nameFilter, setNameFilter] = useState('');
   const [stateFilter, setStateFilter] = useState('');
+  const [showBanner, setShowBanner] = useState(false);
 
   /* <<<<<<< FETCH INITIAL DATA DEPENDING ON URL >>>>>>> */
   useEffect(() => {
@@ -66,6 +75,11 @@ const CatalogIndex = ({ fetch, products, loading }) => {
     setStateFilter(e.target.value.toLowerCase());
   };
 
+  const handleSelectProduct = product => {
+    selectProduct(product);
+    setShowBanner(true);
+  };
+
   const tiles =
     currentData &&
     currentData.map((product, i) => {
@@ -76,6 +90,7 @@ const CatalogIndex = ({ fetch, products, loading }) => {
           key={stringToKey(name, i)}
           type={type}
           cols={cols}
+          selectProduct={handleSelectProduct}
         />
       );
     });
@@ -140,38 +155,52 @@ const CatalogIndex = ({ fetch, products, loading }) => {
     </div>
   );
 
+  const closeBanner = () => {
+    clearSelectedProduct();
+    setShowBanner(false);
+  };
+
   return (
-    <div className="container p-0">
-      {loading ? (
-        <S.SpinnerContainer>
-          {' '}
-          <Spinner />
-        </S.SpinnerContainer>
-      ) : (
-        <div className="hero">
-          <S.Hero className="container grid-lg">
-            <div className="hero">
-              <h3>{type}</h3>
-            </div>
-          </S.Hero>
-          <div className="container grid-lg">
-            <S.CatalogIndex>{renderContent()}</S.CatalogIndex>
-          </div>
-        </div>
+    <Fragment>
+      {selected && showBanner && (
+        <CatalogShow selected={selected} closeBanner={closeBanner} />
       )}
-    </div>
+      <div className="container p-0">
+        {loading ? (
+          <S.SpinnerContainer>
+            {' '}
+            <Spinner />
+          </S.SpinnerContainer>
+        ) : (
+          <div className="hero" style={{ padding: '0' }}>
+            <S.Hero className="container grid-lg">
+              <div className="hero">
+                <h3>{type}</h3>
+              </div>
+            </S.Hero>
+            <div className="container grid-lg">
+              <S.CatalogIndex>{renderContent()}</S.CatalogIndex>
+            </div>
+          </div>
+        )}
+      </div>
+    </Fragment>
   );
 };
 
 CatalogIndex.propTypes = {
   fetch: PropTypes.func.isRequired,
+  selectProduct: PropTypes.func.isRequired,
+  clearSelectedProduct: PropTypes.func.isRequired,
   products: PropTypes.arrayOf(PropTypes.shape({})),
+  selected: PropTypes.shape({}),
   loading: PropTypes.bool
 };
 
 CatalogIndex.defaultProps = {
   products: [],
-  loading: false
+  loading: false,
+  selected: {}
 };
 
 export default CatalogIndex;

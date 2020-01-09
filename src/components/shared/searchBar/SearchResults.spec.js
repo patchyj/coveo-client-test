@@ -1,6 +1,8 @@
-import React from 'react';
-import { shallow, mount } from 'enzyme';
 import '@testing-library/jest-dom/extend-expect';
+import { mount, shallow } from 'enzyme';
+import React from 'react';
+import { ThemeProvider } from 'styled-components';
+import { theme } from '../../Root';
 import SearchResults from './SearchResults';
 
 describe('SearchResults', () => {
@@ -10,7 +12,12 @@ describe('SearchResults', () => {
     defaultProps = {
       searchResults: [],
       selectProduct: jest.fn(),
-      loading: false
+      loading: false,
+      theme: {
+        light: {
+          color1: 'green'
+        }
+      }
     };
   });
 
@@ -47,7 +54,11 @@ describe('SearchResults', () => {
       loading: true
     };
 
-    const wrapper = mount(<SearchResults {...props} />);
+    const wrapper = mount(
+      <ThemeProvider theme={theme}>
+        <SearchResults {...props} />
+      </ThemeProvider>
+    );
 
     expect(wrapper.find('svg')).toHaveLength(1);
     expect(wrapper).toMatchSnapshot();
@@ -70,7 +81,13 @@ describe('SearchResults', () => {
       ]
     };
     const wrapper = shallow(<SearchResults {...props} />);
-    wrapper.find('Link').simulate('click');
+
+    wrapper
+      .dive()
+      .dive()
+      .dive()
+      .find('Link')
+      .simulate('click');
 
     expect(props.selectProduct).toHaveBeenCalled();
     expect(props.selectProduct).toHaveBeenCalledWith({

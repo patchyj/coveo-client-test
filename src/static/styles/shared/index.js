@@ -36,21 +36,74 @@ export const Spinner = styled.svg`
 `;
 
 export const SpinnerContainer = styled.div`
-  height: 500px;
+  height: calc(100vh - 36px);
   text-align: center;
 `;
 
 export const Navbar = styled.header`
-  padding: 20px;
+  padding: 0 40px;
+  background-color: #782c42;
+  color: white;
+  box-shadow: 0 -1px 9px 2px black;
+
+  .navbar-brand {
+    img {
+      width: 13px;
+    }
+  }
 
   .btn {
+    color: white;
     border: none;
+    font-weight: 200;
+
+    &:hover {
+      color: #bbb;
+    }
+  }
+`;
+
+export const Footer = styled.footer`
+  position: relative;
+  bottom: 0;
+
+  .image-container {
+    align-items: center;
+    img {
+      height: 100px;
+      filter: brightness(10);
+    }
+  }
+
+  dd {
+    font-weight: 100;
+    letter-spacing: 1px;
+
+    a,
+    a:hover,
+    a:visited {
+      color: white;
+    }
+
+    i {
+      margin-left: 1rem;
+    }
+  }
+`;
+
+export const SearchBar = styled.section`
+  .btn {
+    padding: 0 20px;
+  }
+  .form-input,
+  .input-group-btn {
+    height: 1.5rem;
   }
 `;
 
 export const SearchResults = styled.div`
   position: absolute;
-  top: 76px;
+  top: 36px;
   width: 400px;
   height: 350px;
   background: #efefef;
@@ -61,7 +114,7 @@ export const SearchResults = styled.div`
   a.list-item {
     padding: 10px 0;
     transition: 0.2s;
-    color: #782c42;
+    color: ${({ theme: { light } }) => light.color1};
 
     &:hover {
       background: #dfdfdf;
@@ -82,8 +135,8 @@ export const Paginator = styled.div`
     .page-item {
       &.active {
         .page-link {
-          background: #782c42;
-          border-color: #782c42;
+          background: ${({ theme: { light } }) => light.color1};
+          border-color: ${({ theme: { light } }) => light.color1};
         }
       }
 
@@ -96,5 +149,20 @@ export const Paginator = styled.div`
         }
       }
     }
+  }
+`;
+
+export const RangeSlider = styled.div`
+  width: 100%;
+`;
+
+export const Checkbox = styled.label`
+  input:checked + .form-icon {
+    background: ${({ theme: { light } }) => light.color1};
+    border-color: ${({ theme: { light } }) => light.color1};
+  }
+
+  small {
+    text-transform: capitalize;
   }
 `;

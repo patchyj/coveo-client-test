@@ -1,25 +1,39 @@
 /* eslint-disable operator-linebreak */
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import { get } from 'lodash';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { withTheme } from 'styled-components';
 import S from '../../../static/styles';
+import stringToKey from '../../../utils/createKey';
 import Spinner from '../Spinner';
 import StarRating from '../StarRating';
-import stringToKey from '../../../utils/createKey';
 
-const SearchResults = ({ searchResults, loading, selectProduct }) => {
+const SearchResults = ({
+  searchResults,
+  loading,
+  selectProduct,
+  setShowResults,
+  clearInput
+}) => {
   const results = searchResults.map((result, i) => {
     const price = get(result, 'raw.tpprixnormal');
     const id = get(result, 'raw.tpproductid');
     const ml = get(result, 'raw.tpformat');
     const category = get(result, 'raw.tpcategorie');
+
+    const handleClick = () => {
+      selectProduct(result);
+      setShowResults(false);
+      clearInput();
+    };
+
     return (
       <Link
         className="list-item columns"
         to={`/products/${id}`}
         key={stringToKey(result.title, i)}
-        onClick={() => selectProduct(result)}
+        onClick={handleClick}
       >
         <div className="column col-xs-6">
           <div className="columns">
@@ -62,13 +76,17 @@ const SearchResults = ({ searchResults, loading, selectProduct }) => {
 SearchResults.propTypes = {
   searchResults: PropTypes.arrayOf(PropTypes.shape({})),
   loading: PropTypes.bool,
-  selectProduct: PropTypes.func
+  selectProduct: PropTypes.func,
+  setShowResults: PropTypes.func,
+  clearInput: PropTypes.func
 };
 
 SearchResults.defaultProps = {
   searchResults: [],
   loading: false,
-  selectProduct: () => {}
+  selectProduct: () => {},
+  setShowResults: () => {},
+  clearInput: () => {}
 };
 
-export default SearchResults;
+export default withTheme(SearchResults);
