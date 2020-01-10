@@ -14,6 +14,12 @@ Completed Tech test for the Frond-End developer position at Coveo, Montreal
 - Axios
 - Jest & Enzyme
 
+Environment:
+
+Node v12
+NPM v5
+Docker vXX
+
 ## How to install
 
 ```bash

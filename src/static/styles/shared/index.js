@@ -92,12 +92,40 @@ export const Footer = styled.footer`
 `;
 
 export const SearchBar = styled.section`
+  position: relative;
   .btn {
     padding: 0 20px;
   }
   .form-input,
   .input-group-btn {
     height: 1.5rem;
+  }
+  .pop {
+    position: absolute;
+    top: 0;
+    left: -8.3rem;
+    padding: 0 12px 3px;
+    border-radius: 6px;
+    opacity: ${({ showPopover }) => (showPopover ? 1 : 0)};
+    background: ${({ theme: { light } }) => light.color1};
+    color: white;
+
+    .fa-times {
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-top: 8px solid transparent;
+      border-left: 12px solid ${({ theme: { light } }) => light.color1};
+      border-bottom: 8px solid transparent;
+      right: -10px;
+      top: 6px;
+    }
   }
 `;
 

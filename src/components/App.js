@@ -6,6 +6,7 @@ import Navbar from './layout/NavbarConnect';
 import Main from './pages/main/MainConnect';
 import Catalog from './pages/product/catalog/CatalogConnect';
 import Show from './pages/product/searchResults/ShowConnect';
+import Products from './pages/product/searchResults/ProductsContainer';
 
 function App() {
   return (
@@ -14,8 +15,8 @@ function App() {
       <Switch>
         {/* Coveo API */}
         <Route exact path="/" component={Main} />
-        <Route path="/products/:title">
-          <Show />
+        <Route path="/products">
+          <Products />
           <Footer />
         </Route>
         {/* 3rd PARTY API */}
