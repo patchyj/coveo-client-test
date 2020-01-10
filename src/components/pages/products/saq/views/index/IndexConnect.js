@@ -4,7 +4,8 @@ import { selectProduct } from '../../../../../../flux/actions/queryActions';
 import ProductsIndex from './IndexContainer';
 
 const mapStateToProps = state => ({
-  results: state.results.results
+  results: state.results.results,
+  loading: state.results.loading
 });
 
 const mapDispatchToProps = dispatch => ({

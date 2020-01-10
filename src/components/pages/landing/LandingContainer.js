@@ -14,7 +14,7 @@ const MainContainer = ({ fetchResults, results, selectProduct, history }) => {
   const [autoSearch, setAutoSearch] = useState(false);
   const [showPopover, setShowPopover] = useState(false);
   const [minPrice, setMinPrice] = useState(0);
-  const [maxPrice, setMaxPrice] = useState(10);
+  const [maxPrice, setMaxPrice] = useState(0);
 
   const { loading, errors, results: searchResults } = results;
 
@@ -111,13 +111,17 @@ MainContainer.propTypes = {
   results: PropTypes.shape({}),
   errors: PropTypes.shape({}),
   fetchResults: PropTypes.func.isRequired,
-  selectProduct: PropTypes.func
+  selectProduct: PropTypes.func,
+  history: PropTypes.shape({
+    push: PropTypes.func
+  })
 };
 
 MainContainer.defaultProps = {
   results: {},
   errors: {},
-  selectProduct: () => {}
+  selectProduct: () => {},
+  history: {}
 };
 
 export default MainContainer;

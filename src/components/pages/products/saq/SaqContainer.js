@@ -1,10 +1,9 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import { Route, Switch, useRouteMatch } from 'react-router-dom';
 import ProductsIndex from './views/index/IndexConnect';
 import ProductsShow from './views/show/ShowConnect';
 
-const ProductsContainer = ({ results, selected, selectProduct }) => {
+const ProductsContainer = () => {
   const { path } = useRouteMatch();
 
   return (
@@ -19,23 +18,6 @@ const ProductsContainer = ({ results, selected, selectProduct }) => {
       </Switch>
     </div>
   );
-};
-
-ProductsContainer.propTypes = {
-  results: PropTypes.arrayOf(PropTypes.shape({})),
-  selected: PropTypes.shape({}),
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      title: PropTypes.string
-    })
-  }),
-  selectProduct: PropTypes.func.isRequired
-};
-
-ProductsContainer.defaultProps = {
-  results: [],
-  selected: {},
-  match: {}
 };
 
 export default ProductsContainer;

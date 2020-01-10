@@ -1,6 +1,8 @@
 import numbro from 'numbro';
 import { get } from 'lodash';
 
+export const truncateString = str => `${str.substring(0, 20)}...`;
+
 export const makeResponsiveColumns = cols => {
   switch (cols) {
     case 2:
@@ -31,9 +33,12 @@ export const makeBreweryTile = brewery => ({
   url: brewery.website_url
 });
 
-export const makeGenericTile = product => ({
-  id: product.title,
-  name: product.title,
+export const makeGenericTile = (product, truncate) => ({
+  id: product.raw.tpcodesaq || product.title,
+  name:
+    truncate && product.title.length > 20
+      ? truncateString(product.title)
+      : product.title,
   percentScore: `${Math.ceil(product.percentScore)}%`,
   score: `Score: ${numbro(product.score).format({ thousandSeparated: true })}`,
   url: product.uri,
@@ -41,13 +46,13 @@ export const makeGenericTile = product => ({
   price: get(product, 'raw.tpprixnormal')
 });
 
-export const createItem = (type, product = {}) => {
+export const createItem = (type, product = {}, truncate) => {
   switch (type) {
     case 'breweries':
       return makeBreweryTile(product);
     case 'wines':
       return makeWineTile(product);
     default:
-      return makeGenericTile(product);
+      return makeGenericTile(product, truncate);
   }
 };
