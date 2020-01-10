@@ -12,6 +12,7 @@ describe('SearchResults', () => {
     defaultProps = {
       searchResults: [],
       selectProduct: jest.fn(),
+      updateSuggested: () => {},
       loading: false,
       theme: {
         light: {

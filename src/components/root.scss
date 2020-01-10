@@ -11,3 +11,17 @@ a, a:visited {
   color: #782c42;
 
 }
+
+.tile-size {
+  i {
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: 0.1s;
+
+    &:hover {
+      background: #782c42;
+      color: white;
+    }
+  }
+}
+  

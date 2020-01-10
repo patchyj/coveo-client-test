@@ -4,7 +4,7 @@ import {
   fetchResults,
   selectProduct
 } from '../../../flux/actions/queryActions';
-import Main from './MainContainer';
+import Main from './LandingContainer';
 
 const mapStateToProps = state => ({
   results: state.results,

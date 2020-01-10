@@ -7,7 +7,12 @@ import S from '../../static/styles';
 import SearchBar from '../shared/searchBar/SearchBar';
 import SearchResults from '../shared/searchBar/SearchResults';
 
-const Navbar = ({ fetchResultsFromNav, results, selectProduct }) => {
+const Navbar = ({
+  fetchResultsFromNav,
+  results,
+  selectProduct,
+  updateSuggested
+}) => {
   const [query, setQuery] = useState('');
   const [showResults, setShowResults] = useState(false);
   const { pathname } = useLocation();
@@ -51,11 +56,12 @@ const Navbar = ({ fetchResultsFromNav, results, selectProduct }) => {
               <SearchBar value={query} setValue={handleChange} />
               {showResults && (
                 <SearchResults
-                  searchResults={searchResults}
                   loading={loading}
+                  clearInput={clearInput}
+                  searchResults={searchResults}
                   selectProduct={selectProduct}
                   setShowResults={setShowResults}
-                  clearInput={clearInput}
+                  updateSuggested={updateSuggested}
                 />
               )}
             </section>
@@ -70,13 +76,15 @@ Navbar.propTypes = {
   results: PropTypes.shape({}),
   errors: PropTypes.shape({}),
   fetchResultsFromNav: PropTypes.func.isRequired,
-  selectProduct: PropTypes.func
+  selectProduct: PropTypes.func,
+  updateSuggested: PropTypes.func
 };
 
 Navbar.defaultProps = {
   results: {},
   errors: {},
-  selectProduct: () => {}
+  selectProduct: () => {},
+  updateSuggested: () => {}
 };
 
 export default withTheme(Navbar);

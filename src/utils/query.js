@@ -10,7 +10,7 @@ export const getRequest = ({ url, endpoint }) =>
   });
 
 export const httpGetRequest = ({ query, options }) => {
-  const { minPrice, maxPrice, types } = options;
+  const { minPrice, maxPrice, types, numberOfResults } = options;
 
   // QUERY STRING
   // 1. query eg. 'rum'
@@ -36,13 +36,13 @@ export const httpGetRequest = ({ query, options }) => {
   if (wineCategories.length) {
     if (wineCategories.indexOf('mousseux') !== -1) {
       const sparklingColors = wineCategories.filter(w => w !== 'mousseux');
-      category = `@tpcategorie="vin mousseux"${
+      category = `;@tpcategorie="vin mousseux"${
         sparklingColors.length
           ? `;@tpcouleur==(${sparklingColors.join(',')})`
           : ''
       }`;
     } else {
-      category = `@tpcategorie=vin;@tpcouleur==(${wineCategories.join(',')})`;
+      category = `;@tpcategorie=vin;@tpcouleur==(${wineCategories.join(',')})`;
     }
   }
 
@@ -60,11 +60,11 @@ export const httpGetRequest = ({ query, options }) => {
   // PRICE
   let price = '';
   if (minPrice && maxPrice) {
-    price += `@tpprixnum>${minPrice};@tpprixnum<${maxPrice}`;
+    price += `;@tpprixnum>${minPrice};@tpprixnum<${maxPrice}`;
   } else if (minPrice) {
-    price += `@tpprixnum>${minPrice}`;
+    price += `;@tpprixnum>${minPrice}`;
   } else if (maxPrice) {
-    price += `@tpprixnum<${maxPrice}`;
+    price += `;@tpprixnum<${maxPrice}`;
   }
 
   return axios({
@@ -72,7 +72,8 @@ export const httpGetRequest = ({ query, options }) => {
     url: URL,
     params: {
       access_token: TOKEN,
-      q: `${query};${category};${price}`
+      q: `${query}${category}${price}`,
+      numberOfResults
     }
   });
 };

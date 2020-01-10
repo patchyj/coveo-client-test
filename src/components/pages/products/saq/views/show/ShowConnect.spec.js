@@ -1,5 +1,5 @@
 import React from 'react';
-import connectWrapper from '../../../../utils/testUtils/connectWrapper';
+import connectWrapper from '../../../../../../utils/testUtils/connectWrapper';
 import ShowConnect from './ShowConnect';
 
 describe('ShowConnect', () => {

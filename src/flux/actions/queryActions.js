@@ -14,3 +14,8 @@ export const selectProduct = selected => ({
   type: actionTypes.SELECT_PRODUCT,
   payload: selected
 });
+
+export const updateSuggested = suggested => ({
+  type: actionTypes.UPDATE_SUGGESTED,
+  payload: suggested
+});

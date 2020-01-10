@@ -1,8 +1,8 @@
 import React from 'react';
 import connectWrapper from '../../../utils/testUtils/connectWrapper';
-import MainConnect from './MainConnect';
+import LandingConnect from './LandingConnect';
 
-describe('MainConnect', () => {
+describe('LandingConnect', () => {
   it('should render with the store', () => {
     const initialState = {
       results: {
@@ -11,7 +11,7 @@ describe('MainConnect', () => {
         results: []
       }
     };
-    const wrapper = connectWrapper(initialState, <MainConnect />);
+    const wrapper = connectWrapper(initialState, <LandingConnect />);
 
     expect(wrapper).toMatchSnapshot();
   });
