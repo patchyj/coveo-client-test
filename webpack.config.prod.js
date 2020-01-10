@@ -11,8 +11,16 @@ dotenv.config();
 
 const GLOBALS = {
   'process.env.NODE_ENV': JSON.stringify('production'),
-  __DEV__: false
+  __DEV__: false,
+  'process.env.PORT': JSON.stringify(process.env.PORT),
+  'process.env.TOKEN': JSON.stringify(process.env.TOKEN),
+  'process.env.GOOGLE_MAPS_API_KEY': JSON.stringify(
+    process.env.GOOGLE_MAPS_API_KEY
+  )
 };
+
+// eslint-disable-next-line no-console
+console.log(GLOBALS);
 
 export default {
   resolve: {
@@ -70,12 +78,6 @@ export default {
       // Note that you can add custom options here if you need to handle other custom logic in index.html
       // To track JavaScript errors via TrackJS, sign up for a free trial at TrackJS.com and enter your token below.
       trackJSToken: ''
-    }),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-      'process.env.DEBUG': JSON.stringify(process.env.DEBUG),
-      'process.env.PORT': JSON.stringify(process.env.PORT),
-      'process.env.TOKEN': JSON.stringify(process.env.TOKEN),
     })
   ],
   module: {
