@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import GoogleMapReact from 'google-map-react';
-import S from '../../../../static/styles';
-import marker from '../../../../static/images/marker.png';
-import config from '../../../../../config';
+import S from '../../../../../../static/styles';
+import marker from '../../../../../../static/images/marker.png';
+import config from '../../../../../../../config';
 
 const formatPhone = number => {
   const cleaned = `${number}`.replace(/\D/g, '');

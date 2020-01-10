@@ -3,10 +3,9 @@ import { hot } from 'react-hot-loader';
 import { Route, Switch } from 'react-router-dom';
 import Footer from './layout/Footer';
 import Navbar from './layout/NavbarConnect';
-import Main from './pages/main/MainConnect';
-import Catalog from './pages/product/catalog/CatalogConnect';
-import Show from './pages/product/searchResults/ShowConnect';
-import Products from './pages/product/searchResults/ProductsContainer';
+import Landing from './pages/landing/LandingConnect';
+import Catalog from './pages/products/catalog/CatalogConnect';
+import Products from './pages/products/saq/SaqContainer';
 
 function App() {
   return (
@@ -14,7 +13,7 @@ function App() {
       <Navbar />
       <Switch>
         {/* Coveo API */}
-        <Route exact path="/" component={Main} />
+        <Route exact path="/" component={Landing} />
         <Route path="/products">
           <Products />
           <Footer />

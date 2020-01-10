@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { useRouteMatch } from 'react-router-dom';
-import ProductBanner from './sections/ProductBanner';
-import SuggestedList from './sections/SuggestedList';
+import ProductBanner from '../../sections/ProductBanner';
+import SuggestedList from '../../sections/SuggestedList';
 
 const ShowContainer = ({ results, selected, selectProduct }) => {
   const params = useRouteMatch();

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { selectProduct } from '../../../../flux/actions/queryActions';
+import { selectProduct } from '../../../../../../flux/actions/queryActions';
 import ShowContainer from './ShowContainer';
 
 const mapStateToProps = state => ({

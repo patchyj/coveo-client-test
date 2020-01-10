@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Route, Switch, useRouteMatch } from 'react-router-dom';
-import ProductsIndex from './IndexConnect';
-import ProductsShow from './ShowContainer';
+import ProductsIndex from './views/index/IndexConnect';
+import ProductsShow from './views/show/ShowConnect';
 
 const ProductsContainer = ({ results, selected, selectProduct }) => {
   const { path } = useRouteMatch();

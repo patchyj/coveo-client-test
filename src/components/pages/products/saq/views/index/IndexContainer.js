@@ -1,5 +1,5 @@
 import React from 'react';
-import SuggestedList from './sections/SuggestedList';
+import SuggestedList from '../../sections/SuggestedList';
 
 const ProductsIndex = ({ results, selectProduct }) => (
   <div>

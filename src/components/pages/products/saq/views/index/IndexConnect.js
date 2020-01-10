@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { selectProduct } from '../../../../flux/actions/queryActions';
-import ProductsIndex from './ProductsIndex';
+import { selectProduct } from '../../../../../../flux/actions/queryActions';
+import ProductsIndex from './IndexContainer';
 
 const mapStateToProps = state => ({
   results: state.results.results
