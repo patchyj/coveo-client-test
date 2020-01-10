@@ -17,7 +17,7 @@ const SearchBar = ({ value, setValue, showPopover, closePopover }) => (
       </button>
     </div>
     <div className="pop">
-      <i className="fas fa-times" onClick={closePopover} />{' '}
+      <i className="fas fa-times" onClick={closePopover} role="presentation" />{' '}
       <small>Please enter a query</small>
     </div>
   </S.SearchBar>
@@ -25,12 +25,16 @@ const SearchBar = ({ value, setValue, showPopover, closePopover }) => (
 
 SearchBar.propTypes = {
   value: PropTypes.string,
-  setValue: PropTypes.func
+  setValue: PropTypes.func,
+  showPopover: PropTypes.bool,
+  closePopover: PropTypes.func
 };
 
 SearchBar.defaultProps = {
   value: '',
-  setValue: () => {}
+  setValue: () => {},
+  showPopover: false,
+  closePopover: () => {}
 };
 
 export default SearchBar;

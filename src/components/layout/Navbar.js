@@ -76,13 +76,15 @@ Navbar.propTypes = {
   results: PropTypes.shape({}),
   errors: PropTypes.shape({}),
   fetchResultsFromNav: PropTypes.func.isRequired,
-  selectProduct: PropTypes.func
+  selectProduct: PropTypes.func,
+  updateSuggested: PropTypes.func
 };
 
 Navbar.defaultProps = {
   results: {},
   errors: {},
-  selectProduct: () => {}
+  selectProduct: () => {},
+  updateSuggested: () => {}
 };
 
 export default withTheme(Navbar);
