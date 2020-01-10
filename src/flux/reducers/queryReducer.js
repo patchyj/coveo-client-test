@@ -3,14 +3,20 @@ const initialState = {
   navResults: [],
   selected: {},
   errors: {},
-  loading: false
+  loading: false,
+  navLoading: false
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case 'FETCH_QUERY_STARTED':
     case 'FETCH_QUERY_FROM_NAV_STARTED':
+      return {
+        ...state,
+        navLoading: true
+      };
+    case 'FETCH_QUERY_STARTED':
     case 'SELECT_PRODUCT_STARTED':
+    case 'UPDATE_SUGGESTED_STARTED':
       return {
         ...state,
         loading: true
@@ -26,7 +32,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         navResults: action.payload,
-        loading: false,
+        navLoading: false,
         errors: {}
       };
     case 'SELECT_PRODUCT_SUCCESS':
@@ -36,9 +42,21 @@ export default (state = initialState, action) => {
         loading: false,
         errors: {}
       };
+    case 'UPDATE_SUGGESTED_SUCCESS':
+      return {
+        ...state,
+        results: action.payload,
+        loading: false,
+        errors: {}
+      };
+    case 'FETCH_QUERY_FROM_NAV_FAILURE':
+      return {
+        ...state,
+        navLoading: false
+      };
     case 'FETCH_QUERY_FAILURE':
     case 'SELECT_PRODUCT_FAILURE':
-    case 'FETCH_QUERY_FROM_NAV_FAILURE':
+    case 'UPDATE_SUGGESTED_FAILURE':
       return {
         ...state,
         loading: false,

@@ -10,11 +10,12 @@ import Spinner from '../Spinner';
 import StarRating from '../StarRating';
 
 const SearchResults = ({
-  searchResults,
   loading,
+  clearInput,
+  searchResults,
   selectProduct,
   setShowResults,
-  clearInput
+  updateSuggested
 }) => {
   const results = searchResults.map((result, i) => {
     const price = get(result, 'raw.tpprixnormal');
@@ -24,6 +25,7 @@ const SearchResults = ({
 
     const handleClick = () => {
       selectProduct(result);
+      updateSuggested(searchResults);
       setShowResults(false);
       clearInput();
     };
