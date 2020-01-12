@@ -2,8 +2,6 @@ import moxios from 'moxios';
 import { httpGetRequest, postRequest, rapidAPIRequest } from './query';
 import config from '../../config';
 
-const { URL } = config;
-
 describe('query', () => {
   beforeEach(() => {
     moxios.install();
