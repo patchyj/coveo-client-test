@@ -1,5 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import styled from 'styled-components';
+import breakpoints from '../utils/breakpoints';
 
 export const Spinner = styled.svg`
   animation: rotate 1s linear infinite;
@@ -52,6 +53,10 @@ export const Navbar = styled.header`
     }
   }
 
+  .fas {
+    padding: 10px;
+  }
+
   .btn {
     color: white;
     border: none;
@@ -59,6 +64,22 @@ export const Navbar = styled.header`
 
     &:hover {
       color: #bbb;
+    }
+  }
+
+  .nav-dropdown {
+    display: flex;
+    flex-direction: column;
+    background-color: #782c42;
+
+    a {
+      text-align: left;
+    }
+  }
+
+  @media (max-width: ${breakpoints.xs}) {
+    .navbar-section {
+      flex: auto;
     }
   }
 `;
@@ -69,6 +90,8 @@ export const Footer = styled.footer`
 
   .image-container {
     align-items: center;
+    justify-content: center;
+
     img {
       height: 100px;
       filter: brightness(10);
@@ -87,6 +110,16 @@ export const Footer = styled.footer`
 
     i {
       margin-left: 1rem;
+    }
+  }
+
+  @media (max-width: ${breakpoints.xs}) {
+    .image-container img {
+      height: 60px;
+    }
+
+    dd {
+      font-size: 0.4rem;
     }
   }
 `;
@@ -154,7 +187,7 @@ export const SearchResults = styled.div`
 export const Paginator = styled.div`
   .react-hooks-paginator {
     margin: 0;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
 
     li {
       margin-top: 0;

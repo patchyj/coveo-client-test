@@ -89,6 +89,10 @@ export const ResultsList = styled.div`
 
   @media (max-width: ${breakpoints.xs}) {
     width: 100%;
+
+    a.list-item {
+      font-size: 12px;
+    }
   }
 `;
 
@@ -152,6 +156,13 @@ export const OptionsContainer = styled.div`
     }
     to {
       transform: rotate(0deg);
+    }
+  }
+
+  @media (max-width: ${breakpoints.xs}) {
+    width: 300px;
+    .accordion {
+      width: 100%;
     }
   }
 `;
