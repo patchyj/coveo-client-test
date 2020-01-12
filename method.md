@@ -12,7 +12,8 @@ NB: Sketch designs are only very basic outlines at this stage
 
 ### My initial Trello board:
 
-<img src="./readme_media/sketch.png" width="400" alt="Trello">
+<img src="./readme_media/sketch 1.png" width="400" alt="Trello">
+<img src="./readme_media/sketch 2.png" width="400" alt="Trello">
 
 ---
 
