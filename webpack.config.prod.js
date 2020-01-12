@@ -14,13 +14,12 @@ const GLOBALS = {
   __DEV__: false,
   'process.env.PORT': JSON.stringify(process.env.PORT),
   'process.env.TOKEN': JSON.stringify(process.env.TOKEN),
+  'process.env.RAPID_API_KEY': JSON.stringify(process.env.RAPID_API_KEY),
+  'process.env.RAPID_API_TOKEN': JSON.stringify(process.env.RAPID_API_TOKEN),
   'process.env.GOOGLE_MAPS_API_KEY': JSON.stringify(
     process.env.GOOGLE_MAPS_API_KEY
   )
 };
-
-// eslint-disable-next-line no-console
-console.log(GLOBALS);
 
 export default {
   resolve: {

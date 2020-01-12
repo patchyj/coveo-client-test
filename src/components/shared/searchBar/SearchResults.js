@@ -10,11 +10,12 @@ import Spinner from '../Spinner';
 import StarRating from '../StarRating';
 
 const SearchResults = ({
-  searchResults,
   loading,
+  clearInput,
+  searchResults,
   selectProduct,
   setShowResults,
-  clearInput
+  updateSuggested
 }) => {
   const results = searchResults.map((result, i) => {
     const price = get(result, 'raw.tpprixnormal');
@@ -24,6 +25,7 @@ const SearchResults = ({
 
     const handleClick = () => {
       selectProduct(result);
+      updateSuggested(searchResults);
       setShowResults(false);
       clearInput();
     };
@@ -78,7 +80,8 @@ SearchResults.propTypes = {
   loading: PropTypes.bool,
   selectProduct: PropTypes.func,
   setShowResults: PropTypes.func,
-  clearInput: PropTypes.func
+  clearInput: PropTypes.func,
+  updateSuggested: PropTypes.func
 };
 
 SearchResults.defaultProps = {
@@ -86,7 +89,8 @@ SearchResults.defaultProps = {
   loading: false,
   selectProduct: () => {},
   setShowResults: () => {},
-  clearInput: () => {}
+  clearInput: () => {},
+  updateSuggested: () => {}
 };
 
 export default withTheme(SearchResults);

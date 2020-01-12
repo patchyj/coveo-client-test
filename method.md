@@ -48,14 +48,36 @@ Im summary:
 
 ## 2. Coveo-SAQ API
 
+Links to Documentation:
+
+- [Query syntax documentation](http://onlinehelp.coveo.com/en/ces/7.0/User/coveo_query_syntax_reference.htm)
+- [REST API documentation](https://developers.coveo.com/display/public/SearchREST/Invoking+the+REST+Search+API)
+- [REST parameter documentation](https://developers.coveo.com/display/SearchREST/Query+Parameters)
+- [Response format documentation](https://developers.coveo.com/display/SearchREST/Query+Results)
+
+It was particularly interesting building a site around the SAQ API. I initially used a POST axios request but in the end I found it more intuitive structuring a GET request, passing a typed query from the input along with various options (price range, colors etc) to structure the query. 
+
+Given time restraints I could only really use the basic query param but I intend to keep experimenting and implementing various other params for as long as I can.
+
 ---
 
-## 3. JSON Placeholder API
+## 3. RapidAPI: Wine and Breweries
+
+- [Rapid API homepage](https://rapidapi.com/collection/alcohol-brewery-api)
+
+I wanted to do something a bit different too, so I did a bit of research and came across RapidAPI, a collection of various alcohol-related APIs. I've implemented two in this tech test, a brewery one and a wine one, and built a page for the results using a paginator library. 
+
+The downside is that there wasn't as much information from the APIs as I initially thought so it feels a bit bare in places, but it wasn't the priority. It's always fun working with new APIs.
 
 ---
 
-## 4. RapidAPI: Wine and Breweries
+## 4. Cleanup and final tests
 
----
+I did a fair amount of restructuring and renaming in the latter half of the project, trying to keep things consistent. As a result, a lot of time was spent updating, adding and removing tests. 
 
-## 5. Cleanup and final tests
+## To Do's:
+
+Like any project, there I things I would like to add:
+
+- Initially I would have liked to have written an end-to-end test suite with Cypress but I just didn't have time
+- Implementing a mock user-comment section would have been fun and added a new aspect to the site. JSONPlaceHolder my normal go-to for that kind of thing, but again I didn't have time

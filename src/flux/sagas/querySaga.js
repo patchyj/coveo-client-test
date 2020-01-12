@@ -61,10 +61,27 @@ export function* selectProduct(action) {
   }
 }
 
+export function* updateSuggested(action) {
+  try {
+    yield put({ type: actionTypes.UPDATE_SUGGESTED_STARTED });
+
+    yield put({
+      type: actionTypes.UPDATE_SUGGESTED_SUCCESS,
+      payload: action.payload
+    });
+  } catch (errors) {
+    yield put({
+      type: actionTypes.UPDATE_SUGGESTED_FAILURE,
+      errors
+    });
+  }
+}
+
 export default function* querySaga() {
   yield all([
     takeLatest(actionTypes.FETCH_QUERY, fetchQuery),
     takeLatest(actionTypes.FETCH_QUERY_FROM_NAV, fetchQueryFromNav),
-    takeLatest(actionTypes.SELECT_PRODUCT, selectProduct)
+    takeLatest(actionTypes.SELECT_PRODUCT, selectProduct),
+    takeLatest(actionTypes.UPDATE_SUGGESTED, updateSuggested)
   ]);
 }

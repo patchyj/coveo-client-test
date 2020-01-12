@@ -4,11 +4,11 @@ import { Link, useRouteMatch } from 'react-router-dom';
 import S from '../../static/styles';
 import { createItem, makeResponsiveColumns } from '../../utils/helpers';
 
-const ProductTile = ({ product, type, cols, selectProduct }) => {
+const ProductTile = ({ product, type, cols, selectProduct, truncate }) => {
   const { url } = useRouteMatch();
   let item = {};
   if (product) {
-    item = createItem(type, product);
+    item = createItem(type, product, truncate);
   }
 
   const responsiveCols = makeResponsiveColumns(cols);
@@ -55,13 +55,15 @@ ProductTile.propTypes = {
   product: PropTypes.shape({}).isRequired,
   type: PropTypes.string,
   cols: PropTypes.number,
-  selectProduct: PropTypes.func
+  selectProduct: PropTypes.func,
+  truncate: PropTypes.bool
 };
 
 ProductTile.defaultProps = {
   type: '',
   cols: 2,
-  selectProduct: () => {}
+  selectProduct: () => {},
+  truncate: false
 };
 
 export default ProductTile;

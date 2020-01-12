@@ -10,7 +10,11 @@ jest.mock('react-router-dom', () => ({
 describe('ProductTile', () => {
   it('should render', () => {
     const props = {
-      product: {},
+      product: {
+        raw: {
+          tpcodesaq: '123'
+        }
+      },
       type: '',
       cols: null,
       selectProduct: () => {}

@@ -3,18 +3,6 @@ import breakpoints from '../utils/breakpoints';
 
 export const CatalogIndex = styled.div`
   margin: auto;
-
-  .tile-size {
-    i {
-      cursor: pointer;
-      padding: 0.5rem;
-      transition: 0.1s;
-
-      &:hover {
-        background: #782c42;
-        color: white;
-      }
-    }
   }
 
   @media (max-width: ${breakpoints.xs}) {

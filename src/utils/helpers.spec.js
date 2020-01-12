@@ -78,13 +78,16 @@ describe('Helpers', () => {
         title: 'Generic title',
         percentScore: 99.99,
         score: 123.45,
-        uri: 'http://www.some_uri.com'
+        uri: 'http://www.some_uri.com',
+        raw: {
+          tpcodesaq: '123'
+        }
       };
 
       const item = createItem(type, product);
 
       expect(item).toEqual({
-        id: 'Generic title',
+        id: '123',
         name: 'Generic title',
         percentScore: '100%',
         score: 'Score: 123.45',
@@ -96,14 +99,18 @@ describe('Helpers', () => {
   describe('makeGenericTile', () => {
     it('should produce a generic object', () => {
       const tile = makeGenericTile({
+        raw: {
+          tpcodesaq: '123'
+        },
         title: 'some name',
         percentScore: 12.34,
         score: 12.34,
-        uri: 'blah'
+        uri: 'blah',
+        truncate: true
       });
 
       expect(tile).toEqual({
-        id: 'some name',
+        id: '123',
         name: 'some name',
         percentScore: '13%',
         score: 'Score: 12.34',

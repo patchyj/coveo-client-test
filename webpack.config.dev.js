@@ -6,6 +6,17 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
+const GLOBALS = {
+  __DEV__: false,
+  'process.env.PORT': JSON.stringify(process.env.PORT),
+  'process.env.TOKEN': JSON.stringify(process.env.TOKEN),
+  'process.env.RAPID_API_KEY': JSON.stringify(process.env.RAPID_API_KEY),
+  'process.env.RAPID_API_TOKEN': JSON.stringify(process.env.RAPID_API_TOKEN),
+  'process.env.GOOGLE_MAPS_API_KEY': JSON.stringify(
+    process.env.GOOGLE_MAPS_API_KEY
+  )
+};
+
 export default {
   resolve: {
     extensions: ['*', '.js', '.jsx', '.json'],
@@ -43,6 +54,7 @@ export default {
     open: false
   },
   plugins: [
+    new webpack.DefinePlugin(GLOBALS),
     new HardSourceWebpackPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
@@ -54,12 +66,6 @@ export default {
         collapseWhitespace: true
       },
       inject: true
-    }),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-      'process.env.DEBUG': JSON.stringify(process.env.DEBUG),
-      'process.env.PORT': JSON.stringify(process.env.PORT),
-      'process.env.TOKEN': JSON.stringify(process.env.TOKEN)
     })
   ],
   module: {

@@ -1,8 +1,8 @@
 import '@testing-library/jest-dom/extend-expect';
 import { fireEvent, render } from '@testing-library/react';
 import { mount } from 'enzyme';
-import { ThemeProvider } from 'styled-components';
 import React from 'react';
+import { ThemeProvider } from 'styled-components';
 import { MemoryRouter } from 'react-router-dom';
 import Navbar from './Navbar';
 import { theme } from '../Root';

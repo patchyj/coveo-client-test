@@ -21,6 +21,12 @@ export const HeroContainer = styled.div`
   }
 
   form {
+    .autoSearchContainer {
+      position: absolute;
+      margin-left: 0.2rem;
+      color: #782c42;
+    }
+
     .input-group {
       input {
         border-radius: 20px 0 0 20px;
