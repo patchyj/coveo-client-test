@@ -1,7 +1,6 @@
 /* eslint-disable camelcase */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import GoogleMapReact from 'google-map-react';
 import S from '../../../../../../static/styles';
@@ -187,10 +186,6 @@ const CatalogShow = ({ selected, closeBanner }) => {
   );
 };
 
-const mapStateToProps = state => ({
-  selected: state.catalog.selected
-});
-
 CatalogShow.propTypes = {
   selected: PropTypes.shape({}),
   closeBanner: PropTypes.func
@@ -201,4 +196,4 @@ CatalogShow.defaultProps = {
   closeBanner: () => {}
 };
 
-export default connect(mapStateToProps)(CatalogShow);
+export default CatalogShow;
