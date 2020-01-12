@@ -35,11 +35,11 @@ const ProductsIndex = ({ results, selectProduct, loading }) => {
           </div>
         </S.OptionsPanel>
         {loading ? (
-          <S.SpinnerContainer>
+          <S.SpinnerContainer className="columns">
             <div className="loading loading-lg" />
           </S.SpinnerContainer>
         ) : (
-          renderContent()
+          <div className="columns">{renderContent()}</div>
         )}
       </div>
     </div>

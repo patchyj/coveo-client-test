@@ -6,7 +6,7 @@ export const truncateString = str => `${str.substring(0, 20)}...`;
 export const makeResponsiveColumns = cols => {
   switch (cols) {
     case 2:
-      return 'col-2 col-md-4';
+      return 'col-2 col-md-4 col-sm-6';
     case 3:
       return 'col-3 col-md-4';
     case 6:

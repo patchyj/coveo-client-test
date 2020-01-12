@@ -98,7 +98,7 @@ const CatalogIndex = ({
   const renderContent = () => (
     <div>
       <S.OptionsPanel className="columns">
-        <div className="column col-6">
+        <div className="column col-6 col-sm-8">
           <div className="columns">
             <div className="column col-6">
               <div className="form-group form-inline">
@@ -126,7 +126,7 @@ const CatalogIndex = ({
             </div>
           </div>
         </div>
-        <div className="column col-6 text-right tile-size">
+        <div className="column col-6 col-sm-4 text-right tile-size">
           <i
             className="fas fa-list"
             onClick={() => setCols(6)}

@@ -15,48 +15,42 @@ const ProductBanner = ({ selected }) => {
   const saq = get(selected, 'raw.clickableuri');
 
   return (
-    <S.ProductBanner className="columns">
-      <div className="column hero">
-        <div className="hero-body">
-          <div className="container grid-lg">
-            <div className="columns">
-              <div className="column col-8">
-                <div className="columns">
-                  <div className="column col-11">
-                    <h1>{title}</h1>
-                    <p>{category}</p>
-                    <small>{excerpt}</small>
-                    <hr className="m-y2" />
-                  </div>
-                </div>
-                <div className="columns">
-                  <div className="column col-auto">
-                    <h5>{price}</h5>
-                  </div>
-                  <div className="divider-vert" />
-                  <div className="column col-auto">
-                    <h5>{ml}</h5>
-                  </div>
-                </div>
-                <div className="columns">
-                  <div className="column col-auto">
-                    <a href={saq} target="_blank" rel="noopener noreferrer">
-                      <small>SAQ</small>
-                    </a>
-                  </div>
-                  <div className="column col-auto">
-                    <small>Producer: {producer}</small>
-                  </div>
-                  <div className="column col-auto">
-                    <StarRating percentScore={percentScore} />
-                  </div>
-                </div>
-              </div>
-              <div className="column col-4">
-                <img src={thumbnail} alt="" />
-              </div>
+    <S.ProductBanner className="container grid-lg">
+      <div className="columns">
+        <div className="column col-8 col-xs-12">
+          <div className="columns">
+            <div className="column col-11 col-xs-12">
+              <h1>{title}</h1>
+              <p>{category}</p>
+              <small>{excerpt}</small>
+              <hr className="m-y2" />
             </div>
           </div>
+          <div className="columns">
+            <div className="column col-auto">
+              <h5>{price}</h5>
+            </div>
+            <div className="divider-vert" />
+            <div className="column col-auto">
+              <h5>{ml}</h5>
+            </div>
+          </div>
+          <div className="columns">
+            <div className="column col-auto">
+              <a href={saq} target="_blank" rel="noopener noreferrer">
+                <small>SAQ</small>
+              </a>
+            </div>
+            <div className="column col-auto">
+              <small>Producer: {producer}</small>
+            </div>
+            <div className="column col-auto">
+              <StarRating percentScore={percentScore} />
+            </div>
+          </div>
+        </div>
+        <div className="column col-4 col-xs-12 image-container">
+          <img src={thumbnail} alt="" />
         </div>
       </div>
     </S.ProductBanner>

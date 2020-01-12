@@ -11,7 +11,7 @@ describe('Helpers', () => {
     it('should return for: 2 cols', () => {
       const cols = makeResponsiveColumns(2);
 
-      expect(cols).toBe('col-2 col-md-4');
+      expect(cols).toBe('col-2 col-md-4 col-sm-6');
     });
     it('should return for: 3 cols', () => {
       const cols = makeResponsiveColumns(3);
