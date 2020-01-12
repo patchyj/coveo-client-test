@@ -10,14 +10,16 @@ import StarRating from '../../../shared/StarRating';
 
 const ResultsList = ({ searchResults, loading, selectProduct }) => {
   const results = searchResults.map((result, i) => {
+    /* <<<<<<< LODASH GET IS CLEANER TO GET REQUIRED FIELDS >>>>>>> */
     const price = get(result, 'raw.tpprixnormal');
     const id = get(result, 'raw.tpproductid');
     const ml = get(result, 'raw.tpformat');
     const category = get(result, 'raw.tpcategorie');
+
     return (
       <Link
-        className="list-item columns"
         to={`/products/${id}`}
+        className="list-item columns"
         key={stringToKey(result.title, i)}
         onClick={() => selectProduct(result)}
       >

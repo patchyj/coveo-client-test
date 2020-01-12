@@ -4,7 +4,7 @@ import {
   fetchResults,
   selectProduct
 } from '../../../flux/actions/queryActions';
-import Main from './LandingContainer';
+import LandingContainer from './LandingContainer';
 
 const mapStateToProps = state => ({
   results: state.results,
@@ -16,4 +16,6 @@ const mapDispatchToProps = dispatch => ({
   selectProduct: product => dispatch(selectProduct(product))
 });
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(LandingContainer)
+);

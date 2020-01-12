@@ -16,7 +16,7 @@ const ProductTile = ({ product, type, cols, selectProduct, truncate }) => {
   const handleClick = () => selectProduct(product);
 
   const content = (
-    <div className="card" style={{ height: '12rem' }}>
+    <div className="card">
       <div className="card-header">
         <div className="card-title h6">{item.name}</div>
         <small className="card-subtitle">{item.location || item.price}</small>

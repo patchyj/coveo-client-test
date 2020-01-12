@@ -31,13 +31,14 @@ const allOptions = [
 ];
 
 const OptionsContainer = ({ minPrice, maxPrice, handleRange, handleTypes }) => {
-  const [hovered, setHovered] = useState(false);
   const [category, setCategory] = useState('beer');
   const [options, setOptions] = useState(allOptions);
+  const [hovered, setHovered] = useState(false);
   const toggleHover = () => setHovered(!hovered);
 
   const handleSetCategory = e => setCategory(e.target.id);
 
+  /* <<<<<<< CREATES A NEW OPTION LIST DEPENDING ON WHETHER ITS BEEN CHECKED >>>>>>> */
   const handleCheckbox = e => {
     const {
       target: { id }
@@ -54,6 +55,7 @@ const OptionsContainer = ({ minPrice, maxPrice, handleRange, handleTypes }) => {
     setOptions(newOptions);
   };
 
+  /* <<<<<<< FILTERS OPTIONS BY CHECKED IF OPTIONS STATE CHANGES >>>>>>> */
   useEffect(() => {
     const selected = options.filter(o => o.isChecked);
     handleTypes(selected);

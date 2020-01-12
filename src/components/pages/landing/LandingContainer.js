@@ -25,6 +25,7 @@ const MainContainer = ({ fetchResults, results, selectProduct, history }) => {
     numberOfResults: 50
   };
 
+  /* <<<<<<< IF INPUT NOT EMPTY AND AUTO SEARCH ON, FETCH RESULTS >>>>>>> */
   useEffect(() => {
     if (query.length && autoSearch) {
       fetchResults({ query, options });
@@ -38,6 +39,7 @@ const MainContainer = ({ fetchResults, results, selectProduct, history }) => {
     setQuery(e.target.value);
   };
 
+  /* <<<<<<< FETCH RESULTS AND REDIRECT ON SUBMIT >>>>>>> */
   const handleSubmit = e => {
     e.preventDefault();
     if (query.length) {
@@ -48,16 +50,19 @@ const MainContainer = ({ fetchResults, results, selectProduct, history }) => {
     }
   };
 
+  /* <<<<<<< ADVANCED OPTIONS: MIN AND MAX SLIDER VALUES >>>>>>> */
   const handleRange = val => {
     const [mn, mx] = val;
     setMinPrice(parseInt(mn, 10));
     setMaxPrice(parseInt(mx, 10));
   };
 
+  /* <<<<<<< ADVANCED OPTIONS: TYPE OF ALCOHOL >>>>>>> */
   const handleTypes = optionTypes => {
     setTypes(optionTypes);
   };
 
+  /* <<<<<<< SET AUTO SEARCH >>>>>>> */
   const handleCheckbox = () => {
     setAutoSearch(!autoSearch);
   };
@@ -90,7 +95,10 @@ const MainContainer = ({ fetchResults, results, selectProduct, history }) => {
           />
           <div className="divider" />
           {errors && Object.keys(errors).length ? (
-            <small className="">Oops! Something's gone wrong!!</small>
+            <small className="">
+              Oops! Something's gone wrong. Please check you have a valid API
+              key and / or internet connection
+            </small>
           ) : (
             ''
           )}
@@ -98,8 +106,8 @@ const MainContainer = ({ fetchResults, results, selectProduct, history }) => {
       </S.HeroContainer>
       {showResults && (
         <ResultsList
-          searchResults={searchResults}
           loading={loading}
+          searchResults={searchResults}
           selectProduct={selectProduct}
         />
       )}
