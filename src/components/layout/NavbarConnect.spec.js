@@ -14,7 +14,7 @@ describe('NavbarConnect', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should pass the products to the Navbar', () => {
+  it('should pass the results to the Navbar', () => {
     const initialState = {
       errors: {},
       results: {
@@ -28,5 +28,21 @@ describe('NavbarConnect', () => {
     expect(wrapper.find('Navbar').prop('results')).toEqual({
       navResults: ['test']
     });
+  });
+
+  it('should map the dispatch functions to the Navbar component', () => {
+    const initialState = {
+      errors: {},
+      results: {
+        navResults: ['test']
+      }
+    };
+
+    const wrapper = connectWrapper(initialState, <NavbarConnect />);
+    const nav = wrapper.find('Navbar');
+
+    expect(nav.prop('selectProduct')).toBeDefined();
+    expect(nav.prop('fetchResultsFromNav')).toBeDefined();
+    expect(nav.prop('updateSuggested')).toBeDefined();
   });
 });

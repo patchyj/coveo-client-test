@@ -1,5 +1,5 @@
 import moxios from 'moxios';
-import { getRequest, postRequest, rapidAPIRequest } from './query';
+import { httpGetRequest, postRequest, rapidAPIRequest } from './query';
 import config from '../../config';
 
 describe('query', () => {
@@ -11,20 +11,28 @@ describe('query', () => {
     moxios.uninstall();
   });
 
-  describe('getRequest', () => {
+  describe('httpGetRequest', () => {
     it('should return response with body', async () => {
       const response = {
         data: [{ id: '1', body: 'body' }]
       };
 
-      moxios.stubRequest('http://test-url.com/comments', {
-        status: 200,
-        response
-      });
+      moxios.stubRequest(
+        'https://cloudplatform.coveo.com/rest/search/v2?q=beer%3B@tpprixnum%3C10&numberOfResults=10',
+        {
+          status: 200,
+          response
+        }
+      );
 
-      const promise = getRequest({
-        url: 'http://test-url.com',
-        endpoint: 'comments'
+      const promise = httpGetRequest({
+        query: 'beer',
+        options: {
+          minPrice: 0,
+          maxPrice: 10,
+          types: [],
+          numberOfResults: 10
+        }
       });
 
       const resolved = await Promise.resolve(promise);
@@ -44,15 +52,23 @@ describe('query', () => {
         error: 'Error from the server'
       };
 
-      moxios.stubRequest('http://test-url.com/comments', {
-        status: 300,
-        response
-      });
+      moxios.stubRequest(
+        'https://cloudplatform.coveo.com/rest/search/v2?q=beer%3B@tpprixnum%3C10&numberOfResults=10',
+        {
+          status: 300,
+          response
+        }
+      );
 
       try {
-        await getRequest({
-          url: 'http://test-url.com',
-          endpoint: 'comments'
+        await httpGetRequest({
+          query: 'beer',
+          options: {
+            minPrice: 0,
+            maxPrice: 10,
+            types: [],
+            numberOfResults: 10
+          }
         });
       } catch (error) {
         expect(error).toEqual(Error('Request failed with status code 300'));

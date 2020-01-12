@@ -7,7 +7,7 @@ import stringToKey from '../../../../../../utils/createKey';
 import Paginator from '../../../../../shared/Paginator';
 import ProductTile from '../../../../../shared/ProductTile';
 import Spinner from '../../../../../shared/Spinner';
-import CatalogShow from '../show/CatalogShow';
+import CatalogShow from '../show/CatalogShowConnect';
 
 const CatalogIndex = ({
   fetch,
