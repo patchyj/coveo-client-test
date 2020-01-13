@@ -39,6 +39,10 @@ export const Spinner = styled.svg`
 export const SpinnerContainer = styled.div`
   height: calc(100vh - 36px);
   text-align: center;
+
+  .loading {
+    width: 100%;
+  }
 `;
 
 export const Navbar = styled.header`

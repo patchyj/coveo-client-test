@@ -118,7 +118,11 @@ const Navbar = ({
           </section>
           {!isRoot && (
             <section className="column col-xs-7 navbar-section ">
-              <SearchBar value={query} setValue={handleChange} />
+              <SearchBar
+                value={query}
+                setValue={handleChange}
+                showSearchButton={false}
+              />
               {showResults && (
                 <SearchResults
                   loading={loading}
