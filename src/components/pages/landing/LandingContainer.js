@@ -119,6 +119,7 @@ const MainContainer = ({
           loading={loading}
           searchResults={searchResults}
           selectProduct={selectProduct}
+          palette={palette}
         />
       )}
     </Fragment>

@@ -74,10 +74,10 @@ const Navbar = ({
 
   const handleSwitchTheme = () => {
     if (palette === 'light') {
-      document.body.background = '#2D2B35';
+      document.body.style.background = '#2D2B35';
       switchTheme('dark');
     } else {
-      document.body.background = '#fff';
+      document.body.style.background = '#fff';
       switchTheme('light');
     }
   };
