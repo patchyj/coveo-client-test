@@ -39,11 +39,15 @@ export const Spinner = styled.svg`
 export const SpinnerContainer = styled.div`
   height: calc(100vh - 36px);
   text-align: center;
+
+  .loading {
+    width: 100%;
+  }
 `;
 
 export const Navbar = styled.header`
   padding: 0 40px;
-  background-color: #782c42;
+  background-color: ${({ theme, palette }) => theme[palette].bg1};
   color: white;
   box-shadow: 0 -1px 9px 2px black;
 
@@ -140,7 +144,7 @@ export const SearchBar = styled.section`
     padding: 0 12px 3px;
     border-radius: 6px;
     opacity: ${({ showPopover }) => (showPopover ? 1 : 0)};
-    background: ${({ theme: { light } }) => light.color1};
+    background: ${({ theme: { light } }) => light.bg1};
     color: white;
 
     .fa-times {
@@ -154,7 +158,7 @@ export const SearchBar = styled.section`
       width: 0;
       height: 0;
       border-top: 8px solid transparent;
-      border-left: 12px solid ${({ theme: { light } }) => light.color1};
+      border-left: 12px solid ${({ theme: { light } }) => light.bg1};
       border-bottom: 8px solid transparent;
       right: -10px;
       top: 6px;
@@ -175,7 +179,7 @@ export const SearchResults = styled.div`
   a.list-item {
     padding: 10px 0;
     transition: 0.2s;
-    color: ${({ theme: { light } }) => light.color1};
+    color: ${({ theme: { light } }) => light.bg1};
 
     &:hover {
       background: #dfdfdf;
@@ -194,16 +198,23 @@ export const Paginator = styled.div`
     }
 
     .page-item {
+      .page-link {
+        background: ${({ theme, palette }) => theme[palette].bodyBg};
+        border-color: ${({ theme, palette }) => theme[palette].panelBg};
+        color: ${({ theme, palette }) => theme[palette].mainText};
+      }
+
       &.active {
         .page-link {
-          background: ${({ theme: { light } }) => light.color1};
-          border-color: ${({ theme: { light } }) => light.color1};
+          background: ${({ theme: { light } }) => light.bg1};
+          border-color: ${({ theme: { light } }) => light.bg1};
         }
       }
 
       .page-link {
         cursor: pointer;
         padding: 0.2rem 0.5rem;
+
         &:hover {
           background: #66b761;
           border-color: #66b761;
@@ -219,8 +230,8 @@ export const RangeSlider = styled.div`
 
 export const Checkbox = styled.label`
   input:checked + .form-icon {
-    background: ${({ theme: { light } }) => light.color1};
-    border-color: ${({ theme: { light } }) => light.color1};
+    background: ${({ theme: { light } }) => light.bg1};
+    border-color: ${({ theme: { light } }) => light.bg1};
   }
 
   small {

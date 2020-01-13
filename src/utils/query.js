@@ -11,7 +11,7 @@ export const httpGetRequest = ({ query, options }) => {
   const beerCategories = types.filter(t => t.name === 'beer').map(t => t.alt);
 
   if (beerCategories.length) {
-    category = `beer,(${beerCategories.join(',')}`;
+    category = `beer,(${beerCategories.join(',')})`;
   }
 
   const wineCategories = types.filter(t => t.name === 'wine').map(t => t.alt);
@@ -29,15 +29,13 @@ export const httpGetRequest = ({ query, options }) => {
     }
   }
 
-  // if spirit
-  // color semi-important eg rum (rhum) is brown or white
-  // const spiritCategories = types
-  //   .filter(t => t.name === 'spirit')
-  //   .map(t => t.alt);
+  const spiritCategories = types
+    .filter(t => t.name === 'spirit')
+    .map(t => t.alt);
 
-  // if (spiritCategories.length) {
-  //   console.log(`@tpcategorie=${spiritCategories.join(',')}`);
-  // }
+  if (spiritCategories.length) {
+    category = `(${spiritCategories.join(',')})`;
+  }
 
   // PRICE
   let price = '';

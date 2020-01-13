@@ -9,7 +9,28 @@ import './root.scss';
 
 export const theme = {
   light: {
-    color1: '#782c42'
+    bg1: '#782c42',
+    navBg: '#782c42',
+    bodyBg: '#fff',
+    cardBg: '#fff',
+    mainText: '#140F12',
+    cardText: '#782c42',
+    heroText: '#782c42',
+    panelBg: '#ddd',
+    formBg: '#fff',
+    active: '#5755d9'
+  },
+  dark: {
+    bg1: '#2D2B35',
+    navBg: '#2C2128',
+    bodyBg: '#2D2B35',
+    cardBg: '#3e3b40',
+    mainText: '#c9c9c9',
+    cardText: '#c9c9c9',
+    heroText: '#c9c9c9',
+    panelBg: '#212129',
+    formBg: '#080808',
+    active: '#e08231'
   }
 };
 

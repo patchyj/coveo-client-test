@@ -1,9 +1,17 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { withTheme } from 'styled-components';
 import stringToKey from '../../../../../utils/createKey';
 import ProductTile from '../../../../shared/ProductTile';
 
-const SuggestedList = ({ results, selectProduct, title, cols, truncate }) => {
+const SuggestedList = ({
+  results,
+  selectProduct,
+  title,
+  cols,
+  truncate,
+  palette
+}) => {
   const tiles = results.map((result, i) => (
     <ProductTile
       product={result}
@@ -11,6 +19,7 @@ const SuggestedList = ({ results, selectProduct, title, cols, truncate }) => {
       key={stringToKey(result.title, i)}
       selectProduct={selectProduct}
       truncate={truncate}
+      palette={palette}
     />
   ));
 
@@ -31,7 +40,8 @@ SuggestedList.propTypes = {
   selectProduct: PropTypes.func,
   title: PropTypes.string,
   cols: PropTypes.number,
-  truncate: PropTypes.bool
+  truncate: PropTypes.bool,
+  palette: PropTypes.string
 };
 
 SuggestedList.defaultProps = {
@@ -39,7 +49,8 @@ SuggestedList.defaultProps = {
   selectProduct: () => {},
   title: '',
   cols: 3,
-  truncate: false
+  truncate: false,
+  palette: ''
 };
 
-export default SuggestedList;
+export default withTheme(SuggestedList);

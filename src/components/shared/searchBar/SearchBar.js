@@ -2,7 +2,13 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import S from '../../../static/styles';
 
-const SearchBar = ({ value, setValue, showPopover, closePopover }) => (
+const SearchBar = ({
+  value,
+  setValue,
+  showPopover,
+  closePopover,
+  showSearchButton
+}) => (
   <S.SearchBar showPopover={showPopover}>
     <div className="input-group input-inline">
       <input
@@ -12,9 +18,11 @@ const SearchBar = ({ value, setValue, showPopover, closePopover }) => (
         value={value}
         onChange={setValue}
       />
-      <button className="btn btn-primary input-group-btn" type="submit">
-        Search
-      </button>
+      {showSearchButton && (
+        <button className="btn btn-primary input-group-btn" type="submit">
+          Search
+        </button>
+      )}
     </div>
     <div className="pop">
       <i className="fas fa-times" onClick={closePopover} role="presentation" />{' '}
@@ -27,14 +35,16 @@ SearchBar.propTypes = {
   value: PropTypes.string,
   setValue: PropTypes.func,
   showPopover: PropTypes.bool,
-  closePopover: PropTypes.func
+  closePopover: PropTypes.func,
+  showSearchButton: PropTypes.bool
 };
 
 SearchBar.defaultProps = {
   value: '',
   setValue: () => {},
   showPopover: false,
-  closePopover: () => {}
+  closePopover: () => {},
+  showSearchButton: true
 };
 
 export default SearchBar;

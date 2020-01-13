@@ -7,6 +7,7 @@ import S from '../../static/styles';
 import { dimensions } from '../../static/styles/utils/breakpoints';
 import SearchBar from '../shared/searchBar/SearchBar';
 import SearchResults from '../shared/searchBar/SearchResults';
+import { ThemeType } from '../types';
 
 export const shouldCollapse = (width, breakpoint) => width < breakpoint;
 
@@ -28,7 +29,9 @@ const Navbar = ({
   fetchResultsFromNav,
   results,
   selectProduct,
-  updateSuggested
+  updateSuggested,
+  switchTheme,
+  theme
 }) => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [responsiveMode, setResponsiveMode] = useState(false);
@@ -40,12 +43,7 @@ const Navbar = ({
   const { loading, navResults: searchResults } = results;
   const isRoot = pathname === '/';
 
-  const handleChange = e => {
-    setQuery(e.target.value);
-  };
-
-  const clearInput = () => setQuery('');
-
+  const palette = theme.theme;
   shouldSetResponsiveMode(
     shouldCollapse(windowWidth, dimensions.sm),
     responsiveMode,
@@ -74,8 +72,24 @@ const Navbar = ({
 
   const handleClick = () => setOpen(false);
 
+  const handleSwitchTheme = () => {
+    if (palette === 'light') {
+      document.body.background = '#2D2B35';
+      switchTheme('dark');
+    } else {
+      document.body.background = '#fff';
+      switchTheme('light');
+    }
+  };
+
+  const handleChange = e => {
+    setQuery(e.target.value);
+  };
+
+  const clearInput = () => setQuery('');
+
   return (
-    <S.Navbar className="navbar">
+    <S.Navbar className="navbar" palette={palette}>
       <div className="container grid-lg">
         <div className="columns">
           <section className="column col-xs-4 navbar-section">
@@ -103,8 +117,12 @@ const Navbar = ({
             )}
           </section>
           {!isRoot && (
-            <section className="column col-xs-8 navbar-section ">
-              <SearchBar value={query} setValue={handleChange} />
+            <section className="column col-xs-7 navbar-section ">
+              <SearchBar
+                value={query}
+                setValue={handleChange}
+                showSearchButton={false}
+              />
               {showResults && (
                 <SearchResults
                   loading={loading}
@@ -115,6 +133,11 @@ const Navbar = ({
                   updateSuggested={updateSuggested}
                 />
               )}
+              <i
+                className="fas fa-adjust"
+                onClick={handleSwitchTheme}
+                role="presentation"
+              />
             </section>
           )}
         </div>
@@ -150,6 +173,9 @@ const Navbar = ({
               </Link>
             </div>
           </div>
+          <div className="columns">
+            <div className="column" />
+          </div>
         </div>
       )}
     </S.Navbar>
@@ -159,16 +185,20 @@ const Navbar = ({
 Navbar.propTypes = {
   results: PropTypes.shape({}),
   errors: PropTypes.shape({}),
+  theme: ThemeType,
   fetchResultsFromNav: PropTypes.func.isRequired,
   selectProduct: PropTypes.func,
-  updateSuggested: PropTypes.func
+  updateSuggested: PropTypes.func,
+  switchTheme: PropTypes.func
 };
 
 Navbar.defaultProps = {
   results: {},
   errors: {},
+  theme: {},
   selectProduct: () => {},
-  updateSuggested: () => {}
+  updateSuggested: () => {},
+  switchTheme: () => {}
 };
 
 export default withTheme(Navbar);

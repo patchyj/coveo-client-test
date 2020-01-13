@@ -24,9 +24,7 @@ describe('Navbar', () => {
       results: {},
       selectProduct: jest.fn(),
       theme: {
-        light: {
-          color1: 'white'
-        }
+        theme: 'light'
       }
     };
   });

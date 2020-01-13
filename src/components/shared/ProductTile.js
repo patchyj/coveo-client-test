@@ -1,10 +1,18 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link, useRouteMatch } from 'react-router-dom';
+import { withTheme } from 'styled-components';
 import S from '../../static/styles';
 import { createItem, makeResponsiveColumns } from '../../utils/helpers';
 
-const ProductTile = ({ product, type, cols, selectProduct, truncate }) => {
+const ProductTile = ({
+  product,
+  type,
+  cols,
+  selectProduct,
+  truncate,
+  palette
+}) => {
   const { url } = useRouteMatch();
   let item = {};
   if (product) {
@@ -37,7 +45,7 @@ const ProductTile = ({ product, type, cols, selectProduct, truncate }) => {
   );
 
   return (
-    <S.Card className={`column ${responsiveCols}`}>
+    <S.Card className={`column ${responsiveCols}`} palette={palette}>
       {type === 'generic' ? (
         <div onClick={handleClick} role="presentation">
           {content}
@@ -56,14 +64,16 @@ ProductTile.propTypes = {
   type: PropTypes.string,
   cols: PropTypes.number,
   selectProduct: PropTypes.func,
-  truncate: PropTypes.bool
+  truncate: PropTypes.bool,
+  palette: PropTypes.string
 };
 
 ProductTile.defaultProps = {
   type: '',
   cols: 2,
   selectProduct: () => {},
-  truncate: false
+  truncate: false,
+  palette: ''
 };
 
-export default ProductTile;
+export default withTheme(ProductTile);

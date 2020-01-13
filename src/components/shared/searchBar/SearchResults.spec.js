@@ -16,7 +16,7 @@ describe('SearchResults', () => {
       loading: false,
       theme: {
         light: {
-          color1: 'green'
+          bg1: 'green'
         }
       }
     };

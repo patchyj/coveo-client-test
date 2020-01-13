@@ -2,6 +2,7 @@
 import PropTypes from 'prop-types';
 import React, { Fragment, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { withTheme } from 'styled-components';
 import S from '../../../../../../static/styles';
 import stringToKey from '../../../../../../utils/createKey';
 import Paginator from '../../../../../shared/Paginator';
@@ -15,7 +16,8 @@ const CatalogIndex = ({
   clearSelectedProduct,
   selected,
   products,
-  loading
+  loading,
+  palette
 }) => {
   const { type } = useParams();
 
@@ -91,59 +93,19 @@ const CatalogIndex = ({
           type={type}
           cols={cols}
           selectProduct={handleSelectProduct}
+          palette={palette}
         />
       );
     });
 
   const renderContent = () => (
     <div>
-      <S.OptionsPanel className="columns">
-        <div className="column col-6 col-sm-8">
-          <div className="columns">
-            <div className="column col-6">
-              <div className="form-group form-inline">
-                Name
-                <input
-                  className="form-input"
-                  type="text"
-                  placeholder="Search by name..."
-                  onChange={handleNameChange}
-                />
-              </div>
-            </div>
-            <div className="column col-6">
-              <div className="form-group form-inline">
-                {type === 'wines' ? 'Country' : 'State'}
-                <input
-                  className="form-input"
-                  type="text"
-                  placeholder={`Search by ${
-                    type === 'wines' ? 'country' : 'state'
-                  }`}
-                  onChange={handleStateChange}
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="column col-6 col-sm-4 text-right tile-size">
-          <i
-            className="fas fa-list"
-            onClick={() => setCols(6)}
-            role="presentation"
-          />
-          <i
-            className="fas fa-th-large"
-            onClick={() => setCols(2)}
-            role="presentation"
-          />
-        </div>
-      </S.OptionsPanel>
       <Paginator
         total={products.length}
         setOffset={setOffset}
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
+        palette={palette}
       />
       <div className="columns">{tiles}</div>
       <Paginator
@@ -151,6 +113,7 @@ const CatalogIndex = ({
         setOffset={setOffset}
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
+        palette={palette}
       />
     </div>
   );
@@ -178,6 +141,52 @@ const CatalogIndex = ({
                 <h3>{type}</h3>
               </div>
             </S.Hero>
+            <S.OptionsPanel className="container" palette={palette}>
+              <div className="container grid-lg">
+                <div className="columns">
+                  <div className="column col-6 col-sm-8">
+                    <div className="columns">
+                      <div className="column col-6">
+                        <div className="form-group form-inline">
+                          Name
+                          <input
+                            className="form-input"
+                            type="text"
+                            placeholder="Search by name..."
+                            onChange={handleNameChange}
+                          />
+                        </div>
+                      </div>
+                      <div className="column col-6">
+                        <div className="form-group form-inline">
+                          {type === 'wines' ? 'Country' : 'State'}
+                          <input
+                            className="form-input"
+                            type="text"
+                            placeholder={`Search by ${
+                              type === 'wines' ? 'country' : 'state'
+                            }`}
+                            onChange={handleStateChange}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="column col-6 col-sm-4 text-right tile-size">
+                    <i
+                      className="fas fa-list"
+                      onClick={() => setCols(6)}
+                      role="presentation"
+                    />
+                    <i
+                      className="fas fa-th-large"
+                      onClick={() => setCols(2)}
+                      role="presentation"
+                    />
+                  </div>
+                </div>
+              </div>
+            </S.OptionsPanel>
             <div className="container grid-lg">
               <S.CatalogIndex>{renderContent()}</S.CatalogIndex>
             </div>
@@ -194,13 +203,15 @@ CatalogIndex.propTypes = {
   clearSelectedProduct: PropTypes.func.isRequired,
   products: PropTypes.arrayOf(PropTypes.shape({})),
   selected: PropTypes.shape({}),
+  palette: PropTypes.string,
   loading: PropTypes.bool
 };
 
 CatalogIndex.defaultProps = {
   products: [],
   loading: false,
-  selected: {}
+  selected: {},
+  palette: ''
 };
 
-export default CatalogIndex;
+export default withTheme(CatalogIndex);

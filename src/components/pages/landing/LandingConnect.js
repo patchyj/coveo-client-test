@@ -8,7 +8,8 @@ import LandingContainer from './LandingContainer';
 
 const mapStateToProps = state => ({
   results: state.results,
-  errors: state.errors
+  errors: state.errors,
+  theme: state.theme
 });
 
 const mapDispatchToProps = dispatch => ({
