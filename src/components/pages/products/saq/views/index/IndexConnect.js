@@ -5,7 +5,8 @@ import ProductsIndex from './IndexContainer';
 
 const mapStateToProps = state => ({
   results: state.results.results,
-  loading: state.results.loading
+  loading: state.results.loading,
+  theme: state.theme
 });
 
 const mapDispatchToProps = dispatch => ({

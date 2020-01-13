@@ -10,7 +10,8 @@ function CatalogContainer({
   products,
   selected,
   loading,
-  clearSelectedProduct
+  clearSelectedProduct,
+  theme
 }) {
   const { path } = useRouteMatch();
 
@@ -28,6 +29,8 @@ function CatalogContainer({
             selected={selected}
             loading={loading}
             clearSelectedProduct={clearSelectedProduct}
+            theme={theme}
+            palette={theme.theme}
           />
         </Route>
       </Switch>
@@ -41,12 +44,14 @@ CatalogContainer.propTypes = {
   clearSelectedProduct: PropTypes.func.isRequired,
   products: PropTypes.arrayOf(PropTypes.shape({})),
   selected: PropTypes.shape({}),
+  theme: PropTypes.shape({}),
   loading: PropTypes.bool
 };
 
 CatalogContainer.defaultProps = {
   products: [],
   selected: {},
+  theme: {},
   loading: false
 };
 

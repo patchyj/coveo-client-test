@@ -5,7 +5,8 @@ import ShowContainer from './ShowContainer';
 
 const mapStateToProps = state => ({
   results: state.results.results,
-  selected: state.results.selected
+  selected: state.results.selected,
+  theme: state.theme
 });
 
 const mapDispatchToProps = dispatch => ({

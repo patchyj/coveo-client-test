@@ -6,8 +6,15 @@ import SearchBar from '../../shared/searchBar/SearchBar';
 import Checkbox from '../../shared/forms/Checkbox';
 import OptionsContainer from './sections/OptionsContainer';
 import ResultsList from './sections/ResultsList';
+import { ThemeType } from '../../types';
 
-const MainContainer = ({ fetchResults, results, selectProduct, history }) => {
+const MainContainer = ({
+  fetchResults,
+  results,
+  selectProduct,
+  history,
+  theme
+}) => {
   const [query, setQuery] = useState('');
   const [types, setTypes] = useState({});
   const [showResults, setShowResults] = useState(false);
@@ -17,6 +24,8 @@ const MainContainer = ({ fetchResults, results, selectProduct, history }) => {
   const [maxPrice, setMaxPrice] = useState(0);
 
   const { loading, errors, results: searchResults } = results;
+
+  const palette = theme.theme;
 
   const options = {
     minPrice,
@@ -71,7 +80,7 @@ const MainContainer = ({ fetchResults, results, selectProduct, history }) => {
 
   return (
     <Fragment>
-      <S.HeroContainer className="container">
+      <S.HeroContainer className="container" palette={palette}>
         <img src={logo} alt="logo" />
         <form className="hero-body" onSubmit={handleSubmit}>
           <SearchBar
@@ -92,6 +101,7 @@ const MainContainer = ({ fetchResults, results, selectProduct, history }) => {
             maxPrice={maxPrice}
             handleRange={handleRange}
             handleTypes={handleTypes}
+            palette={theme.theme}
           />
           <div className="divider" />
           {errors && Object.keys(errors).length ? (
@@ -122,14 +132,16 @@ MainContainer.propTypes = {
   selectProduct: PropTypes.func,
   history: PropTypes.shape({
     push: PropTypes.func
-  })
+  }),
+  theme: ThemeType
 };
 
 MainContainer.defaultProps = {
   results: {},
   errors: {},
   selectProduct: () => {},
-  history: {}
+  history: {},
+  theme: {}
 };
 
 export default MainContainer;

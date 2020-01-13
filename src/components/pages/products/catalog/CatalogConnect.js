@@ -12,7 +12,8 @@ import CatalogContainer from './CatalogContainer';
 const mapStateToProps = state => ({
   products: state.catalog.products,
   selected: state.catalog.selected,
-  loading: state.catalog.loading
+  loading: state.catalog.loading,
+  theme: state.theme
 });
 
 const mapDispatchToProps = dispatch => ({

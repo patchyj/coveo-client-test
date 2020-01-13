@@ -9,9 +9,10 @@ const PaginatorWrapper = ({
   pageLimit,
   setOffset,
   currentPage,
-  setCurrentPage
+  setCurrentPage,
+  palette
 }) => (
-  <S.Paginator>
+  <S.Paginator palette={palette}>
     <Paginator
       totalRecords={total}
       pageLimit={pageLimit}
@@ -30,7 +31,8 @@ PaginatorWrapper.propTypes = {
   pageLimit: PropTypes.number,
   setOffset: PropTypes.func,
   currentPage: PropTypes.number,
-  setCurrentPage: PropTypes.func
+  setCurrentPage: PropTypes.func,
+  palette: PropTypes.string
 };
 
 PaginatorWrapper.defaultProps = {
@@ -38,7 +40,8 @@ PaginatorWrapper.defaultProps = {
   pageLimit: 12,
   setOffset: () => {},
   currentPage: 1,
-  setCurrentPage: () => {}
+  setCurrentPage: () => {},
+  palette: ''
 };
 
 export default withTheme(PaginatorWrapper);

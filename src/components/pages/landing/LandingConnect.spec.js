@@ -9,6 +9,9 @@ describe('LandingConnect', () => {
         loading: false,
         errors: {},
         results: []
+      },
+      theme: {
+        theme: 'light'
       }
     };
     const wrapper = connectWrapper(initialState, <LandingConnect />);

@@ -6,7 +6,10 @@ describe('NavbarConnect', () => {
   it('should render with the store', () => {
     const initialState = {
       errors: {},
-      results: {}
+      results: {},
+      theme: {
+        theme: 'light'
+      }
     };
 
     const wrapper = connectWrapper(initialState, <NavbarConnect />);
@@ -19,6 +22,9 @@ describe('NavbarConnect', () => {
       errors: {},
       results: {
         navResults: ['test']
+      },
+      theme: {
+        theme: 'light'
       }
     };
 
@@ -35,6 +41,9 @@ describe('NavbarConnect', () => {
       errors: {},
       results: {
         navResults: ['test']
+      },
+      theme: {
+        theme: 'light'
       }
     };
 

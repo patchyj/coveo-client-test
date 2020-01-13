@@ -13,6 +13,7 @@ export const Card = styled.div`
   margin: 1rem 0;
 
   .card {
+    background: ${({ theme, palette }) => theme[palette].cardBg};
     height: 12rem;
 
     .card-body {
@@ -24,6 +25,11 @@ export const Card = styled.div`
         height: 100px;
       }
     }
+  }
+
+  a,
+  a:visited {
+    color: ${({ theme, palette }) => theme[palette].cardText};
   }
 
   &:hover {
@@ -86,16 +92,20 @@ export const CatalogShow = styled.div`
 `;
 
 export const OptionsPanel = styled.div`
-  padding: 0.5rem 0;
+  padding: 2rem 0;
   margin: 1.5rem 0;
   display: flex;
   align-items: center;
+  background: ${({ theme, palette }) => theme[palette].panelBg};
+  box-shadow: inset 0 0px 10px -5px black;
 
   .form-inline {
     font-size: 14px;
 
     input {
       font-size: 14px;
+      color: ${({ theme, palette }) => theme[palette].mainText};
+      background: ${({ theme, palette }) => theme[palette].formBg};
     }
   }
 `;
