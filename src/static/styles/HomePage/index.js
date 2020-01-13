@@ -1,10 +1,12 @@
 import styled from 'styled-components';
 import breakpoints from '../utils/breakpoints';
-// eslint-disable-next-line import/prefer-default-export
+
 export const HeroContainer = styled.div`
   position: sticky;
+  background: ${({ theme, palette }) => theme[palette].bodyBg};
   z-index: 10;
-  top: 1rem;
+  top: 0;
+  padding-top: 1rem;
   width: 500px;
   margin: auto;
   text-align: center;
@@ -64,10 +66,10 @@ export const ResultsList = styled.div`
   a.list-item {
     padding: 15px 10px;
     transition: 0.2s;
-    color: #782c42;
+    color: ${({ theme, palette }) => theme[palette].cardText};
 
     &:hover {
-      background: #eee;
+      background: ${({ theme, palette }) => theme[palette].panelBg};
       text-decoration: none;
     }
   }

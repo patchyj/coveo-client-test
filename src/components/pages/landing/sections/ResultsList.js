@@ -3,12 +3,13 @@ import { get } from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { withTheme } from 'styled-components';
 import S from '../../../../static/styles';
 import stringToKey from '../../../../utils/createKey';
 import Spinner from '../../../shared/Spinner';
 import StarRating from '../../../shared/StarRating';
 
-const ResultsList = ({ searchResults, loading, selectProduct }) => {
+const ResultsList = ({ searchResults, loading, selectProduct, palette }) => {
   const results = searchResults.map((result, i) => {
     /* <<<<<<< LODASH GET IS CLEANER TO GET REQUIRED FIELDS >>>>>>> */
     const price = get(result, 'raw.tpprixnormal');
@@ -48,7 +49,7 @@ const ResultsList = ({ searchResults, loading, selectProduct }) => {
   });
 
   return (
-    <S.ResultsList>
+    <S.ResultsList palette={palette}>
       {loading ? <Spinner /> : <div className="container">{results}</div>}
     </S.ResultsList>
   );
@@ -57,13 +58,15 @@ const ResultsList = ({ searchResults, loading, selectProduct }) => {
 ResultsList.propTypes = {
   searchResults: PropTypes.arrayOf(PropTypes.shape({})),
   loading: PropTypes.bool,
-  selectProduct: PropTypes.func
+  selectProduct: PropTypes.func,
+  palette: PropTypes.string
 };
 
 ResultsList.defaultProps = {
   searchResults: [],
   loading: false,
-  selectProduct: () => {}
+  selectProduct: () => {},
+  palette: 'light'
 };
 
-export default ResultsList;
+export default withTheme(ResultsList);

@@ -1,6 +1,8 @@
 import '@testing-library/jest-dom/extend-expect';
-import { mount, shallow } from 'enzyme';
+import { shallow } from 'enzyme';
+
 import React from 'react';
+import connectWrapper from '../../../../utils/testUtils/connectWrapper';
 import ResultsList from './ResultsList';
 
 describe('ResultsList', () => {
@@ -10,7 +12,8 @@ describe('ResultsList', () => {
     defaultProps = {
       searchResults: [],
       selectProduct: jest.fn(),
-      loading: false
+      loading: false,
+      palette: 'light'
     };
   });
 
@@ -42,12 +45,19 @@ describe('ResultsList', () => {
   });
 
   it('should render the spinner if loading', () => {
+    const initialState = {
+      errors: {},
+      results: {},
+      theme: {
+        theme: 'light'
+      }
+    };
     const props = {
       ...defaultProps,
       loading: true
     };
 
-    const wrapper = mount(<ResultsList {...props} />);
+    const wrapper = connectWrapper(initialState, <ResultsList {...props} />);
 
     expect(wrapper.find('svg')).toHaveLength(1);
     expect(wrapper).toMatchSnapshot();
@@ -70,7 +80,11 @@ describe('ResultsList', () => {
       ]
     };
     const wrapper = shallow(<ResultsList {...props} />);
-    wrapper.find('Link').simulate('click');
+    wrapper
+      .dive()
+      .dive()
+      .find('Link')
+      .simulate('click');
 
     expect(props.selectProduct).toHaveBeenCalled();
     expect(props.selectProduct).toHaveBeenCalledWith({
