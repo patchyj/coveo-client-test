@@ -3,7 +3,6 @@ import breakpoints from '../utils/breakpoints';
 // eslint-disable-next-line import/prefer-default-export
 export const HeroContainer = styled.div`
   position: sticky;
-  background: white;
   z-index: 10;
   top: 1rem;
   width: 500px;
@@ -24,7 +23,7 @@ export const HeroContainer = styled.div`
     .autoSearchContainer {
       position: absolute;
       margin-left: 0.2rem;
-      color: #782c42;
+      color: ${({ theme, palette }) => theme[palette].heroText};
     }
 
     .input-group {
@@ -35,20 +34,6 @@ export const HeroContainer = styled.div`
       button {
         border-radius: 0 20px 20px 0;
         width: 120px;
-      }
-    }
-
-    .lucky {
-      padding: 0.5rem;
-      small {
-        color: #6c6c6c;
-        font-weight: bold;
-        cursor: pointer;
-        transition: 0.2s;
-
-        &:hover {
-          color: #782c42;
-        }
       }
     }
   }
@@ -100,7 +85,7 @@ export const OptionsContainer = styled.div`
   small,
   .fa-cog {
     cursor: pointer;
-    color: #782c42;
+    color: ${({ theme, palette }) => theme[palette].heroText};
   }
 
   .spin-c {
@@ -122,14 +107,16 @@ export const OptionsContainer = styled.div`
     box-sizing: border-box;
   }
 
-  .tab-block {
-    box-sizing: border-box;
-    margin-top: 15px;
-    text-transform: capitalize;
-  }
-
-  .tab .tab-item a {
-    padding: 0;
+  .tab {
+    border-color: ${({ theme, palette }) => theme[palette].bodyBg};
+    &.tab-block {
+      box-sizing: border-box;
+      margin-top: 15px;
+      text-transform: capitalize;
+    }
+    .tab-item a {
+      padding: 5px;
+    }
   }
 
   .rc-slider {

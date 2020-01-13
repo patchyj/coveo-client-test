@@ -3,6 +3,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { withTheme } from 'styled-components';
 import S from '../../../../static/styles';
 import RangeSlider from '../../../shared/forms/RangeSlider';
 import SubCategory from './SubCategory';
@@ -30,7 +31,13 @@ const allOptions = [
   { name: 'spirit', label: 'gin', alt: 'gin', isChecked: false }
 ];
 
-const OptionsContainer = ({ minPrice, maxPrice, handleRange, handleTypes }) => {
+const OptionsContainer = ({
+  minPrice,
+  maxPrice,
+  handleRange,
+  handleTypes,
+  palette
+}) => {
   const [category, setCategory] = useState('beer');
   const [options, setOptions] = useState(allOptions);
   const [hovered, setHovered] = useState(false);
@@ -62,7 +69,7 @@ const OptionsContainer = ({ minPrice, maxPrice, handleRange, handleTypes }) => {
   }, [options]);
 
   return (
-    <S.OptionsContainer>
+    <S.OptionsContainer palette={palette}>
       <details className="accordion">
         <summary className="accordion-header text-right">
           <small>Advanced</small>{' '}
@@ -131,14 +138,16 @@ OptionsContainer.propTypes = {
   minPrice: PropTypes.number,
   maxPrice: PropTypes.number,
   handleRange: PropTypes.func,
-  handleTypes: PropTypes.func
+  handleTypes: PropTypes.func,
+  palette: PropTypes.string
 };
 
 OptionsContainer.defaultProps = {
   minPrice: 0,
   maxPrice: 0,
   handleRange: () => {},
-  handleTypes: () => {}
+  handleTypes: () => {},
+  palette: ''
 };
 
-export default OptionsContainer;
+export default withTheme(OptionsContainer);

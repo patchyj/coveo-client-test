@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import SuggestedList from '../../sections/SuggestedList';
 import S from '../../../../../../static/styles';
 
-const ProductsIndex = ({ results, selectProduct, loading }) => {
+const ProductsIndex = ({ results, selectProduct, loading, theme }) => {
   const [cols, setCols] = useState(2);
+  const palette = theme.theme;
 
   const renderContent = () => (
     <SuggestedList
@@ -13,13 +14,14 @@ const ProductsIndex = ({ results, selectProduct, loading }) => {
       title="Results"
       cols={cols}
       truncate
+      palette={palette}
     />
   );
 
   return (
     <div>
       <div className="container grid-lg">
-        <S.OptionsPanel className="columns">
+        <S.OptionsPanel className="columns" palette={palette}>
           <div className="column col-6" />
           <div className="column col-6 text-right tile-size">
             <i
@@ -49,12 +51,14 @@ const ProductsIndex = ({ results, selectProduct, loading }) => {
 ProductsIndex.propTypes = {
   selectProduct: PropTypes.func.isRequired,
   results: PropTypes.arrayOf(PropTypes.shape({})),
-  loading: PropTypes.bool
+  loading: PropTypes.bool,
+  theme: PropTypes.shape({})
 };
 
 ProductsIndex.defaultProps = {
   results: [],
-  loading: false
+  loading: false,
+  theme: {}
 };
 
 export default ProductsIndex;
