@@ -45,7 +45,7 @@
     "express": "4.17.1",
     "google-map-react": "1.1.5",
     "jest-html-reporter": "2.8.0",
-    "lodash": "4.17.15",
+    "lodash": "4.17.19",
     "numbro": "2.1.2",
     "object-assign": "4.1.1",
     "prettier": "1.19.1",
